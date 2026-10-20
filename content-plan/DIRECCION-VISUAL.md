@@ -168,3 +168,12 @@ Herramientas: grabación de pantalla de macOS (⌘⇧5) y recorte en QuickTime o
 - **Botones ghost:** "Ver proyectos" y "Usar el formulario" con borde fino; en hover, un velo claro que separa el texto del fondo.
 
 **Verificación:** lint 0 FAIL · inspect 0 FAIL a 1440/768/390 (excepciones pedidas: gradientes, texto con sombra cromática, barra con blur, paleta morada).
+
+---
+
+# Ronda 6 (cierre de la Etapa 3)
+
+- Hero sin el nombre monumental (ya vive en la barra): el titular **"Diseño productos que destacan"** pasa a ser el protagonista a gran escala (hasta 152 px), con el apoyo, los botones y la ubicación abajo.
+- Experiencia: **"Más de diez años de diseño y productos"** (2015–hoy).
+
+**Estado:** dirección visual aprobada. Siguiente: Etapa 4 (Astro).
