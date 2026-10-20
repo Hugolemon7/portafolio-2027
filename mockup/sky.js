@@ -7,7 +7,7 @@
   // nebulosa de fondo (oscura) y rastro del cursor (morado)
   const BACK = [[46, 32, 110], [22, 52, 92], [70, 36, 120]];
   const TRAIL_RGB = [[124, 77, 255], [167, 112, 255], [92, 56, 214], [196, 150, 255]];
-  const FOLLOW = 0.045;     // retraso del rastro: menor = más lento
+  const FOLLOW = 0.07;      // retraso del rastro: menor = más lento
   const GAS_ALPHA = 0.75;   // intensidad general del gas
   const PUFF_LIFE = 3.2;    // segundos que tarda una bocanada en diluirse
 

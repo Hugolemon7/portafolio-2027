@@ -155,3 +155,16 @@ Herramientas: grabación de pantalla de macOS (⌘⇧5) y recorte en QuickTime o
 - **Experiencia:** cada "Ver más" ahora abre **dos párrafos** que narran las actividades con detalle (basados en tu CV y en los retos de tus proyectos).
 
 **Verificación:** lint 0 FAIL · inspect 0 FAIL a 1440/768/390.
+
+---
+
+# Ronda 5
+
+- **Gas del cursor:** menos retraso (sigue al mouse un poco más rápido).
+- **"destacan":** la palabra queda **en blanco** con franjas de **aberración cromática** (magenta/cian); el gradiente cónico gira **detrás** como aura.
+- **Ícono de expandir:** círculo con "+" en cada tarjeta de Impacto y cada fila de Facilitación; en hover gira y se pinta de morado.
+- **Experiencia:** nuevo puesto **Diseñador gráfico · CONTPAQi Marketing (2015–19)**: campañas, planeación de proyectos, branding interno hacia stakeholders y adaptaciones de marca. Párrafo de Innovación ampliado con la adopción de VR/AR y la renovación del área con exposición externa.
+- **Cierre:** texto **centrado y plano** ("¿Diseñamos algo que destaque?"), sobre un **velo morado oscuro** que lo distingue del hero.
+- **Botones ghost:** "Ver proyectos" y "Usar el formulario" con borde fino; en hover, un velo claro que separa el texto del fondo.
+
+**Verificación:** lint 0 FAIL · inspect 0 FAIL a 1440/768/390 (excepciones pedidas: gradientes, texto con sombra cromática, barra con blur, paleta morada).
