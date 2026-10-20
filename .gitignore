@@ -10,3 +10,6 @@ dist/
 .playwright-cli/
 audit/screens/*.tmp
 .taste-skill/
+source-assets/pdf/
+source-assets/framer/urls-*.txt
+sheet.png
