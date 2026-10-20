@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opciones tipográficas</title>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #eeecea; --ink: #2b2a29; --muted: #4f4b47; --space: #06070b; --space-ink: #eceef5; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.5 system-ui, sans-serif; }
+  header { padding: 3rem 2rem 1rem; max-width: 70rem; }
+  header h1 { font-size: 2rem; margin: 0 0 0.5rem; font-weight: 500; }
+  header p { margin: 0; color: var(--muted); max-width: 60ch; }
+  .opt { margin: 2rem; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); background: #fff; }
+  .opt__hero { background: var(--space); color: var(--space-ink); padding: 2rem; display: grid; gap: 1.5rem; align-content: space-between; min-height: 30rem; }
+  .opt__name { font-family: var(--d); font-weight: var(--w); letter-spacing: var(--t); font-size: clamp(3.5rem, 8vw, 7.5rem); line-height: 0.9; margin: 0; }
+  .opt__h1 { font-family: var(--d); font-weight: var(--w); letter-spacing: var(--t); font-size: clamp(2rem, 3.6vw, 3.25rem); line-height: 1; margin: 0; }
+  .opt__lead { font-family: var(--x); margin: 0; max-width: 40ch; opacity: 0.9; }
+  .opt__side { padding: 2rem; display: grid; gap: 1.25rem; align-content: start; font-family: var(--x); }
+  .opt__label { font-size: 0.9375rem; color: var(--muted); margin: 0; }
+  .opt__title { font-family: var(--d); font-weight: var(--w); letter-spacing: var(--t); font-size: 2rem; line-height: 1.05; margin: 0; }
+  .opt__nums { font-family: var(--d); font-weight: var(--w); font-size: 2.25rem; margin: 0; font-variant-numeric: tabular-nums; }
+  .opt__body { margin: 0; }
+  .opt__why { margin: 0; padding: 1rem 1.25rem; background: var(--bg); font-size: 0.9375rem; }
+  .opt a { display: inline-flex; align-items: center; min-height: 3rem; padding: 0 1.25rem; background: var(--ink); color: var(--bg); text-decoration: none; justify-self: start; }
+  .a { --d: "Clash Grotesk"; --x: "Satoshi"; --w: 500; --t: -0.035em; }
+  .b { --d: "Instrument Serif"; --x: "Instrument Sans"; --w: 400; --t: -0.025em; }
+  .c { --d: "Switzer"; --x: "Switzer"; --w: 500; --t: -0.05em; }
+  @media (max-width: 50em) { .opt { grid-template-columns: 1fr; margin: 1rem; } .opt__hero { min-height: 22rem; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Tres opciones tipográficas</h1>
+  <p>Cada una con tu nombre, el titular, cifras y texto. Usa “Ver el home con esta opción” para verla aplicada en toda la página.</p>
+</header>
+
+<section class="opt a" aria-labelledby="a-t">
+  <div class="opt__hero">
+    <p class="opt__name">Hugo<br>Buenrostro</p>
+    <div><h2 id="a-t" class="opt__h1">Diseño productos que escalan</h2></div>
+    <p class="opt__lead">Soy Product Designer. Construyo sistemas de diseño y flujos para productos fintech y proptech.</p>
+  </div>
+  <div class="opt__side">
+    <p class="opt__label">Opción A · Clash Grotesk + Satoshi (Fontshare)</p>
+    <p class="opt__title">Impacto medible</p>
+    <p class="opt__nums">70+ · 40% · +25% · 100+</p>
+    <p class="opt__body">Diseño componentes con tokens y variables en Figma, documentados para que ingeniería pueda usarlos sin preguntarme.</p>
+    <p class="opt__why">Contemporánea y de producto. Grotesca con carácter en los títulos y una sans muy legible para texto. La más "startup 2027".</p>
+    <a href="index.html?font=a">Ver el home con esta opción</a>
+  </div>
+</section>
+
+<section class="opt b" aria-labelledby="b-t">
+  <div class="opt__hero">
+    <p class="opt__name">Hugo<br>Buenrostro</p>
+    <div><h2 id="b-t" class="opt__h1">Diseño productos que escalan</h2></div>
+    <p class="opt__lead">Soy Product Designer. Construyo sistemas de diseño y flujos para productos fintech y proptech.</p>
+  </div>
+  <div class="opt__side">
+    <p class="opt__label">Opción B · Instrument Serif + Instrument Sans (Google Fonts)</p>
+    <p class="opt__title">Impacto medible</p>
+    <p class="opt__nums">70+ · 40% · +25% · 100+</p>
+    <p class="opt__body">Diseño componentes con tokens y variables en Figma, documentados para que ingeniería pueda usarlos sin preguntarme.</p>
+    <p class="opt__why">Editorial y cálida, más suave que Gambarino. Una serif de títulos con una sans hermana que comparte proporciones. La más humana.</p>
+    <a href="index.html?font=b">Ver el home con esta opción</a>
+  </div>
+</section>
+
+<section class="opt c" aria-labelledby="c-t">
+  <div class="opt__hero">
+    <p class="opt__name">Hugo<br>Buenrostro</p>
+    <div><h2 id="c-t" class="opt__h1">Diseño productos que escalan</h2></div>
+    <p class="opt__lead">Soy Product Designer. Construyo sistemas de diseño y flujos para productos fintech y proptech.</p>
+  </div>
+  <div class="opt__side">
+    <p class="opt__label">Opción C · Switzer, una sola familia (Fontshare)</p>
+    <p class="opt__title">Impacto medible</p>
+    <p class="opt__nums">70+ · 40% · +25% · 100+</p>
+    <p class="opt__body">Diseño componentes con tokens y variables en Figma, documentados para que ingeniería pueda usarlos sin preguntarme.</p>
+    <p class="opt__why">Suiza y precisa, la más cercana a Molecular. Un solo archivo de fuente: carga más rápido y se siente sistemática, como un design system.</p>
+    <a href="index.html?font=c">Ver el home con esta opción</a>
+  </div>
+</section>
+</body>
+</html>

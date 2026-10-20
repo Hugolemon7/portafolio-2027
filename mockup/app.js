@@ -33,15 +33,7 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
 // ---------- barra: sólida al salir del hero ----------
 const bar = document.querySelector('[data-bar]');
 const hero = document.querySelector('.hero');
-let pastHero = false;
-new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; bar.classList.toggle('is-solid', pastHero); if (!pastHero) bar.classList.remove('is-hidden'); }, { rootMargin: '-72px 0px 0px 0px' }).observe(hero);
-// se esconde al bajar, vuelve al subir
-let lastY = scrollY;
-addEventListener('scroll', () => {
-  const y = scrollY;
-  if (pastHero && Math.abs(y - lastY) > 6) bar.classList.toggle('is-hidden', y > lastY && !bar.contains(document.activeElement));
-  lastY = y;
-}, { passive: true });
+new IntersectionObserver(([e]) => bar.classList.toggle('is-solid', !e.isIntersecting), { rootMargin: '-72px 0px 0px 0px' }).observe(hero);
 
 // ---------- menú ----------
 const menu = document.querySelector('[data-menu]');
@@ -75,72 +67,28 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// ---------- temporadas y modo (la "cosa viva": los tokens del sitio) ----------
-const seasons = [
-  { id: 'salvia', name: 'Salvia', hex: '#5c6b54' },
-  { id: 'grana', name: 'Grana cochinilla', hex: '#8e1f2f' },
-  { id: 'cempasuchil', name: 'Cempasúchil', hex: '#9a4a08' },
-  { id: 'barro', name: 'Barro negro', hex: '#2f2c29' },
-];
-const lum = (hex) => {
-  const c = hex.match(/\w\w/g).map((h) => parseInt(h, 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
-  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
-};
-const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+// ---------- tema claro / oscuro (switch en el menú) ----------
 const isDark = () => root.dataset.theme === 'dark' || (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
-
-function paintTokens() {
-  const cs = getComputedStyle(root);
-  const accent = cs.getPropertyValue('--accent').trim();
-  const ink = cs.getPropertyValue('--accent-ink').trim();
-  const r = ratio(accent, ink);
-  const set = (sel, v) => document.querySelectorAll(sel).forEach((el) => (el.textContent = v));
-  set('[data-token-accent]', accent);
-  set('[data-token-ink]', ink);
-  set('[data-token-ratio]', `${r.toFixed(1)}:1 ${r >= 7 ? 'AAA' : r >= 4.5 ? 'AA' : 'insuficiente'}`);
+function paintMode() {
+  document.querySelectorAll('[data-mode-toggle]').forEach((b) => b.setAttribute('aria-checked', String(isDark())));
   const meta = document.querySelector('meta[name="theme-color"]');
-  meta && meta.setAttribute('content', cs.getPropertyValue('--bg').trim());
-  document.querySelectorAll('[data-mode-toggle]').forEach((b) => { b.setAttribute('aria-pressed', String(isDark())); b.textContent = isDark() ? 'Modo claro' : 'Modo oscuro'; });
+  if (meta) meta.setAttribute('content', getComputedStyle(root).getPropertyValue('--space').trim());
 }
-function setSeason(id) {
-  root.dataset.season = id;
-  try { localStorage.setItem('season', id); } catch (e) {}
-  document.querySelectorAll('.swatch').forEach((s) => s.setAttribute('aria-checked', String(s.dataset.id === id)));
-  paintTokens();
-}
-document.querySelectorAll('.season__swatches').forEach((group) => {
-  seasons.forEach((s) => {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'swatch';
-    b.dataset.id = s.id;
-    b.setAttribute('role', 'radio');
-    b.setAttribute('aria-label', s.name);
-    b.setAttribute('aria-checked', String(root.dataset.season === s.id));
-    b.title = s.name;
-    b.style.setProperty('--c', s.hex);
-    b.innerHTML = '<span></span>';
-    b.addEventListener('click', () => setSeason(s.id));
-    group.appendChild(b);
-  });
-});
 document.querySelectorAll('[data-mode-toggle]').forEach((b) => b.addEventListener('click', () => {
   const next = isDark() ? 'light' : 'dark';
   root.dataset.theme = next;
   try { localStorage.setItem('mode', next); } catch (e) {}
-  paintTokens();
+  paintMode();
 }));
-paintTokens();
+paintMode();
 
-// ---------- trabajo: el título se parte en la costura y se une al centrar ----------
+// ---------- proyectos: los dos paneles viajan en sentidos opuestos; el título queda completo ----------
 const seams = [...document.querySelectorAll('[data-seam]')];
 if (!reduce && seams.length) {
   const parts = seams.map((s) => ({
     el: s,
     l: s.querySelector('.seam__pane--l'),
     r: s.querySelector('.seam__pane--r'),
-    hl: s.querySelector('.seam__half--l'),
-    hr: s.querySelector('.seam__half--r'),
   }));
   let ticking = false;
   const update = () => {
@@ -154,8 +102,6 @@ if (!reduce && seams.length) {
       const k = 0.5 - prog;
       p.l.style.transform = `translate3d(0, ${k * 30}svh, 0)`;
       p.r.style.transform = `translate3d(0, ${-k * 30}svh, 0)`;
-      p.hl.style.transform = `translate3d(0, ${k * 36}svh, 0)`;
-      p.hr.style.transform = `translate3d(0, ${-k * 36}svh, 0)`;
     }
   };
   const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };

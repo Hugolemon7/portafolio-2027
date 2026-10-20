@@ -1,38 +1,43 @@
 <!doctype html>
-<html lang="es" data-season="salvia">
+<html lang="es" data-font="a">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hugo Buenrostro — Product Designer</title>
 <meta name="description" content="Hugo Buenrostro, Product Designer. Sistemas de diseño y flujos para productos fintech y proptech, con datos y pruebas con usuarios. Oaxaca, México · Solo remoto.">
-<meta name="theme-color" content="#eeecea">
+<meta name="theme-color" content="#06070b">
 <link rel="alternate" hreflang="es" href="/">
 <link rel="alternate" hreflang="en" href="/en">
 <script>
   document.documentElement.classList.add('js');
   try {
-    const s = localStorage.getItem('season'); if (s) document.documentElement.dataset.season = s;
     const m = localStorage.getItem('mode'); if (m) document.documentElement.dataset.theme = m;
   } catch (e) {}
+  // solo para la maqueta: ?font=a|b|c cambia la combinación tipográfica
+  const f = new URLSearchParams(location.search).get('font'); if (f) document.documentElement.dataset.font = f;
 </script>
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=gambarino@400&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
 
 <header class="bar" data-bar>
-  <a class="bar__mark" href="/" aria-label="Hugo Buenrostro, inicio">HB</a>
+  <a class="bar__mark" href="/">Hugo Buenrostro</a>
   <nav class="bar__nav" aria-label="Principal">
-    <a class="link" href="#trabajo">Proyectos</a>
-    <a class="link" href="#sobre-mi">Sobre mí</a>
-    <a class="link" href="#contacto">Contacto</a>
+    <a href="#trabajo">Proyectos</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#contacto">Contacto</a>
   </nav>
   <div class="bar__tools">
-    <a class="bar__lang link" href="/en" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <a class="bar__lang" href="/en" hreflang="en" lang="en" aria-label="English version">EN</a>
     <button class="bar__menu" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
       <span>Menú</span><span class="bar__dot" aria-hidden="true"></span>
     </button>
@@ -49,15 +54,15 @@
       <a href="#contacto" style="--i:2">Contacto</a>
     </nav>
     <div class="menu__foot">
+      <button class="switch" type="button" role="switch" aria-checked="false" data-mode-toggle>
+        <span class="switch__track" aria-hidden="true"><span class="switch__thumb"></span></span>
+        <span class="switch__label">Modo oscuro</span>
+      </button>
       <a class="link-plain" href="mailto:buenrsotro.h@gmail.com">buenrsotro.h@gmail.com</a>
       <div class="menu__row">
         <a class="link" href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a>
         <a class="link" href="#cv">CV (PDF)</a>
         <a class="link" href="/en" hreflang="en" lang="en">English</a>
-      </div>
-      <div class="season" data-season-picker>
-        <p class="season__label">Color de temporada</p>
-        <div class="season__swatches" role="radiogroup" aria-label="Color de temporada"></div>
       </div>
     </div>
   </div>
@@ -65,11 +70,9 @@
 
 <main id="main">
 
-  <!-- 1 · HERO -->
-  <section class="hero" aria-labelledby="hero-title">
-    <figure class="hero__photo">
-      <img src="img/hugo-portrait.jpg" width="1125" height="2000" alt="Retrato de Hugo Buenrostro con gorra verde y playera blanca" fetchpriority="high">
-    </figure>
+  <!-- 1 · HERO espacial -->
+  <section class="hero" aria-labelledby="hero-title" data-hero>
+    <canvas class="hero__sky" aria-hidden="true" data-sky></canvas>
     <p class="hero__name lines" aria-label="Hugo Buenrostro">
       <span class="line hero__l1"><span data-line style="--i:0">Hugo</span></span>
       <span class="line hero__l2"><span data-line style="--i:1">Buenrostro</span></span>
@@ -81,8 +84,8 @@
         <a class="button" href="#contacto">Escríbeme</a>
         <a class="link-plain" href="#trabajo">Ver proyectos</a>
       </div>
-      <p class="hero__meta small" data-rise style="--i:7">Oaxaca, México · Solo remoto · 10+ años · Español / English</p>
     </div>
+    <p class="hero__meta" data-rise style="--i:7">Oaxaca, México · Solo remoto · Español / English</p>
   </section>
 
   <!-- 2 · IMPACTO -->
@@ -101,54 +104,50 @@
     </div>
   </section>
 
-  <!-- 3 · TRABAJO (título partido en la costura) -->
+  <!-- 3 · PROYECTOS (paneles en sentidos opuestos, título completo) -->
   <section class="work" id="trabajo" aria-labelledby="work-title">
     <h2 id="work-title" class="work__title">Proyectos</h2>
 
-    <article class="seam" data-seam style="--title-ink:#ffffff">
+    <article class="seam" data-seam>
       <div class="seam__stage">
         <div class="seam__pane seam__pane--l"><img src="img/BeTUO097Vec534h8zrKEiUoIXdk.png" width="3840" height="1668" alt="Mapa del sistema de diseño anterior de Wiggot, sin documentación" loading="lazy"></div>
         <div class="seam__pane seam__pane--r"><img src="img/4XnuQHnnzbUP77B2nQCaI6sp9Q.png" width="960" height="1646" alt="Pantallas del nuevo diseño de Wiggot en desktop y móvil" loading="lazy"></div>
         <div class="seam__copy">
-          <h3 class="seam__name"><span class="seam__half seam__half--l">Wiggot</span><span class="seam__half seam__half--r" aria-hidden="true">Wiggot</span></h3>
-          <div class="seam__foot"><p class="seam__meta">Rediseño de producto y sistema de diseño · DD360 · 2024</p>
-          <a class="seam__link" href="#caso-wiggot">Ver caso de estudio <span aria-hidden="true">→</span></a></div>
+          <h3 class="seam__name">Wiggot</h3>
+          <div class="seam__foot"><p class="seam__meta">Rediseño de producto y sistema de diseño · DD360 · 2024</p><a class="seam__link" href="#">Ver caso de estudio <span aria-hidden="true">→</span></a></div>
         </div>
       </div>
     </article>
 
-    <article class="seam" data-seam style="--title-ink:#ffffff">
+    <article class="seam" data-seam>
       <div class="seam__stage">
         <div class="seam__pane seam__pane--l"><img src="img/6U1J6opp5Q9b0SJ6T3JFnUVcZos.png" width="570" height="570" alt="Buscador de Monopolio: todo el mercado inmobiliario analizado" loading="lazy"></div>
         <div class="seam__pane seam__pane--r"><img src="img/hzsTNdtmzNqbLpNJJzTF0IjjqQ.png" width="616" height="858" alt="Pantallas del buscador de Monopolio en escritorio" loading="lazy"></div>
         <div class="seam__copy">
-          <h3 class="seam__name"><span class="seam__half seam__half--l">Monopolio</span><span class="seam__half seam__half--r" aria-hidden="true">Monopolio</span></h3>
-          <div class="seam__foot"><p class="seam__meta">Buscador inmobiliario · Wiggot · 2024</p>
-          <a class="seam__link" href="#">Ver proyecto <span aria-hidden="true">→</span></a></div>
+          <h3 class="seam__name">Monopolio</h3>
+          <div class="seam__foot"><p class="seam__meta">Buscador inmobiliario · Wiggot · 2024</p><a class="seam__link" href="#">Ver proyecto <span aria-hidden="true">→</span></a></div>
         </div>
       </div>
     </article>
 
-    <article class="seam" data-seam style="--title-ink:#ffffff">
+    <article class="seam" data-seam>
       <div class="seam__stage">
         <div class="seam__pane seam__pane--l"><img src="img/in9a5lXkkjdPZEFLcjPZNd1gf0.png" width="570" height="570" alt="Blog Empréndete en escritorio y móvil" loading="lazy"></div>
         <div class="seam__pane seam__pane--r seam__pane--detail"><img src="img/in9a5lXkkjdPZEFLcjPZNd1gf0.png" width="570" height="570" alt="" loading="lazy"></div>
         <div class="seam__copy">
-          <h3 class="seam__name"><span class="seam__half seam__half--l">Empréndete</span><span class="seam__half seam__half--r" aria-hidden="true">Empréndete</span></h3>
-          <div class="seam__foot"><p class="seam__meta">Marca y blog en Webflow · CONTPAQi · 2022</p>
-          <a class="seam__link" href="#">Ver proyecto <span aria-hidden="true">→</span></a></div>
+          <h3 class="seam__name">Empréndete</h3>
+          <div class="seam__foot"><p class="seam__meta">Marca y blog en Webflow · CONTPAQi · 2022</p><a class="seam__link" href="#">Ver proyecto <span aria-hidden="true">→</span></a></div>
         </div>
       </div>
     </article>
 
-    <article class="seam" data-seam style="--title-ink:#ffffff">
+    <article class="seam" data-seam>
       <div class="seam__stage">
         <div class="seam__pane seam__pane--l"><img src="img/unesLS8hajO6V5oFfb09SYRVAKY.png" width="570" height="800" alt="Pantallas de la app de la Convención CONTPAQi" loading="lazy"></div>
         <div class="seam__pane seam__pane--r"><img src="img/FefXb44oKR4ODGCqbJSvc7DgLqE.png" width="634" height="855" alt="UI kit de la app del evento" loading="lazy"></div>
         <div class="seam__copy">
-          <h3 class="seam__name"><span class="seam__half seam__half--l">Convención</span><span class="seam__half seam__half--r" aria-hidden="true">Convención</span></h3>
-          <div class="seam__foot"><p class="seam__meta">App de evento: Algarabía y Sincronía · CONTPAQi · 2022–23</p>
-          <a class="seam__link" href="#">Ver proyecto <span aria-hidden="true">→</span></a></div>
+          <h3 class="seam__name">Convención</h3>
+          <div class="seam__foot"><p class="seam__meta">App de evento: Algarabía y Sincronía · CONTPAQi · 2022–23</p><a class="seam__link" href="#">Ver proyecto <span aria-hidden="true">→</span></a></div>
         </div>
       </div>
     </article>
@@ -156,60 +155,80 @@
     <p class="work__all wrap"><a class="link-plain" href="#">Todos los proyectos, branding y web</a></p>
   </section>
 
-  <!-- 4 · CÓMO TRABAJO (columna con frases de entrada) -->
-  <section class="how wrap" id="sobre-mi" aria-labelledby="how-title">
-    <div class="how__col">
-      <h2 id="how-title" class="how__title" data-reveal>Cómo trabajo</h2>
-
-      <div class="how__step" data-reveal>
-        <p><strong>Primero, los datos.</strong> Antes de mover un píxel reviso Hotjar, Adobe Analytics y lo que dicen los usuarios en pruebas. Las decisiones de diseño se defienden con evidencia, no con gusto.</p>
-        <figure class="how__ev"><img src="img/BCNMJlSPXvZFH4neX9dJ8TCzPfI.png" width="527" height="459" alt="Síntesis de investigación y wireframes de la plataforma" loading="lazy"></figure>
+  <!-- 4 · SOBRE MÍ (retrato + historia) -->
+  <section class="about" id="sobre-mi" aria-labelledby="about-title">
+    <figure class="about__photo">
+      <img src="img/hugo-portrait.jpg" width="1125" height="2000" alt="Retrato de Hugo Buenrostro con gorra verde y playera blanca" loading="lazy">
+    </figure>
+    <div class="about__body">
+      <h2 id="about-title" class="about__title" data-reveal>Sobre mí</h2>
+      <p class="about__lead" data-reveal>Diseño para que los equipos decidan mejor.</p>
+      <div class="about__text" data-reveal>
+        <p>Soy tapatío, vivo en Oaxaca y estudié Diseño para la Comunicación Gráfica en la Universidad de Guadalajara. Llevo más de diez años entre innovación, contenido y producto digital.</p>
+        <p>Empecé facilitando talleres de Design Thinking y LEGO® Serious Play® en CONTPAQi; hoy diseño y mantengo el sistema de diseño de Experian para su mercado en EE. UU. Me gusta ordenar productos complejos para que sean claros para quien los usa y sostenibles para quien los construye.</p>
       </div>
+      <dl class="about__facts" data-reveal>
+        <div><dt>Base</dt><dd>Oaxaca, México · Solo remoto</dd></div>
+        <div><dt>Idiomas</dt><dd>Español nativo · Inglés B2</dd></div>
+        <div><dt>Herramientas</dt><dd>Figma (tokens, variables, Dev Mode), Claude Code, Jira, Hotjar, Adobe Analytics, AEM</dd></div>
+      </dl>
+      <p class="about__cv" data-reveal><a class="button button--ghost" href="#cv">Descargar CV (PDF)</a></p>
+      <div class="how" aria-labelledby="how-title">
+        <h3 id="how-title" class="how__title" data-reveal>Cómo trabajo</h3>
 
-      <div class="how__step" data-reveal>
-        <p><strong>Después, el sistema.</strong> Diseño componentes con tokens y variables en Figma, documentados para que ingeniería pueda usarlos sin preguntarme. Así un cambio se hace una vez y llega a todo el producto.</p>
-        <figure class="how__ev"><img src="img/IN1dhyjNj0WlXWT9nZNHYKsX8tg.png" width="2048" height="788" alt="Fundamentos del sistema de diseño de Wiggot basados en Material Design" loading="lazy"></figure>
-      </div>
+        <div class="how__step" data-reveal>
+          <p><strong>Primero, los datos.</strong> Antes de mover un píxel reviso Hotjar, Adobe Analytics y lo que dicen los usuarios en pruebas. Las decisiones de diseño se defienden con evidencia, no con gusto.</p>
+          <figure class="how__ev"><img src="img/BCNMJlSPXvZFH4neX9dJ8TCzPfI.png" width="527" height="459" alt="Síntesis de investigación y wireframes de la plataforma" loading="lazy"></figure>
+        </div>
 
-      <div class="how__step" data-reveal>
-        <p><strong>Dentro del sprint,</strong> no al margen. Participo en grooming, refinamiento y planeación con Product Owners y desarrollo en Jira, y valido accesibilidad con WCAG 2.2 antes de entregar.</p>
-        <figure class="how__ev"><img src="img/cjDdnZ1flvGDxEDFxwElpEesQk.png" width="1556" height="864" alt="Proceso de documentación del sistema de diseño compartido con el equipo" loading="lazy"></figure>
-      </div>
+        <div class="how__step" data-reveal>
+          <p><strong>Después, el sistema.</strong> Diseño componentes con tokens y variables en Figma, documentados para que ingeniería pueda usarlos sin preguntarme. Así un cambio se hace una vez y llega a todo el producto.</p>
+          <figure class="how__ev"><img src="img/IN1dhyjNj0WlXWT9nZNHYKsX8tg.png" width="2048" height="788" alt="Fundamentos del sistema de diseño de Wiggot basados en Material Design" loading="lazy"></figure>
+        </div>
 
-      <div class="how__step" data-reveal>
-        <p><strong>Y con IA,</strong> para llegar antes a la prueba. Prototipo en código con Claude Code e investigo con Claude para validar ideas en días, no semanas. Este sitio es un ejemplo: sus colores son tokens que puedes cambiar aquí mismo.</p>
-        <div class="tokens" data-ui>
-          <div class="tokens__head">
-            <span>Color de temporada</span>
-            <button class="tokens__mode" type="button" data-mode-toggle aria-pressed="false">Modo oscuro</button>
-          </div>
-          <div class="season__swatches tokens__swatches" role="radiogroup" aria-label="Color de temporada"></div>
-          <pre class="tokens__code"><code>--accent: <span data-token-accent>#5c6b54</span>;
---accent-ink: <span data-token-ink>#ffffff</span>;
---contraste: <span data-token-ratio>5.6:1 AA</span>;</code></pre>
+        <div class="how__step" data-reveal>
+          <p><strong>Dentro del sprint,</strong> no al margen. Participo en grooming, refinamiento y planeación con Product Owners y desarrollo en Jira, y valido accesibilidad con WCAG 2.2 antes de entregar.</p>
+          <figure class="how__ev"><img src="img/cjDdnZ1flvGDxEDFxwElpEesQk.png" width="1556" height="864" alt="Proceso de documentación del sistema de diseño compartido con el equipo" loading="lazy"></figure>
+        </div>
+
+        <div class="how__step" data-reveal>
+          <p><strong>Y con IA,</strong> para llegar antes a la prueba. Prototipo en código con Claude Code e investigo con Claude para validar ideas en días, no semanas.</p>
+          <figure class="how__ev placeholder placeholder--video" data-placeholder="video">
+            <span class="placeholder__icon" aria-hidden="true"></span>
+            <figcaption>Video: de Figma a un prototipo funcional con Claude Code · 20 s</figcaption>
+          </figure>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5 · FACILITACIÓN (una metodología por línea) -->
+  <!-- 6 · FACILITACIÓN -->
   <section class="poster" aria-labelledby="poster-title">
     <div class="poster__intro wrap">
-      <h2 id="poster-title" class="poster__title" data-reveal>Facilitación</h2>
-      <p class="poster__lead" data-reveal>Más de 100 talleres y conferencias en cinco años, por todo México, sobre innovación centrada en las personas.</p>
+      <h2 id="poster-title" class="poster__title">Facilitación</h2>
+      <p class="poster__lead">Más de 100 talleres y conferencias en cinco años, por todo México, sobre innovación centrada en las personas.</p>
     </div>
     <ul class="poster__list" role="list">
-      <li data-reveal><span class="poster__item">Design Thinking</span><span class="poster__fact">Stanford d.school</span></li>
-      <li data-reveal><span class="poster__item">Serious Play</span><span class="poster__fact">LEGO®</span></li>
-      <li data-reveal><span class="poster__item">Working Backwards</span><span class="poster__fact">Amazon</span></li>
-      <li data-reveal><span class="poster__item">Innovación</span><span class="poster__fact">Board of Innovation</span></li>
+      <li><span class="poster__item">Design Thinking</span><span class="poster__fact">Stanford d.school</span></li>
+      <li><span class="poster__item">Serious Play</span><span class="poster__fact">LEGO®</span></li>
+      <li><span class="poster__item">Working Backwards</span><span class="poster__fact">Amazon</span></li>
+      <li><span class="poster__item">Innovación</span><span class="poster__fact">Board of Innovation</span></li>
     </ul>
-    <p class="poster__venues wrap" data-reveal>Talent Land · UNAM · UANL · Secretaría de Innovación Jalisco · CONTPAQi</p>
+    <div class="poster__logos wrap">
+      <p class="poster__logos-title">Dónde he impartido</p>
+      <ul class="logos" role="list">
+        <li class="placeholder placeholder--logo">Talent Land</li>
+        <li class="placeholder placeholder--logo">UNAM</li>
+        <li class="placeholder placeholder--logo">UANL</li>
+        <li class="placeholder placeholder--logo">Secretaría de Innovación Jalisco</li>
+        <li class="placeholder placeholder--logo">CONTPAQi</li>
+      </ul>
+    </div>
   </section>
 
-  <!-- 6 · EXPERIENCIA (tabla sin líneas) -->
+  <!-- 7 · EXPERIENCIA -->
   <section class="exp wrap" aria-labelledby="exp-title">
-    <h2 id="exp-title" class="exp__title" data-reveal><span>Diez años</span><span class="exp__step">de producto</span></h2>
+    <h2 id="exp-title" class="exp__title"><span>Diez años</span><span class="exp__step">de producto</span></h2>
     <table class="exp__table">
       <caption class="sr-only">Experiencia profesional</caption>
       <thead class="sr-only"><tr><th scope="col">Años</th><th scope="col">Rol</th><th scope="col">Empresa</th><th scope="col">Logro</th></tr></thead>
@@ -224,7 +243,7 @@
     <p class="exp__cv" id="cv"><a class="button button--ghost" href="#">Descargar CV (PDF)</a></p>
   </section>
 
-  <!-- 7 · CONTACTO (el correo como tipografía) -->
+  <!-- 8 · CONTACTO -->
   <section class="contact" id="contacto" aria-labelledby="contact-title">
     <h2 id="contact-title" class="contact__lead">Estoy abierto a roles remotos como Product Designer. Te respondo en menos de 48 horas.</h2>
     <a class="contact__mail" href="mailto:buenrsotro.h@gmail.com"><span>buenrsotro.h@</span><span>gmail.com</span></a>
@@ -250,10 +269,11 @@
       <li><a class="link" href="/en" hreflang="en" lang="en">English</a></li>
     </ul>
   </div>
-  <div class="foot__legal small"><p>© 2026 Hugo Buenrostro</p><a class="link" href="#main">Volver arriba</a></div>
+  <div class="foot__legal"><p>© 2026 Hugo Buenrostro</p><a class="link" href="#main">Volver arriba</a></div>
 </footer>
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="sky.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
