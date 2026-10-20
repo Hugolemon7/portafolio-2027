@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" data-font="a">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,20 +10,12 @@
 <link rel="alternate" hreflang="en" href="/en">
 <script>
   document.documentElement.classList.add('js');
-  try {
-    const m = localStorage.getItem('mode'); if (m) document.documentElement.dataset.theme = m;
-  } catch (e) {}
-  // solo para la maqueta: ?font=a|b|c cambia la combinación tipográfica
-  const f = new URLSearchParams(location.search).get('font'); if (f) document.documentElement.dataset.font = f;
+  try { const m = localStorage.getItem('mode'); if (m) document.documentElement.dataset.theme = m; } catch (e) {}
 </script>
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -68,17 +60,29 @@
   </div>
 </div>
 
+<!-- panel de detalle para tarjetas (impacto y facilitación) -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden data-sheet>
+  <div class="sheet__scrim" data-sheet-close></div>
+  <div class="sheet__panel">
+    <button class="menu__close" type="button" data-sheet-close><span>Cerrar</span><span class="menu__x" aria-hidden="true">×</span></button>
+    <div class="sheet__body" data-sheet-body></div>
+  </div>
+</div>
+
+<!-- cursor que acompaña a los elementos interactivos -->
+<div class="cursor" aria-hidden="true" data-cursor><span data-cursor-label>Ver</span></div>
+
 <main id="main">
 
   <!-- 1 · HERO espacial -->
-  <section class="hero" aria-labelledby="hero-title" data-hero>
-    <canvas class="hero__sky" aria-hidden="true" data-sky></canvas>
+  <section class="hero" aria-labelledby="hero-title" data-sky-host>
+    <canvas class="sky" aria-hidden="true" data-sky></canvas>
     <p class="hero__name lines" aria-label="Hugo Buenrostro">
       <span class="line hero__l1"><span data-line style="--i:0">Hugo</span></span>
       <span class="line hero__l2"><span data-line style="--i:1">Buenrostro</span></span>
     </p>
     <div class="hero__body">
-      <h1 id="hero-title" class="hero__title" data-rise style="--i:4">Diseño productos<br> que escalan</h1>
+      <h1 id="hero-title" class="hero__title" data-rise style="--i:4">Diseño productos<br> que <span class="nebula-word">destacan</span></h1>
       <p class="hero__lead" data-rise style="--i:5">Soy Product Designer. Construyo sistemas de diseño y flujos para productos fintech y proptech, con datos y pruebas con usuarios.</p>
       <div class="hero__actions" data-rise style="--i:6">
         <a class="button" href="#contacto">Escríbeme</a>
@@ -88,23 +92,33 @@
     <p class="hero__meta" data-rise style="--i:7">Oaxaca, México · Solo remoto · Español / English</p>
   </section>
 
-  <!-- 2 · IMPACTO -->
+  <!-- 2 · IMPACTO (tarjetas con detalle) -->
   <section class="impact wrap" aria-labelledby="impact-title">
-    <div class="impact__grid">
-      <h2 id="impact-title" class="impact__title" data-reveal>Impacto medible</h2>
-      <dl class="impact__list">
-        <div data-reveal style="--d:0"><dt class="nums">70+</dt><dd>componentes consolidados en el sistema de diseño de Experian, alineados con producción.</dd></div>
-        <div data-reveal style="--d:1"><dt class="nums">40%</dt><dd>del sistema reconstruido para corregir inconsistencias y documentar cada pieza.</dd></div>
-        <div data-reveal style="--d:2"><dt class="nums">+25%</dt><dd>de retención en Wiggot con flujos rediseñados junto a producto y negocio.</dd></div>
-        <div data-reveal style="--d:3"><dt class="nums">100+</dt><dd>talleres y conferencias de innovación impartidos en todo México en cinco años.</dd></div>
-      </dl>
-      <figure class="impact__fig shutter" data-reveal>
-        <img src="img/m7Zt38diYSE8dVvITOpfKajI.png" width="906" height="438" alt="Wiggot en laptop y móvil con el nuevo sistema de diseño" loading="lazy">
-      </figure>
+    <div class="section-head">
+      <h2 id="impact-title" class="section-title" data-reveal>Impacto medible</h2>
+      <p class="section-lead" data-reveal>Cifras reales de mis últimos roles. Abre cada una para ver el contexto.</p>
     </div>
+    <ul class="cards" role="list">
+      <li data-reveal style="--d:0"><button class="card" type="button" data-detail="d-70" data-cursor-text="Ver">
+        <span class="card__num nums">70+</span><span class="card__label">componentes consolidados en el sistema de diseño de Experian</span><span class="card__meta">Experian · 2025</span>
+      </button></li>
+      <li data-reveal style="--d:1"><button class="card" type="button" data-detail="d-40" data-cursor-text="Ver">
+        <span class="card__num nums">40%</span><span class="card__label">del sistema reconstruido y documentado</span><span class="card__meta">Experian · 2025</span>
+      </button></li>
+      <li data-reveal style="--d:2"><button class="card" type="button" data-detail="d-25" data-cursor-text="Ver">
+        <span class="card__num nums">+25%</span><span class="card__label">de retención con flujos rediseñados</span><span class="card__meta">Wiggot · 2023–24</span>
+      </button></li>
+      <li data-reveal style="--d:3"><button class="card" type="button" data-detail="d-100" data-cursor-text="Ver">
+        <span class="card__num nums">100+</span><span class="card__label">talleres y conferencias en todo México</span><span class="card__meta">2019–2023</span>
+      </button></li>
+    </ul>
+    <template id="d-70"><p class="sheet__kicker">Experian · EE. UU. · 2025 – hoy</p><h2 id="sheet-title" class="sheet__title">70+ componentes</h2><p>Consolidé una librería de más de 70 componentes en Adobe Experience Manager (AEM), alineada con el entorno de producción, para que diseño y desarrollo trabajen con las mismas piezas.</p><p>El resultado: un producto más escalable, fácil de mantener y consistente entre el sitio B2B y el blog corporativo.</p></template>
+    <template id="d-40"><p class="sheet__kicker">Experian · EE. UU. · 2025 – hoy</p><h2 id="sheet-title" class="sheet__title">40% reconstruido</h2><p>Recibí un sistema de diseño con baja madurez técnica y documental. Reconstruí más del 40% de sus componentes, definí estándares de documentación y corregí inconsistencias visuales.</p><p>Cada componente quedó documentado para que ingeniería pueda usarlo sin depender de diseño.</p></template>
+    <template id="d-25"><p class="sheet__kicker">Wiggot · Oct 2023 – Feb 2024</p><h2 id="sheet-title" class="sheet__title">+25% de retención</h2><p>Como líder de diseño en Wiggot, desarrollé flujos de usabilidad junto con stakeholders y product managers, validados con wireframes y prototipos de alta fidelidad en pruebas con usuarios.</p><p>Esos flujos aumentaron la retención de usuarios en un 25%.</p></template>
+    <template id="d-100"><p class="sheet__kicker">Facilitación · 2019 – 2023</p><h2 id="sheet-title" class="sheet__title">100+ talleres y conferencias</h2><p>Durante cinco años impartí más de 100 talleres y conferencias sobre experiencia de usuario, innovación y metodologías centradas en las personas.</p><p>Foros: Talent Land, UNAM, UANL, Secretaría de Innovación Jalisco y CONTPAQi, entre otros.</p></template>
   </section>
 
-  <!-- 3 · PROYECTOS (paneles en sentidos opuestos, título completo) -->
+  <!-- 3 · PROYECTOS -->
   <section class="work" id="trabajo" aria-labelledby="work-title">
     <h2 id="work-title" class="work__title">Proyectos</h2>
 
@@ -155,13 +169,13 @@
     <p class="work__all wrap"><a class="link-plain" href="#">Todos los proyectos, branding y web</a></p>
   </section>
 
-  <!-- 4 · SOBRE MÍ (retrato + historia) -->
+  <!-- 4 · SOBRE MÍ + CÓMO TRABAJO -->
   <section class="about" id="sobre-mi" aria-labelledby="about-title">
     <figure class="about__photo">
       <img src="img/hugo-portrait.jpg" width="1125" height="2000" alt="Retrato de Hugo Buenrostro con gorra verde y playera blanca" loading="lazy">
     </figure>
     <div class="about__body">
-      <h2 id="about-title" class="about__title" data-reveal>Sobre mí</h2>
+      <h2 id="about-title" class="section-title" data-reveal>Sobre mí</h2>
       <p class="about__lead" data-reveal>Diseño para que los equipos decidan mejor.</p>
       <div class="about__text" data-reveal>
         <p>Soy tapatío, vivo en Oaxaca y estudié Diseño para la Comunicación Gráfica en la Universidad de Guadalajara. Llevo más de diez años entre innovación, contenido y producto digital.</p>
@@ -172,28 +186,25 @@
         <div><dt>Idiomas</dt><dd>Español nativo · Inglés B2</dd></div>
         <div><dt>Herramientas</dt><dd>Figma (tokens, variables, Dev Mode), Claude Code, Jira, Hotjar, Adobe Analytics, AEM</dd></div>
       </dl>
-      <p class="about__cv" data-reveal><a class="button button--ghost" href="#cv">Descargar CV (PDF)</a></p>
-      <div class="how" aria-labelledby="how-title">
-        <h3 id="how-title" class="how__title" data-reveal>Cómo trabajo</h3>
+      <p class="about__cv" data-reveal><a class="button button--download" href="#cv"><span class="dl-icon" aria-hidden="true"></span><span>Descargar CV</span><span class="button__note">PDF · ES</span></a></p>
 
+      <div class="how" aria-labelledby="how-title">
+        <h3 id="how-title" class="section-title" data-reveal>Cómo trabajo</h3>
         <div class="how__step" data-reveal>
           <p><strong>Primero, los datos.</strong> Antes de mover un píxel reviso Hotjar, Adobe Analytics y lo que dicen los usuarios en pruebas. Las decisiones de diseño se defienden con evidencia, no con gusto.</p>
           <figure class="how__ev"><img src="img/BCNMJlSPXvZFH4neX9dJ8TCzPfI.png" width="527" height="459" alt="Síntesis de investigación y wireframes de la plataforma" loading="lazy"></figure>
         </div>
-
         <div class="how__step" data-reveal>
           <p><strong>Después, el sistema.</strong> Diseño componentes con tokens y variables en Figma, documentados para que ingeniería pueda usarlos sin preguntarme. Así un cambio se hace una vez y llega a todo el producto.</p>
           <figure class="how__ev"><img src="img/IN1dhyjNj0WlXWT9nZNHYKsX8tg.png" width="2048" height="788" alt="Fundamentos del sistema de diseño de Wiggot basados en Material Design" loading="lazy"></figure>
         </div>
-
         <div class="how__step" data-reveal>
           <p><strong>Dentro del sprint,</strong> no al margen. Participo en grooming, refinamiento y planeación con Product Owners y desarrollo en Jira, y valido accesibilidad con WCAG 2.2 antes de entregar.</p>
           <figure class="how__ev"><img src="img/cjDdnZ1flvGDxEDFxwElpEesQk.png" width="1556" height="864" alt="Proceso de documentación del sistema de diseño compartido con el equipo" loading="lazy"></figure>
         </div>
-
         <div class="how__step" data-reveal>
           <p><strong>Y con IA,</strong> para llegar antes a la prueba. Prototipo en código con Claude Code e investigo con Claude para validar ideas en días, no semanas.</p>
-          <figure class="how__ev placeholder placeholder--video" data-placeholder="video">
+          <figure class="how__ev placeholder placeholder--video">
             <span class="placeholder__icon" aria-hidden="true"></span>
             <figcaption>Video: de Figma a un prototipo funcional con Claude Code · 20 s</figcaption>
           </figure>
@@ -202,18 +213,22 @@
     </div>
   </section>
 
-  <!-- 6 · FACILITACIÓN -->
+  <!-- 5 · FACILITACIÓN (filas interactivas con detalle) -->
   <section class="poster" aria-labelledby="poster-title">
-    <div class="poster__intro wrap">
-      <h2 id="poster-title" class="poster__title">Facilitación</h2>
-      <p class="poster__lead">Más de 100 talleres y conferencias en cinco años, por todo México, sobre innovación centrada en las personas.</p>
+    <div class="section-head wrap">
+      <h2 id="poster-title" class="section-title">Facilitación</h2>
+      <p class="section-lead">Más de 100 talleres y conferencias en cinco años, por todo México, sobre innovación centrada en las personas.</p>
     </div>
     <ul class="poster__list" role="list">
-      <li><span class="poster__item">Design Thinking</span><span class="poster__fact">Stanford d.school</span></li>
-      <li><span class="poster__item">Serious Play</span><span class="poster__fact">LEGO®</span></li>
-      <li><span class="poster__item">Working Backwards</span><span class="poster__fact">Amazon</span></li>
-      <li><span class="poster__item">Innovación</span><span class="poster__fact">Board of Innovation</span></li>
+      <li><button class="row" type="button" data-detail="m-dt" data-cursor-text="Ver"><span class="row__item">Design Thinking</span><span class="row__fact">Stanford d.school</span></button></li>
+      <li><button class="row" type="button" data-detail="m-lsp" data-cursor-text="Ver"><span class="row__item">Serious Play</span><span class="row__fact">LEGO®</span></button></li>
+      <li><button class="row" type="button" data-detail="m-wb" data-cursor-text="Ver"><span class="row__item">Working Backwards</span><span class="row__fact">Amazon</span></button></li>
+      <li><button class="row" type="button" data-detail="m-boi" data-cursor-text="Ver"><span class="row__item">Innovación</span><span class="row__fact">Board of Innovation</span></button></li>
     </ul>
+    <template id="m-dt"><p class="sheet__kicker">Metodología · formación CONTPAQi 2020</p><h2 id="sheet-title" class="sheet__title">Design Thinking</h2><p>El enfoque de la d.school de Stanford para resolver problemas desde las personas: empatizar, definir, idear, prototipar y probar.</p><p>Lo impartí en talleres para equipos y universidades, y es la base de cómo arranco cada proyecto de producto.</p></template>
+    <template id="m-lsp"><p class="sheet__kicker">Metodología · formación CONTPAQi 2019</p><h2 id="sheet-title" class="sheet__title">LEGO® Serious Play®</h2><p>Una dinámica en la que los equipos construyen modelos con piezas LEGO® para pensar con las manos, alinear ideas y hacer visibles los supuestos.</p><p>La usé para facilitar sesiones de estrategia y co-creación con equipos multidisciplinarios.</p></template>
+    <template id="m-wb"><p class="sheet__kicker">Metodología · formación CONTPAQi 2021</p><h2 id="sheet-title" class="sheet__title">Working Backwards</h2><p>El método de Amazon que parte del cliente: se escribe primero el comunicado de prensa y las preguntas frecuentes del producto, y después se construye.</p><p>Lo impartí para enfocar iniciativas en el problema real antes de diseñar soluciones.</p></template>
+    <template id="m-boi"><p class="sheet__kicker">Herramientas de innovación</p><h2 id="sheet-title" class="sheet__title">Board of Innovation</h2><p>Plantillas y ejercicios de innovación de Board of Innovation para mapear oportunidades, priorizar ideas y diseñar experimentos.</p><p>Las integré en talleres para pasar de la ideación a pruebas concretas.</p></template>
     <div class="poster__logos wrap">
       <p class="poster__logos-title">Dónde he impartido</p>
       <ul class="logos" role="list">
@@ -226,51 +241,109 @@
     </div>
   </section>
 
-  <!-- 7 · EXPERIENCIA -->
+  <!-- 6 · EXPERIENCIA (con desglose "ver más") -->
   <section class="exp wrap" aria-labelledby="exp-title">
     <h2 id="exp-title" class="exp__title"><span>Diez años</span><span class="exp__step">de producto</span></h2>
-    <table class="exp__table">
-      <caption class="sr-only">Experiencia profesional</caption>
-      <thead class="sr-only"><tr><th scope="col">Años</th><th scope="col">Rol</th><th scope="col">Empresa</th><th scope="col">Logro</th></tr></thead>
-      <tbody>
-        <tr><td class="nums">2025 – hoy</td><td>UX Designer</td><td>Experian · EE. UU.</td><td>Reconstruí el sistema de diseño: 70+ componentes en AEM.</td></tr>
-        <tr><td class="nums">2024</td><td>Product Designer</td><td>DD360</td><td>Rediseño de Wiggot y tour guiado para adopción.</td></tr>
-        <tr><td class="nums">2023 – 24</td><td>UX/UI Designer, líder</td><td>Wiggot</td><td>+25% retención; campañas con ventas +65% en Q2 2024.</td></tr>
-        <tr><td class="nums">2022 – 23</td><td>Contenido digital</td><td>CONTPAQi</td><td>Marca y blog Empréndete en Webflow, desde cero.</td></tr>
-        <tr><td class="nums">2019 – 22</td><td>Innovación</td><td>CONTPAQi</td><td>Journey maps, personas y UI kits; facilitación de talleres.</td></tr>
-      </tbody>
-    </table>
-    <p class="exp__cv" id="cv"><a class="button button--ghost" href="#">Descargar CV (PDF)</a></p>
+    <div class="jobs">
+      <details class="job">
+        <summary><span class="job__years nums">2025 – hoy</span><span class="job__role">UX Designer</span><span class="job__co">Experian · EE. UU.</span><span class="job__hi">Reconstruí el sistema de diseño: 70+ componentes en AEM.</span><span class="job__more">Ver más</span></summary>
+        <ul class="job__list">
+          <li>Transformé un sistema de diseño con baja madurez técnica y documental, reconstruyendo más del 40% de sus componentes.</li>
+          <li>Definí estándares de documentación, corregí inconsistencias visuales y consolidé una librería de 70+ componentes en Adobe Experience Manager (AEM), alineada con producción.</li>
+          <li>Colaboro con unidades de negocio, desarrollo y Product Owners; respaldo las decisiones con datos de Hotjar y Adobe Analytics para priorizar mejoras.</li>
+          <li>Optimicé el sitio B2B y el blog corporativo: interfaces, flujos de navegación y jerarquías visuales responsivas.</li>
+          <li>Participo en grooming, backlog refinement y sprint planning, refinando historias de usuario con Product Owners y desarrollo.</li>
+        </ul>
+      </details>
+      <details class="job">
+        <summary><span class="job__years nums">2024</span><span class="job__role">Product Designer</span><span class="job__co">DD360</span><span class="job__hi">Rediseño de Wiggot y tour guiado para adopción.</span><span class="job__more">Ver más</span></summary>
+        <ul class="job__list">
+          <li>Rediseño de la plataforma proptech Wiggot con Service Design Thinking y Design Systems para mejorar usabilidad y eficiencia.</li>
+          <li>Investigación con usuarios y pruebas de usabilidad que llevaron a una navegación optimizada: menos tiempo de búsqueda y mayor satisfacción.</li>
+          <li>Junto al equipo, desarrollé un sistema de diseño centralizado que mejoró la consistencia visual y aceleró el desarrollo.</li>
+          <li>Implementé un tour guiado de la interfaz que incrementó la adopción y retención de usuarios.</li>
+        </ul>
+      </details>
+      <details class="job">
+        <summary><span class="job__years nums">2023 – 24</span><span class="job__role">UX/UI Designer, líder</span><span class="job__co">Wiggot</span><span class="job__hi">+25% retención; campañas con ventas +65% en Q2 2024.</span><span class="job__more">Ver más</span></summary>
+        <ul class="job__list">
+          <li>Lideré el área de diseño aplicando Service Design Thinking y Design Systems.</li>
+          <li>Wireframes y prototipos de alta fidelidad validados en pruebas con usuarios.</li>
+          <li>Flujos de usabilidad con stakeholders y product managers que aumentaron la retención en un 25%.</li>
+          <li>Nuevas features para situaciones de carga alta y coordinación de campañas de marketing que impulsaron las ventas un 65% en Q2 2024.</li>
+        </ul>
+      </details>
+      <details class="job">
+        <summary><span class="job__years nums">2022 – 23</span><span class="job__role">Contenido digital</span><span class="job__co">CONTPAQi</span><span class="job__hi">Marca y blog Empréndete en Webflow, desde cero.</span><span class="job__more">Ver más</span></summary>
+        <ul class="job__list">
+          <li>Creé el blog universitario Empréndete en Webflow con User-Centric Design y Design Thinking.</li>
+          <li>Aumenté el engagement del sector contable estudiantil, generando nuevas ventas y alianzas estratégicas.</li>
+          <li>Impartí conferencias sobre experiencia de usuario, innovación y metodologías centradas en el usuario en universidades.</li>
+        </ul>
+      </details>
+      <details class="job">
+        <summary><span class="job__years nums">2019 – 22</span><span class="job__role">Innovación</span><span class="job__co">CONTPAQi</span><span class="job__hi">Journey maps, personas y UI kits; facilitación de talleres.</span><span class="job__more">Ver más</span></summary>
+        <ul class="job__list">
+          <li>Customer Journey Maps y User Personas basados en entrevistas, que permitieron lanzar una plataforma de gamificación.</li>
+          <li>UI kits a partir de wireframes como base de prototipos funcionales.</li>
+          <li>Contenidos de realidad aumentada y virtual para eventos y convenciones.</li>
+        </ul>
+      </details>
+    </div>
+    <p class="exp__cv" id="cv"><a class="button button--download" href="#"><span class="dl-icon" aria-hidden="true"></span><span>Descargar CV</span><span class="button__note">PDF · ES</span></a><a class="link-plain" href="#" hreflang="en" lang="en">Download résumé (EN)</a></p>
   </section>
 
-  <!-- 8 · CONTACTO -->
-  <section class="contact" id="contacto" aria-labelledby="contact-title">
-    <h2 id="contact-title" class="contact__lead">Estoy abierto a roles remotos como Product Designer. Te respondo en menos de 48 horas.</h2>
-    <a class="contact__mail" href="mailto:buenrsotro.h@gmail.com"><span>buenrsotro.h@</span><span>gmail.com</span></a>
-    <div class="contact__foot">
-      <p>Oaxaca, México · Solo remoto</p>
-      <p class="contact__links"><a class="link" href="#">Formulario</a><a class="link" href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a><a class="link" href="#cv">CV</a></p>
+  <!-- 7 · CIERRE (frase + footer como tarjeta sobre el cielo) -->
+  <section class="finale" id="contacto" aria-labelledby="finale-title" data-sky-host>
+    <canvas class="sky" aria-hidden="true" data-sky></canvas>
+    <div class="finale__cta">
+      <h2 id="finale-title" class="finale__title">¿Diseñamos algo que <span class="nebula-word">destaque</span>?</h2>
+      <p class="finale__lead">Estoy abierto a roles remotos como Product Designer. Te respondo en menos de 48 horas.</p>
+      <div class="finale__actions">
+        <a class="button" href="mailto:buenrsotro.h@gmail.com">Escríbeme</a>
+        <a class="link-plain" href="#">Usar el formulario</a>
+      </div>
     </div>
+
+    <footer class="foot">
+      <div class="foot__grid">
+        <div class="foot__brand">
+          <p class="foot__name">Hugo<br>Buenrostro</p>
+          <p class="foot__role">Product Designer · Oaxaca, México</p>
+        </div>
+        <nav class="foot__col foot__col--nav" aria-label="Pie de página">
+          <p class="foot__head">Navegar</p>
+          <ul role="list">
+            <li><a class="link" href="#trabajo">Proyectos</a></li>
+            <li><a class="link" href="#sobre-mi">Sobre mí</a></li>
+            <li><a class="link" href="#contacto">Contacto</a></li>
+            <li><a class="link" href="/en" hreflang="en" lang="en">English</a></li>
+          </ul>
+        </nav>
+        <div class="foot__col foot__col--contact">
+          <p class="foot__head">Contacto</p>
+          <ul role="list">
+            <li><a class="link-plain" href="mailto:buenrsotro.h@gmail.com">buenrsotro.h@gmail.com</a></li>
+            <li><a class="link" href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a></li>
+            <li><a class="link" href="#">Formulario</a></li>
+          </ul>
+        </div>
+        <div class="foot__col foot__col--dl">
+          <p class="foot__head">Descargas</p>
+          <ul role="list">
+            <li><a class="link" href="#">CV (ES)</a></li>
+            <li><a class="link" href="#" hreflang="en" lang="en">Résumé (EN)</a></li>
+            <li><a class="link" href="#">Portafolio PDF</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot__legal">
+        <p>© 2026 Hugo Buenrostro</p>
+        <a class="foot__top" href="#main" aria-label="Volver arriba"><span aria-hidden="true">↑</span></a>
+      </div>
+    </footer>
   </section>
 </main>
-
-<footer class="foot">
-  <p class="foot__name" aria-hidden="true">Hugo Buenrostro</p>
-  <div class="foot__row">
-    <ul class="foot__places" role="list">
-      <li><a href="mailto:buenrsotro.h@gmail.com">Correo</a></li>
-      <li><a href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a></li>
-    </ul>
-    <ul class="foot__links" role="list">
-      <li><a class="link" href="#trabajo">Proyectos</a></li>
-      <li><a class="link" href="#sobre-mi">Sobre mí</a></li>
-      <li><a class="link" href="#contacto">Contacto</a></li>
-      <li><a class="link" href="#cv">CV</a></li>
-      <li><a class="link" href="/en" hreflang="en" lang="en">English</a></li>
-    </ul>
-  </div>
-  <div class="foot__legal"><p>© 2026 Hugo Buenrostro</p><a class="link" href="#main">Volver arriba</a></div>
-</footer>
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="sky.js"></script>

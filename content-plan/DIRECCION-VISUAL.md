@@ -124,3 +124,21 @@ Pendientes más visibles:
 - Un frame limpio como **póster** (PNG) para mostrar antes de que cargue.
 
 Herramientas: grabación de pantalla de macOS (⌘⇧5) y recorte en QuickTime o CapCut.
+
+---
+
+# Ronda 3 (tipografía A + 10 ajustes)
+
+- **Tipografía:** Clash Grotesk (títulos) + Satoshi (texto).
+- **Rastro del cursor morado** con retraso (sigue al mouse más lento y aparece/desaparece con suavidad).
+- **"Diseño productos que destacan"**: "destacan" con gradiente morado y aura de nebulosa que respira; el cierre repite el gesto ("¿Diseñamos algo que destaque?").
+- **Botones redondeados** 12 px; tarjetas 18 px; paneles y footer 22 px.
+- **Barra translúcida** sobre el espacio (hero y cierre) con desenfoque; contraste del texto 16.8:1 (AAA). Sólida sobre secciones claras.
+- **Grises fríos:** fondo `#eceef1`, superficie `#e1e4e9`, campo `#d3d8e0`, tinta `#1f2328` (13.6:1).
+- **Acento morado:** `#5a3ec8` en claro (7.1:1 AAA con blanco) y `#b9a4ff` en oscuro (9:1 AAA).
+- **Descargar CV:** botón relleno con ícono de descarga y etiqueta "PDF · ES"; enlace al résumé en inglés junto.
+- **Footer al estilo Molecular:** sección final sobre el cielo estrellado con frase y botón, y el footer como tarjeta redondeada que flota encima (marca, Navegar, Contacto, Descargas, volver arriba).
+- **Impacto y Facilitación interactivos (como "Leadership Team"):** al pasar el cursor, el elemento se llena con nebulosa morada que nace donde está el mouse, el texto pasa a blanco y aparece un cursor circular "Ver"; al hacer clic se abre un panel lateral con el contexto real de cada cifra o metodología. Funciona con teclado (foco = mismo relleno).
+- **Diez años de producto:** cada empleo tiene "Ver más / Ver menos" con el desglose de actividades del CV (redacción corregida), con animación de apertura.
+
+**Verificación:** lint 0 FAIL · inspect 0 FAIL a 1440/768/390. Excepciones explícitas por pedido tuyo: gradientes, texto con gradiente, barra con desenfoque y paleta morada (la skill de Taste las prohíbe por defecto).
