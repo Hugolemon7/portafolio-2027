@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es" data-season="salvia">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hugo Buenrostro — Product Designer</title>
+<meta name="description" content="Hugo Buenrostro, Product Designer. Sistemas de diseño y flujos para productos fintech y proptech, con datos y pruebas con usuarios. Oaxaca, México · Solo remoto.">
+<meta name="theme-color" content="#eeecea">
+<link rel="alternate" hreflang="es" href="/">
+<link rel="alternate" hreflang="en" href="/en">
+<script>
+  document.documentElement.classList.add('js');
+  try {
+    const s = localStorage.getItem('season'); if (s) document.documentElement.dataset.season = s;
+    const m = localStorage.getItem('mode'); if (m) document.documentElement.dataset.theme = m;
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=gambarino@400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="bar" data-bar>
+  <a class="bar__mark" href="/" aria-label="Hugo Buenrostro, inicio">HB</a>
+  <nav class="bar__nav" aria-label="Principal">
+    <a class="link" href="#trabajo">Proyectos</a>
+    <a class="link" href="#sobre-mi">Sobre mí</a>
+    <a class="link" href="#contacto">Contacto</a>
+  </nav>
+  <div class="bar__tools">
+    <a class="bar__lang link" href="/en" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <button class="bar__menu" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
+      <span>Menú</span><span class="bar__dot" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menú" hidden data-menu>
+  <div class="menu__scrim" data-menu-close></div>
+  <div class="menu__panel">
+    <button class="menu__close" type="button" data-menu-close><span>Cerrar</span><span class="menu__x" aria-hidden="true">×</span></button>
+    <nav class="menu__links" aria-label="Menú">
+      <a href="#trabajo" style="--i:0">Proyectos</a>
+      <a href="#sobre-mi" style="--i:1">Sobre mí</a>
+      <a href="#contacto" style="--i:2">Contacto</a>
+    </nav>
+    <div class="menu__foot">
+      <a class="link-plain" href="mailto:buenrsotro.h@gmail.com">buenrsotro.h@gmail.com</a>
+      <div class="menu__row">
+        <a class="link" href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a>
+        <a class="link" href="#cv">CV (PDF)</a>
+        <a class="link" href="/en" hreflang="en" lang="en">English</a>
+      </div>
+      <div class="season" data-season-picker>
+        <p class="season__label">Color de temporada</p>
+        <div class="season__swatches" role="radiogroup" aria-label="Color de temporada"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- 1 · HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <figure class="hero__photo">
+      <img src="img/hugo-portrait.jpg" width="1125" height="2000" alt="Retrato de Hugo Buenrostro con gorra verde y playera blanca" fetchpriority="high">
+    </figure>
+    <p class="hero__name lines" aria-label="Hugo Buenrostro">
+      <span class="line hero__l1"><span data-line style="--i:0">Hugo</span></span>
+      <span class="line hero__l2"><span data-line style="--i:1">Buenrostro</span></span>
+    </p>
+    <div class="hero__body">
+      <h1 id="hero-title" class="hero__title" data-rise style="--i:4">Diseño productos<br> que escalan</h1>
+      <p class="hero__lead" data-rise style="--i:5">Soy Product Designer. Construyo sistemas de diseño y flujos para productos fintech y proptech, con datos y pruebas con usuarios.</p>
+      <div class="hero__actions" data-rise style="--i:6">
+        <a class="button" href="#contacto">Escríbeme</a>
+        <a class="link-plain" href="#trabajo">Ver proyectos</a>
+      </div>
+      <p class="hero__meta small" data-rise style="--i:7">Oaxaca, México · Solo remoto · 10+ años · Español / English</p>
+    </div>
+  </section>
+
+  <!-- 2 · IMPACTO -->
+  <section class="impact wrap" aria-labelledby="impact-title">
+    <div class="impact__grid">
+      <h2 id="impact-title" class="impact__title" data-reveal>Impacto medible</h2>
+      <dl class="impact__list">
+        <div data-reveal style="--d:0"><dt class="nums">70+</dt><dd>componentes consolidados en el sistema de diseño de Experian, alineados con producción.</dd></div>
+        <div data-reveal style="--d:1"><dt class="nums">40%</dt><dd>del sistema reconstruido para corregir inconsistencias y documentar cada pieza.</dd></div>
+        <div data-reveal style="--d:2"><dt class="nums">+25%</dt><dd>de retención en Wiggot con flujos rediseñados junto a producto y negocio.</dd></div>
+        <div data-reveal style="--d:3"><dt class="nums">100+</dt><dd>talleres y conferencias de innovación impartidos en todo México en cinco años.</dd></div>
+      </dl>
+      <figure class="impact__fig shutter" data-reveal>
+        <img src="img/m7Zt38diYSE8dVvITOpfKajI.png" width="906" height="438" alt="Wiggot en laptop y móvil con el nuevo sistema de diseño" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- 3 · TRABAJO (título partido en la costura) -->
+  <section class="work" id="trabajo" aria-labelledby="work-title">
+    <h2 id="work-title" class="work__title">Proyectos</h2>
+
+    <article class="seam" data-seam style="--title-ink:#ffffff">
+      <div class="seam__stage">
+        <div class="seam__pane seam__pane--l"><img src="img/BeTUO097Vec534h8zrKEiUoIXdk.png" width="3840" height="1668" alt="Mapa del sistema de diseño anterior de Wiggot, sin documentación" loading="lazy"></div>
+        <div class="seam__pane seam__pane--r"><img src="img/4XnuQHnnzbUP77B2nQCaI6sp9Q.png" width="960" height="1646" alt="Pantallas del nuevo diseño de Wiggot en desktop y móvil" loading="lazy"></div>
+        <div class="seam__copy">
+          <h3 class="seam__name"><span class="seam__half seam__half--l">Wiggot</span><span class="seam__half seam__half--r" aria-hidden="true">Wiggot</span></h3>
+          <div class="seam__foot"><p class="seam__meta">Rediseño de producto y sistema de diseño · DD360 · 2024</p>
+          <a class="seam__link" href="#caso-wiggot">Ver caso de estudio <span aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="seam" data-seam style="--title-ink:#ffffff">
+      <div class="seam__stage">
+        <div class="seam__pane seam__pane--l"><img src="img/6U1J6opp5Q9b0SJ6T3JFnUVcZos.png" width="570" height="570" alt="Buscador de Monopolio: todo el mercado inmobiliario analizado" loading="lazy"></div>
+        <div class="seam__pane seam__pane--r"><img src="img/hzsTNdtmzNqbLpNJJzTF0IjjqQ.png" width="616" height="858" alt="Pantallas del buscador de Monopolio en escritorio" loading="lazy"></div>
+        <div class="seam__copy">
+          <h3 class="seam__name"><span class="seam__half seam__half--l">Monopolio</span><span class="seam__half seam__half--r" aria-hidden="true">Monopolio</span></h3>
+          <div class="seam__foot"><p class="seam__meta">Buscador inmobiliario · Wiggot · 2024</p>
+          <a class="seam__link" href="#">Ver proyecto <span aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="seam" data-seam style="--title-ink:#ffffff">
+      <div class="seam__stage">
+        <div class="seam__pane seam__pane--l"><img src="img/in9a5lXkkjdPZEFLcjPZNd1gf0.png" width="570" height="570" alt="Blog Empréndete en escritorio y móvil" loading="lazy"></div>
+        <div class="seam__pane seam__pane--r seam__pane--detail"><img src="img/in9a5lXkkjdPZEFLcjPZNd1gf0.png" width="570" height="570" alt="" loading="lazy"></div>
+        <div class="seam__copy">
+          <h3 class="seam__name"><span class="seam__half seam__half--l">Empréndete</span><span class="seam__half seam__half--r" aria-hidden="true">Empréndete</span></h3>
+          <div class="seam__foot"><p class="seam__meta">Marca y blog en Webflow · CONTPAQi · 2022</p>
+          <a class="seam__link" href="#">Ver proyecto <span aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="seam" data-seam style="--title-ink:#ffffff">
+      <div class="seam__stage">
+        <div class="seam__pane seam__pane--l"><img src="img/unesLS8hajO6V5oFfb09SYRVAKY.png" width="570" height="800" alt="Pantallas de la app de la Convención CONTPAQi" loading="lazy"></div>
+        <div class="seam__pane seam__pane--r"><img src="img/FefXb44oKR4ODGCqbJSvc7DgLqE.png" width="634" height="855" alt="UI kit de la app del evento" loading="lazy"></div>
+        <div class="seam__copy">
+          <h3 class="seam__name"><span class="seam__half seam__half--l">Convención</span><span class="seam__half seam__half--r" aria-hidden="true">Convención</span></h3>
+          <div class="seam__foot"><p class="seam__meta">App de evento: Algarabía y Sincronía · CONTPAQi · 2022–23</p>
+          <a class="seam__link" href="#">Ver proyecto <span aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+    </article>
+
+    <p class="work__all wrap"><a class="link-plain" href="#">Todos los proyectos, branding y web</a></p>
+  </section>
+
+  <!-- 4 · CÓMO TRABAJO (columna con frases de entrada) -->
+  <section class="how wrap" id="sobre-mi" aria-labelledby="how-title">
+    <div class="how__col">
+      <h2 id="how-title" class="how__title" data-reveal>Cómo trabajo</h2>
+
+      <div class="how__step" data-reveal>
+        <p><strong>Primero, los datos.</strong> Antes de mover un píxel reviso Hotjar, Adobe Analytics y lo que dicen los usuarios en pruebas. Las decisiones de diseño se defienden con evidencia, no con gusto.</p>
+        <figure class="how__ev"><img src="img/BCNMJlSPXvZFH4neX9dJ8TCzPfI.png" width="527" height="459" alt="Síntesis de investigación y wireframes de la plataforma" loading="lazy"></figure>
+      </div>
+
+      <div class="how__step" data-reveal>
+        <p><strong>Después, el sistema.</strong> Diseño componentes con tokens y variables en Figma, documentados para que ingeniería pueda usarlos sin preguntarme. Así un cambio se hace una vez y llega a todo el producto.</p>
+        <figure class="how__ev"><img src="img/IN1dhyjNj0WlXWT9nZNHYKsX8tg.png" width="2048" height="788" alt="Fundamentos del sistema de diseño de Wiggot basados en Material Design" loading="lazy"></figure>
+      </div>
+
+      <div class="how__step" data-reveal>
+        <p><strong>Dentro del sprint,</strong> no al margen. Participo en grooming, refinamiento y planeación con Product Owners y desarrollo en Jira, y valido accesibilidad con WCAG 2.2 antes de entregar.</p>
+        <figure class="how__ev"><img src="img/cjDdnZ1flvGDxEDFxwElpEesQk.png" width="1556" height="864" alt="Proceso de documentación del sistema de diseño compartido con el equipo" loading="lazy"></figure>
+      </div>
+
+      <div class="how__step" data-reveal>
+        <p><strong>Y con IA,</strong> para llegar antes a la prueba. Prototipo en código con Claude Code e investigo con Claude para validar ideas en días, no semanas. Este sitio es un ejemplo: sus colores son tokens que puedes cambiar aquí mismo.</p>
+        <div class="tokens" data-ui>
+          <div class="tokens__head">
+            <span>Color de temporada</span>
+            <button class="tokens__mode" type="button" data-mode-toggle aria-pressed="false">Modo oscuro</button>
+          </div>
+          <div class="season__swatches tokens__swatches" role="radiogroup" aria-label="Color de temporada"></div>
+          <pre class="tokens__code"><code>--accent: <span data-token-accent>#5c6b54</span>;
+--accent-ink: <span data-token-ink>#ffffff</span>;
+--contraste: <span data-token-ratio>5.6:1 AA</span>;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · FACILITACIÓN (una metodología por línea) -->
+  <section class="poster" aria-labelledby="poster-title">
+    <div class="poster__intro wrap">
+      <h2 id="poster-title" class="poster__title" data-reveal>Facilitación</h2>
+      <p class="poster__lead" data-reveal>Más de 100 talleres y conferencias en cinco años, por todo México, sobre innovación centrada en las personas.</p>
+    </div>
+    <ul class="poster__list" role="list">
+      <li data-reveal><span class="poster__item">Design Thinking</span><span class="poster__fact">Stanford d.school</span></li>
+      <li data-reveal><span class="poster__item">Serious Play</span><span class="poster__fact">LEGO®</span></li>
+      <li data-reveal><span class="poster__item">Working Backwards</span><span class="poster__fact">Amazon</span></li>
+      <li data-reveal><span class="poster__item">Innovación</span><span class="poster__fact">Board of Innovation</span></li>
+    </ul>
+    <p class="poster__venues wrap" data-reveal>Talent Land · UNAM · UANL · Secretaría de Innovación Jalisco · CONTPAQi</p>
+  </section>
+
+  <!-- 6 · EXPERIENCIA (tabla sin líneas) -->
+  <section class="exp wrap" aria-labelledby="exp-title">
+    <h2 id="exp-title" class="exp__title" data-reveal><span>Diez años</span><span class="exp__step">de producto</span></h2>
+    <table class="exp__table">
+      <caption class="sr-only">Experiencia profesional</caption>
+      <thead class="sr-only"><tr><th scope="col">Años</th><th scope="col">Rol</th><th scope="col">Empresa</th><th scope="col">Logro</th></tr></thead>
+      <tbody>
+        <tr><td class="nums">2025 – hoy</td><td>UX Designer</td><td>Experian · EE. UU.</td><td>Reconstruí el sistema de diseño: 70+ componentes en AEM.</td></tr>
+        <tr><td class="nums">2024</td><td>Product Designer</td><td>DD360</td><td>Rediseño de Wiggot y tour guiado para adopción.</td></tr>
+        <tr><td class="nums">2023 – 24</td><td>UX/UI Designer, líder</td><td>Wiggot</td><td>+25% retención; campañas con ventas +65% en Q2 2024.</td></tr>
+        <tr><td class="nums">2022 – 23</td><td>Contenido digital</td><td>CONTPAQi</td><td>Marca y blog Empréndete en Webflow, desde cero.</td></tr>
+        <tr><td class="nums">2019 – 22</td><td>Innovación</td><td>CONTPAQi</td><td>Journey maps, personas y UI kits; facilitación de talleres.</td></tr>
+      </tbody>
+    </table>
+    <p class="exp__cv" id="cv"><a class="button button--ghost" href="#">Descargar CV (PDF)</a></p>
+  </section>
+
+  <!-- 7 · CONTACTO (el correo como tipografía) -->
+  <section class="contact" id="contacto" aria-labelledby="contact-title">
+    <h2 id="contact-title" class="contact__lead">Estoy abierto a roles remotos como Product Designer. Te respondo en menos de 48 horas.</h2>
+    <a class="contact__mail" href="mailto:buenrsotro.h@gmail.com"><span>buenrsotro.h@</span><span>gmail.com</span></a>
+    <div class="contact__foot">
+      <p>Oaxaca, México · Solo remoto</p>
+      <p class="contact__links"><a class="link" href="#">Formulario</a><a class="link" href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a><a class="link" href="#cv">CV</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p class="foot__name" aria-hidden="true">Hugo Buenrostro</p>
+  <div class="foot__row">
+    <ul class="foot__places" role="list">
+      <li><a href="mailto:buenrsotro.h@gmail.com">Correo</a></li>
+      <li><a href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a></li>
+    </ul>
+    <ul class="foot__links" role="list">
+      <li><a class="link" href="#trabajo">Proyectos</a></li>
+      <li><a class="link" href="#sobre-mi">Sobre mí</a></li>
+      <li><a class="link" href="#contacto">Contacto</a></li>
+      <li><a class="link" href="#cv">CV</a></li>
+      <li><a class="link" href="/en" hreflang="en" lang="en">English</a></li>
+    </ul>
+  </div>
+  <div class="foot__legal small"><p>© 2026 Hugo Buenrostro</p><a class="link" href="#main">Volver arriba</a></div>
+</footer>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
