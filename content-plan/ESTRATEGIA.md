@@ -34,7 +34,7 @@
 | `/keystatic` | — | Panel de edición (solo tú, vía GitHub) |
 
 **Navegación:** `Hugo Buenrostro` · Proyectos · Sobre mí · Contacto · `ES / EN` · botón **Escríbeme**
-**Descargas** (en Sobre mí y en el footer): CV ES, CV EN, Portafolio PDF, Logofolio PDF — reemplazables desde Keystatic.
+**Descargas** (en Sobre mí y en el footer): CV y Portafolio (con logofolio), cada uno en el idioma de la página — reemplazables desde Keystatic.
 
 Detección de idioma: la primera visita sugiere inglés si el navegador está en inglés (sin redirigir a la fuerza); el selector recuerda la elección.
 
@@ -60,7 +60,7 @@ Se eliminan: las 5 estrellas (sin fuente), "User-Centered Design" como título d
 
 ### 4.1 Hero
 
-Dos opciones (elige una) **[?]**:
+**Elegida: Opción A.**
 
 **Opción A — La afirmación** (recomendada)
 | | ES | EN |
@@ -76,7 +76,7 @@ Dos opciones (elige una) **[?]**:
 | h1 | Hugo Buenrostro | Hugo Buenrostro |
 | Apoyo | Product Designer especializado en sistemas de diseño para fintech y proptech. Hoy en Experian. | Product Designer specialized in design systems for fintech and proptech. Currently at Experian. |
 
-Detalle bajo el apoyo (pequeño): `México · Remoto · ES / EN (B2)` **[?] ciudad y si quieres mostrar el nivel de inglés**
+Detalle bajo el apoyo (pequeño): **ES** `Oaxaca, México · Solo remoto · 10+ años · Español / English (B2)` · **EN** `Oaxaca, Mexico · Remote only · 10+ years · Spanish / English (B2)`
 
 ### 4.2 Impacto
 
@@ -85,9 +85,9 @@ Detalle bajo el apoyo (pequeño): `México · Remoto · ES / EN (B2)` **[?] ciud
 | **70+** | componentes consolidados en el Design System de Experian | components consolidated in Experian's design system | CV |
 | **40%** | del sistema reconstruido para alinearlo con producción | of the system rebuilt to match production | CV |
 | **+25%** | retención de usuarios en Wiggot con nuevos flujos | user retention at Wiggot through redesigned flows | CV |
-| **10+** | años entre innovación, comunicación y producto | years across innovation, communication and product | sitio |
+| **100+** | talleres y conferencias impartidos en todo México en 5 años | workshops and talks delivered across Mexico in 5 years | tu respuesta |
 
-> Saqué "+65% ventas Q2 2024" de las cifras principales porque fue resultado de campañas de marketing que coordinaste, no de diseño de producto; un entrevistador podría preguntarlo. Queda en la línea de tiempo con su contexto exacto. **[?] ¿De acuerdo?**
+> "+65% ventas Q2 2024" va en la línea de tiempo (campañas que coordinaste) y en Herramientas como *Marketing digital*, no en las cifras principales. ✅ Confirmado.
 
 Título de sección: **ES** Impacto medible · **EN** Measurable impact
 
@@ -126,7 +126,7 @@ Título: **ES** Experiencia · **EN** Experience
 |---|---|---|---|---|
 | UX Designer | Experian (EE. UU.) | Ene 2025 – hoy | Reconstruí el Design System: 70+ componentes en AEM alineados a producción. | Rebuilt the design system: 70+ AEM components aligned with production. |
 | Product Designer | DD360 | Feb – Sep 2024 | Rediseño de Wiggot, nuevo Design System y tour guiado para adopción. | Wiggot redesign, new design system and onboarding tour. |
-| UX/UI Designer (líder de diseño) | Wiggot | Oct 2023 – Feb 2024 | Lideré diseño; nuevos flujos con +25% de retención. | Led design; new flows drove +25% retention. |
+| UX/UI Designer (líder de diseño) | Wiggot | Oct 2023 – Feb 2024 | Lideré diseño; nuevos flujos con +25% de retención; coordiné campañas que llevaron ventas +65% en Q2 2024. | Led design; new flows drove +25% retention; coordinated campaigns that lifted Q2 2024 sales by 65%. |
 | Ejecutivo de Contenido Digital | CONTPAQi | Ene 2022 – Oct 2023 | Creé el blog universitario Empréndete en Webflow. | Built the Empréndete student blog on Webflow. |
 | Ejecutivo de Innovación | CONTPAQi | Ene 2019 – Ene 2022 | Journey maps, personas y UI kits para una plataforma de gamificación. | Journey maps, personas and UI kits for a gamification platform. |
 
@@ -135,17 +135,18 @@ Botón: **ES** Descargar CV · **EN** Download résumé
 ### 4.6 Facilitación
 
 Título: **ES** Facilitación · **EN** Facilitation
-Apoyo **ES:** Imparto conferencias y talleres de metodologías de innovación centradas en el usuario.
-Apoyo **EN:** I lead talks and workshops on human-centered innovation methods.
+Apoyo **ES:** Más de 100 talleres y conferencias en 5 años, por todo México, sobre innovación centrada en las personas.
+Apoyo **EN:** 100+ workshops and talks over 5 years across Mexico on human-centered innovation.
 
 - **Metodologías:** Design Thinking · LEGO® Serious Play® · Amazon Working Backwards · Herramientas de Board of Innovation
-- **Dónde:** Talent Land · UNAM · UANL · Secretaría de Innovación Jalisco · CONTPAQi **[?] ¿otros foros y años?**
+- **Dónde:** Talent Land · UNAM · UANL · Secretaría de Innovación Jalisco · CONTPAQi
+- **Presentación:** pendiente decisión (logos de instituciones donde impartí + metodologías como texto, recomendado; o logos de metodologías con leyenda)
 
 ### 4.7 Contacto
 
 Título: **ES** Hablemos · **EN** Let's talk
-Apoyo **ES:** Busco mi siguiente rol como Product Designer. Te respondo en menos de 48 horas. **[?] ¿Estás buscando activamente? ¿Remoto, híbrido, presencial?**
-Apoyo **EN:** I'm looking for my next Product Designer role. I reply within 48 hours.
+Apoyo **ES:** Estoy abierto a roles remotos como Product Designer. Te respondo en menos de 48 horas.
+Apoyo **EN:** I'm open to remote Product Designer roles. I reply within 48 hours.
 Campos: Nombre · Email · Empresa (opcional) · Mensaje · botón **Enviar mensaje / Send message**
 Estados: "Enviando…" · "Listo. Te escribo pronto." · error con alternativa: "No se pudo enviar. Escríbeme a buenrsotro.h@gmail.com".
 
@@ -156,9 +157,9 @@ Estados: "Enviando…" · "Listo. Te escribo pronto." · error con alternativa: 
 **h1 ES:** Diseño para que los equipos decidan mejor
 **h1 EN:** I design so teams make better decisions
 
-**Texto ES:** Soy diseñador en comunicación gráfica por la Universidad de Guadalajara y llevo más de diez años entre innovación, contenido y producto digital. Empecé facilitando talleres de Design Thinking y LEGO® Serious Play® en CONTPAQi; hoy diseño y mantengo el sistema de diseño de Experian para su mercado en EE. UU. Lo que me mueve es ordenar productos complejos para que sean claros para quien los usa y sostenibles para quien los construye.
+**Texto ES:** Soy tapatío, vivo en Oaxaca y estudié Diseño para la Comunicación Gráfica en la Universidad de Guadalajara. Llevo más de diez años entre innovación, contenido y producto digital. Empecé facilitando talleres de Design Thinking y LEGO® Serious Play® en CONTPAQi; hoy diseño y mantengo el sistema de diseño de Experian para su mercado en EE. UU. Lo que me mueve es ordenar productos complejos para que sean claros para quien los usa y sostenibles para quien los construye.
 
-**Texto EN:** I studied Graphic Communication Design at Universidad de Guadalajara and have spent over ten years across innovation, content and digital product. I started out facilitating Design Thinking and LEGO® Serious Play® workshops at CONTPAQi; today I design and maintain Experian's design system for the US market. I like taking complex products and making them clear for the people who use them and sustainable for the people who build them.
+**Texto EN:** I'm from Guadalajara, live in Oaxaca, and studied Graphic Communication Design at Universidad de Guadalajara. I've spent over ten years across innovation, content and digital product. I started out facilitating Design Thinking and LEGO® Serious Play® workshops at CONTPAQi; today I design and maintain Experian's design system for the US market. I like taking complex products and making them clear for the people who use them and sustainable for the people who build them.
 
 Bloques: Experiencia completa (bullets editados, sin erratas) · Formación · Certificaciones (Harvard Business Publishing 2025: Customer Focus, Innovation and Creativity; Amazon Working Backwards 2021; Design Thinking 2020; LEGO® Serious Play® 2019) · Herramientas · Descargas.
 
@@ -186,7 +187,7 @@ Bloques disponibles en el editor: Imagen, Galería, **Antes/Después**, **Métri
 ### Caso Wiggot reescrito (ES)
 
 - **Título:** Rediseño de Wiggot · **Cliente:** DD360 · **Año:** 2024
-- **Ficha:** Rol: Product Designer · Equipo: 3 UX Designers + Product + desarrollo · Duración: **[?] el caso dice 3 meses; el home dice marzo–agosto 2024; el CV dice DD360 feb–sep 2024** · Plataformas: Web app responsiva y base para app móvil · Herramientas: Figma, Material Design 3
+- **Ficha:** Rol: Product Designer · Equipo: 3 UX Designers + Product + desarrollo · Duración: feb – sep 2024 (DD360 + Wiggot) · Plataformas: Web app responsiva y base para app móvil · Herramientas: Figma, Material Design 3
 - **Resumen:** Wiggot, una plataforma inmobiliaria para asesores, tenía interfaces duplicadas, un sistema de diseño sin documentar y una versión móvil fragmentada. Diseñé junto a dos diseñadores un nuevo Design System sobre Material Design con Atomic Design y rediseñé el buscador, la bolsa inmobiliaria, las listas compartidas y la tarjeta de propiedad. Los asesores percibieron una plataforma más clara y menos saturada en desktop y móvil.
 - **Problema:** varias versiones de diseño para la misma función, información sin jerarquía clara y secciones clave sin adaptar a móvil. El sistema existente no tenía documentación, así que cada cambio costaba más.
 - **Mi rol:** estrategia UX, wireframes y prototipos de alta fidelidad en Figma, pruebas de usabilidad con usuarios internos, documentación del sistema para desarrollo; además benchmarking, síntesis, co-ideación y flujos.
@@ -207,7 +208,7 @@ La versión EN se traduce al cerrar el ES.
 
 | Tipo | Campos principales |
 |---|---|
-| **Ajustes** (singleton) | Nombre, título ES/EN, email, LinkedIn, WhatsApp **[?]**, **color de acento** (preajustes por temporada + hex libre, con aviso de contraste), disponibilidad, PDFs: CV ES, CV EN, Portafolio, Logofolio |
+| **Ajustes** (singleton) | Nombre, título ES/EN, email, LinkedIn, **color de acento** (preajustes por temporada + hex libre, con aviso de contraste), disponibilidad, PDFs: CV ES, CV EN, Portafolio ES, Portafolio EN (incluye logofolio) |
 | **Home** (singleton) | Hero ES/EN, retrato, cifras de impacto, principios, proyectos destacados (orden) |
 | **Sobre mí** (singleton) | Texto ES/EN, formación, certificaciones, herramientas |
 | **Proyectos** (colección) | Slug, título ES/EN, cliente, año, rol, equipo, duración, plataformas, herramientas, tipo (caso / proyecto / archivo), **visibilidad (público / privado / NDA con contraseña — futuro)**, portada, galería, métrica destacada, contenido ES y EN con bloques |
@@ -219,14 +220,19 @@ La versión EN se traduce al cerrar el ES.
 
 ---
 
-## 8. Preguntas abiertas
+## 8. Herramientas y skills (confirmadas)
 
-1. **Hero:** ¿Opción A (afirmación) u Opción B (nombre)?
-2. **Duración Wiggot:** ¿3 meses, mar–ago 2024 o feb–sep 2024?
-3. **Ubicación y modalidad:** ¿Guadalajara? ¿Buscas activamente? ¿Remoto / híbrido / presencial? ¿Mostramos inglés B2?
-4. **WhatsApp/teléfono:** ¿lo mostramos públicamente? (Recomiendo solo email + LinkedIn + formulario por spam.)
-5. **+65% ventas:** ¿de acuerdo en dejarlo en la línea de tiempo con contexto y no como cifra principal?
-6. **Logos de Stanford, Amazon, etc.:** recomiendo mostrar las metodologías como texto (sin logos) para no sugerir afiliación. ¿De acuerdo?
-7. **Facilitación:** ¿otros foros, años o cantidad aproximada de talleres/asistentes?
-8. **Imagen de CONTPAQi Connection** (gamificación) no se pudo descargar del sitio; ¿la tienes?
-9. **PDFs:** el CV que descargué tiene 11 páginas (CV + portafolio en imágenes, 7.7 MB). ¿Tienes el Portafolio y el Logofolio como archivos separados? Yo comprimo el CV a < 1 MB.
+**Diseño:** Figma avanzado (tokens, variables, Dev Mode), Design Systems, Atomic Design, Material Design, prototipado de alta fidelidad
+**Investigación:** entrevistas, pruebas de usabilidad, A/B testing, journey maps, evaluación heurística, investigación asistida con IA (Claude)
+**Datos:** Hotjar, Adobe Analytics
+**Construir con IA:** Claude Code, vibecoding, prototipos funcionales en código
+**Accesibilidad:** WCAG 2.2
+**Producto y equipo:** Jira, Scrum (grooming, refinement, sprint planning), facilitación (Design Thinking, LEGO® Serious Play®, Working Backwards)
+**Otros:** Webflow, Framer, AEM, Miro, marketing digital, UX writing
+
+**Proyecto personal de IA:** un caso pequeño de diseño de experiencia con IA; se propone en una etapa posterior.
+
+## 9. Pendientes
+
+1. Decisión sobre logos en Facilitación.
+2. PDFs finales del Portafolio ES/EN.
