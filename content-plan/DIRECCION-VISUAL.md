@@ -142,3 +142,16 @@ Herramientas: grabación de pantalla de macOS (⌘⇧5) y recorte en QuickTime o
 - **Diez años de producto:** cada empleo tiene "Ver más / Ver menos" con el desglose de actividades del CV (redacción corregida), con animación de apertura.
 
 **Verificación:** lint 0 FAIL · inspect 0 FAIL a 1440/768/390. Excepciones explícitas por pedido tuyo: gradientes, texto con gradiente, barra con desenfoque y paleta morada (la skill de Taste las prohíbe por defecto).
+
+---
+
+# Ronda 4
+
+- **Gas del cursor:** ya no son círculos. Son bocanadas en forma de **óvalos irregulares** (dos lóbulos que giran en sentidos opuestos) que crecen, rotan y **se diluyen como tinta en agua** cuando dejas de mover el mouse (~3 s). Intensidad al **75%**.
+- **"destacan" / "destaque":** gradiente cónico de **aberración cromática** (magenta, ámbar, cian, azul, violeta) que **gira continuamente** alrededor de la palabra, con franjas rojo/cian desplazadas y un aura del mismo espectro. Respeta "reducir movimiento".
+- **Jerarquía de botones:** primario = acento morado / claro sobre espacio · **secundario = negro del espacio** (`#06070b`, en oscuro se invierte) → "Descargar CV" · terciario = gris tenue → "Ver más".
+- **Footer como Molecular:** la sección clara termina con **esquinas inferiores redondeadas** sobre el cielo, y la **tarjeta del footer entra al 100% del ancho** (esquinas casi rectas) y **se reduce** a su tamaño final con esquinas de 22 px conforme haces scroll.
+- **Hover de Impacto y Facilitación al 20%:** tinte de nebulosa suave; el número o la metodología cambian a morado; el texto conserva su tinta. Facilitación: **+16 px arriba y abajo** en cada fila.
+- **Experiencia:** cada "Ver más" ahora abre **dos párrafos** que narran las actividades con detalle (basados en tu CV y en los retos de tus proyectos).
+
+**Verificación:** lint 0 FAIL · inspect 0 FAIL a 1440/768/390.

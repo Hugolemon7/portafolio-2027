@@ -1,5 +1,5 @@
-// Cielo interactivo: estrellas en tres profundidades, rastro de nebulosa morada que sigue
-// al cursor con retraso, y estallidos de estrellas al hacer clic o tocar. Sin dependencias.
+// Cielo interactivo: estrellas en tres profundidades, un gas morado que sigue al cursor con
+// retraso (óvalos que giran y se diluyen como tinta en agua) y estallidos de estrellas al hacer clic.
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const coarse = matchMedia('(pointer: coarse)').matches;
@@ -8,14 +8,16 @@
   const BACK = [[46, 32, 110], [22, 52, 92], [70, 36, 120]];
   const TRAIL_RGB = [[124, 77, 255], [167, 112, 255], [92, 56, 214], [196, 150, 255]];
   const FOLLOW = 0.045;     // retraso del rastro: menor = más lento
-  const TRAIL = 26;
+  const GAS_ALPHA = 0.75;   // intensidad general del gas
+  const PUFF_LIFE = 3.2;    // segundos que tarda una bocanada en diluirse
 
   function sky(canvas) {
     const host = canvas.closest('[data-sky-host]');
     const ctx = canvas.getContext('2d');
     let W = 0, H = 0, stars = [], bursts = [];
-    const mouse = { x: 0, y: 0, tx: 0, ty: 0, active: false, energy: 0 };
-    const trail = [];
+    const mouse = { x: 0, y: 0, tx: 0, ty: 0, active: false };
+    const puffs = [];
+    let lastPuff = { x: -9999, y: -9999 };
     let raf = 0, running = false;
     const t0 = performance.now();
 
@@ -55,10 +57,23 @@
       glow(W * 0.15, H * 0.85 + Math.cos(t * 0.04) * 24, M * 0.5, BACK[1], 0.14);
       glow(W * 0.55, H * 0.6, M * 0.35, BACK[2], 0.08);
 
-      // rastro morado: cada punto es una nube que se queda atrás y se desvanece
-      for (let i = 0; i < trail.length; i++) {
-        const p = trail[i], k = (i + 1) / trail.length;
-        glow(p.x, p.y, 60 + k * 170, TRAIL_RGB[i % TRAIL_RGB.length], (0.03 + k * 0.08) * mouse.energy);
+      // gas morado: óvalos irregulares que giran, crecen y se diluyen
+      for (let i = puffs.length - 1; i >= 0; i--) {
+        const p = puffs[i];
+        const age = (now - p.born) / 1000, k = age / PUFF_LIFE;
+        if (k >= 1) { puffs.splice(i, 1); continue; }
+        const fade = Math.sin(Math.PI * Math.min(1, k * 1.15)) * (1 - k);     // entra suave, se va lento
+        const rad = p.r0 * (1 + k * 1.8);
+        p.x += p.vx; p.y += p.vy; p.vx *= 0.985; p.vy *= 0.985;
+        for (let j = 0; j < 2; j++) {                                          // dos lóbulos = forma irregular
+          const ang = p.a0 + age * p.spin * (j ? -0.6 : 1);
+          ctx.save();
+          ctx.translate(p.x + Math.cos(ang) * rad * 0.18 * j, p.y + Math.sin(ang) * rad * 0.18 * j);
+          ctx.rotate(ang);
+          ctx.scale(1, p.aspect * (j ? 1.25 : 1));
+          glow(0, 0, rad * (j ? 0.75 : 1), TRAIL_RGB[(p.c + j) % TRAIL_RGB.length], 0.075 * fade * GAS_ALPHA);
+          ctx.restore();
+        }
       }
       ctx.globalCompositeOperation = 'source-over';
 
@@ -102,8 +117,15 @@
     function loop(now) {
       mouse.x += (mouse.tx - mouse.x) * FOLLOW;
       mouse.y += (mouse.ty - mouse.y) * FOLLOW;
-      mouse.energy += ((mouse.active ? 1 : 0) - mouse.energy) * 0.04;   // aparece y se va con calma
-      if (mouse.energy > 0.01) { trail.push({ x: mouse.x, y: mouse.y }); if (trail.length > TRAIL) trail.shift(); }
+      // suelta una bocanada cuando el gas recorre distancia; quieto, solo gira y se diluye
+      const dx = mouse.x - lastPuff.x, dy = mouse.y - lastPuff.y;
+      if (mouse.active && dx * dx + dy * dy > 18 * 18) {
+        puffs.push({ x: mouse.x, y: mouse.y, born: now, r0: 70 + Math.random() * 60, a0: Math.random() * Math.PI,
+          spin: (Math.random() < 0.5 ? -1 : 1) * (0.25 + Math.random() * 0.45), aspect: 0.42 + Math.random() * 0.35,
+          vx: dx * 0.004, vy: dy * 0.004, c: Math.floor(Math.random() * TRAIL_RGB.length) });
+        if (puffs.length > 60) puffs.shift();
+        lastPuff = { x: mouse.x, y: mouse.y };
+      }
       draw(now);
       raf = requestAnimationFrame(loop);
     }
@@ -113,7 +135,7 @@
 
     host.addEventListener('pointermove', (e) => {
       const p = local(e);
-      if (!mouse.active && mouse.energy < 0.05) { mouse.x = p.x; mouse.y = p.y; trail.length = 0; }
+      if (!mouse.active && !puffs.length) { mouse.x = p.x; mouse.y = p.y; lastPuff = { x: p.x, y: p.y }; }
       mouse.tx = p.x; mouse.ty = p.y; mouse.active = true;
     });
     host.addEventListener('pointerleave', () => { mouse.active = false; });

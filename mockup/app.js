@@ -120,6 +120,22 @@ if (fine) {
   });
 }
 
+// ---------- footer: la tarjeta entra al 100 % del ancho y se reduce a su tamaño final ----------
+const foot = document.querySelector('.foot');
+if (foot) {
+  const paintFoot = () => {
+    const r = foot.getBoundingClientRect(), vh = innerHeight;
+    let p = reduce ? 1 : Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.55)));
+    p = 1 - Math.pow(1 - p, 3);                                   // ease-out
+    const full = document.documentElement.clientWidth / r.width;  // escala que cubre toda la pantalla
+    foot.style.setProperty('--foot-s', (full + (1 - full) * p).toFixed(4));
+    foot.style.setProperty('--foot-r', `${(2 + 20 * p).toFixed(1)}px`);
+  };
+  addEventListener('scroll', () => requestAnimationFrame(paintFoot), { passive: true });
+  addEventListener('resize', paintFoot);
+  paintFoot();
+}
+
 // ---------- experiencia: "Ver más" / "Ver menos" ----------
 document.querySelectorAll('.job').forEach((d) => {
   const more = d.querySelector('.job__more');
