@@ -1,8 +1,9 @@
 ---
+import Img from '../Img.astro';
 interface Props { src: string; alt: string; caption?: string; wide?: boolean }
 const { src, alt, caption, wide = false } = Astro.props;
 ---
 <figure class:list={['md-figure', { 'md-figure--wide': wide }]} data-reveal>
-  <div class="md-figure__media"><img src={src} alt={alt} loading="lazy" decoding="async" /></div>
+  <div class="md-figure__media"><Img src={src} alt={alt} sizes={wide ? '100vw' : '(max-width: 48em) 100vw, 704px'} /></div>
   {caption && <figcaption>{caption}</figcaption>}
 </figure>

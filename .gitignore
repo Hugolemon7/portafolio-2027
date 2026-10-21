@@ -13,3 +13,7 @@ node_modules/
 sheet.png
 source-assets/framer/urls-*.txt
 source-assets/pdf/
+/public/_img/
+/src/generated/
+test-results/
+playwright-report/

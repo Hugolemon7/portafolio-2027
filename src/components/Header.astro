@@ -13,7 +13,7 @@ const nav = [
 const here = Astro.url.pathname;
 ---
 <header class="bar" data-bar>
-  <a class="bar__mark" href={routes.home[lang]}>{settings.name}</a>
+  <a class="bar__mark" href={routes.home[lang]} translate="no">{settings.name}</a>
   <nav class="bar__nav" aria-label={lang === 'es' ? 'Principal' : 'Main'}>
     {nav.map((n) => <a href={n.href} aria-current={here.startsWith(n.href) ? 'page' : undefined}>{n.label}</a>)}
   </nav>

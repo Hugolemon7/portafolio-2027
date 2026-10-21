@@ -1,4 +1,5 @@
 ---
+import Img from '../components/Img.astro';
 import Base from '../layouts/Base.astro';
 import Finale from '../components/Finale.astro';
 import { t, settings, routes, type Lang } from '../i18n';
@@ -30,18 +31,18 @@ const messages = JSON.stringify({ required: c.required, invalidEmail: c.invalidE
         </div>
         <div class="field" data-reveal>
           <label for="f-company">{c.company}</label>
-          <input id="f-company" name="company" type="text" autocomplete="organization" placeholder={c.companyPh} />
+          <input id="f-company" name="company" type="text" autocomplete="organization" spellcheck="false" placeholder={c.companyPh} />
         </div>
         <div class="field" data-reveal>
           <label for="f-message">{c.message}</label>
-          <textarea id="f-message" name="message" placeholder={c.messagePh} required aria-describedby="f-message-error"></textarea>
+          <textarea id="f-message" name="message" autocomplete="off" placeholder={c.messagePh} required aria-describedby="f-message-error"></textarea>
           <p class="field__error" id="f-message-error" aria-live="polite"></p>
         </div>
         <button class="button" type="submit" data-reveal>{c.send}</button>
         <p class="form__status" data-form-status aria-live="polite"></p>
       </form>
       <aside class="contact-aside" data-reveal>
-        <figure class="contact-aside__photo"><img src="/images/hugo-portrait.jpg" width="1125" height="2000" alt={t(lang).about.photoAlt} loading="lazy" decoding="async" /></figure>
+        <figure class="contact-aside__photo"><Img src="/images/hugo-portrait.jpg" alt={t(lang).about.photoAlt} sizes="(max-width: 64em) 100vw, 30vw" /></figure>
         <p>{c.orWrite}</p>
         <a class="link-plain" href={`mailto:${settings.email}`}>{settings.email}</a>
         <a class="link" href={settings.linkedin} rel="noopener" target="_blank">LinkedIn</a>

@@ -11,6 +11,8 @@ npm install        # instala dependencias
 npm run dev        # servidor local en http://localhost:4321
 npm run build      # genera el sitio en dist/
 npm run check      # revisa tipos
+npm test           # pruebas Playwright sobre el build (corre antes npm run build)
+npm run images     # regenera variantes WebP (también corre solo antes de dev/build)
 ```
 
 ## Dónde está cada cosa

@@ -1,4 +1,5 @@
 ---
+import Img from '../Img.astro';
 import { t, settings, type Lang } from '../../i18n';
 interface Props { lang: Lang; headingLevel?: 'h1' | 'h2'; showTitle?: boolean }
 const { lang, headingLevel = 'h2', showTitle = true } = Astro.props;
@@ -13,7 +14,7 @@ const Sub = headingLevel === 'h1' ? 'h2' : 'h3';
 ---
 <section class="about" id="sobre-mi" aria-labelledby="about-title">
   <figure class="about__photo">
-    <img src="/images/hugo-portrait.jpg" width="1125" height="2000" alt={a.photoAlt} loading="lazy" decoding="async" />
+    <Img src="/images/hugo-portrait.jpg" alt={a.photoAlt} sizes="(max-width: 40em) 100vw, 40vw" />
   </figure>
   <div class="about__body">
     {showTitle ? <H id="about-title" class="section-title" data-reveal>{a.title}</H> : <span id="about-title" class="sr-only">{a.title}</span>}
@@ -34,9 +35,9 @@ const Sub = headingLevel === 'h1' ? 'h2' : 'h3';
         <div class="how__step" data-reveal>
           <p><strong>{st.lead}</strong> {st.text}</p>
           {ev?.image ? (
-            <figure class="how__ev"><img src={ev.image} width={ev.w || undefined} height={ev.h || undefined} alt={lang === 'es' ? ev.altEs : ev.altEn} loading="lazy" decoding="async" /></figure>
+            <figure class="how__ev"><Img src={ev.image} alt={(lang === 'es' ? ev.altEs : ev.altEn) ?? ''} sizes="(max-width: 40em) 100vw, 600px" /></figure>
           ) : video.src ? (
-            <figure class="how__ev"><video src={video.src} poster={video.poster || undefined} muted loop playsinline autoplay preload="metadata" aria-label={st.placeholder}></video></figure>
+            <figure class="how__ev"><video src={video.src} poster={video.poster || undefined} muted loop playsinline preload="metadata" aria-label={st.placeholder} data-autoplay></video><button class="video-toggle" type="button" data-video-toggle data-pause={lang === 'es' ? 'Pausar' : 'Pause'} data-play={lang === 'es' ? 'Reproducir' : 'Play'}>{lang === 'es' ? 'Pausar' : 'Pause'}</button></figure>
           ) : (
             <figure class="how__ev placeholder placeholder--video">
               <span class="placeholder__icon" aria-hidden="true"></span>

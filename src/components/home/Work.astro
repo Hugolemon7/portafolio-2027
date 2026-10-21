@@ -1,4 +1,5 @@
 ---
+import Img from '../Img.astro';
 import { t, projectUrl, routes, type Lang } from '../../i18n';
 import { getProjects } from '../../lib/projects';
 interface Props { lang: Lang }
@@ -11,8 +12,8 @@ const items = (await getProjects(lang)).filter((p) => p.featured && p.paneLeft);
   {items.map((p) => (
     <article class="seam" data-seam>
       <div class="seam__stage">
-        <div class="seam__pane seam__pane--l"><img src={p.paneLeft} alt={p.paneLeftAlt} loading="lazy" decoding="async" /></div>
-        <div class:list={['seam__pane seam__pane--r', { 'seam__pane--detail': p.paneRightDetail }]}><img src={p.paneRight || p.paneLeft} alt={p.paneRightAlt} loading="lazy" decoding="async" /></div>
+        <div class="seam__pane seam__pane--l"><Img src={p.paneLeft} alt={p.paneLeftAlt} sizes="50vw" /></div>
+        <div class:list={['seam__pane seam__pane--r', { 'seam__pane--detail': p.paneRightDetail }]}><Img src={p.paneRight || p.paneLeft} alt={p.paneRightAlt} sizes="50vw" /></div>
         <div class="seam__copy">
           <h3 class="seam__name">{p.title}</h3>
           <div class="seam__foot">

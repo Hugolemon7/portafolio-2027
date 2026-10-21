@@ -38,14 +38,14 @@ const person = {
 <html lang={htmlLang[lang]} style={accentVars}>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{pageTitle}</title>
   <meta name="description" content={desc}>
   <link rel="canonical" href={canonical}>
   <link rel="alternate" hreflang={htmlLang[lang]} href={canonical}>
   <link rel="alternate" hreflang={htmlLang[other]} href={altHref}>
   <link rel="alternate" hreflang="x-default" href={lang === 'es' ? canonical : altHref}>
-  <meta name="theme-color" content="#06070b">
+  <meta name="theme-color" content="#06070b" data-theme-color>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/fonts/clash-grotesk-500.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>

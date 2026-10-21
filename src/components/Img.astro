@@ -1,0 +1,26 @@
+---
+// Imagen optimizada: WebP responsivo + dimensiones reales (evita saltos de diseño).
+// Los datos salen de src/generated/images.json, que genera scripts/optimize-images.mjs.
+import manifest from '../generated/images.json';
+
+interface Props {
+  src: string;
+  alt: string;
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  class?: string;
+}
+const { src, alt, sizes = '100vw', loading = 'lazy', fetchpriority, class: cls } = Astro.props;
+type Entry = { w: number; h: number; variants: { w: number; src: string }[] };
+const m = (manifest as Record<string, Entry>)[src];
+const srcset = m?.variants.map((v) => `${v.src} ${v.w}w`).join(', ');
+---
+{m ? (
+  <picture>
+    <source type="image/webp" srcset={srcset} sizes={sizes} />
+    <img class={cls} src={src} alt={alt} width={m.w} height={m.h} loading={loading} decoding="async" fetchpriority={fetchpriority} />
+  </picture>
+) : (
+  <img class={cls} src={src} alt={alt} loading={loading} decoding="async" fetchpriority={fetchpriority} />
+)}

@@ -4,10 +4,15 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "images": "node scripts/optimize-images.mjs",
+    "predev": "node scripts/optimize-images.mjs",
     "dev": "astro dev",
+    "prebuild": "node scripts/optimize-images.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "precheck": "node scripts/optimize-images.mjs",
+    "test": "playwright test"
   },
   "dependencies": {
     "@astrojs/markdoc": "^2.1.0",
@@ -24,6 +29,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.11",
+    "@playwright/test": "^1.64.1",
+    "sharp": "^0.35.5",
     "typescript": "^6.0.3"
   }
 }
