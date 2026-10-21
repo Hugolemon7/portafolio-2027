@@ -1,0 +1,56 @@
+---
+import { t, settings, routes, type Lang } from '../i18n';
+interface Props { lang: Lang; alternate: string }
+const { lang, alternate } = Astro.props;
+const s = t(lang);
+const other = lang === 'es' ? 'en' : 'es';
+const cv = lang === 'es' ? settings.files.cvEs : settings.files.cvEn;
+const nav = [
+  { href: routes.projects[lang], label: s.ui.nav.projects },
+  { href: routes.about[lang], label: s.ui.nav.about },
+  { href: routes.contact[lang], label: s.ui.nav.contact },
+];
+const here = Astro.url.pathname;
+---
+<header class="bar" data-bar>
+  <a class="bar__mark" href={routes.home[lang]}>{settings.name}</a>
+  <nav class="bar__nav" aria-label={lang === 'es' ? 'Principal' : 'Main'}>
+    {nav.map((n) => <a href={n.href} aria-current={here.startsWith(n.href) ? 'page' : undefined}>{n.label}</a>)}
+  </nav>
+  <div class="bar__tools">
+    <a class="bar__lang" href={alternate} hreflang={other} lang={other} aria-label={s.ui.switchLangLabel} data-lang-switch>{s.ui.switchLangShort}</a>
+    <button class="bar__menu" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
+      <span>{s.ui.menu}</span><span class="bar__dot" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label={s.ui.menu} hidden data-menu>
+  <div class="menu__scrim" data-menu-close></div>
+  <div class="menu__panel">
+    <button class="menu__close" type="button" data-menu-close><span>{s.ui.close}</span><span class="menu__x" aria-hidden="true">×</span></button>
+    <nav class="menu__links" aria-label={s.ui.menu}>
+      {nav.map((n, i) => <a href={n.href} style={`--i:${i}`}>{n.label}</a>)}
+    </nav>
+    <div class="menu__foot">
+      <button class="switch" type="button" role="switch" aria-checked="false" data-mode-toggle>
+        <span class="switch__track" aria-hidden="true"><span class="switch__thumb"></span></span>
+        <span class="switch__label">{s.ui.darkMode}</span>
+      </button>
+      <a class="link-plain" href={`mailto:${settings.email}`}>{settings.email}</a>
+      <div class="menu__row">
+        <a class="link" href={settings.linkedin} rel="noopener" target="_blank">LinkedIn</a>
+        <a class="link" href={cv} download>{lang === 'es' ? 'CV (PDF)' : 'Résumé (PDF)'}</a>
+        <a class="link" href={alternate} hreflang={other} lang={other} data-lang-switch>{s.ui.switchLang}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden data-sheet>
+  <div class="sheet__scrim" data-sheet-close></div>
+  <div class="sheet__panel">
+    <button class="menu__close" type="button" data-sheet-close><span>{s.ui.close}</span><span class="menu__x" aria-hidden="true">×</span></button>
+    <div class="sheet__body" data-sheet-body></div>
+  </div>
+</div>

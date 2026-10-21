@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+import '../styles/pages.css';
+import Header from '../components/Header.astro';
+import LangHint from '../components/LangHint.astro';
+import { t, settings, htmlLang, routes, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+  /** misma página en el otro idioma */
+  alternate: string;
+  image?: string;
+}
+const { lang, title, description, alternate, image = '/og.png' } = Astro.props;
+const s = t(lang);
+const pageTitle = title ? `${title} — ${settings.name}` : s.meta.title;
+const desc = description ?? s.meta.description;
+const site = Astro.site ?? new URL(Astro.url.origin);
+const canonical = new URL(Astro.url.pathname, site).href;
+const altHref = new URL(alternate, site).href;
+const other: Lang = lang === 'es' ? 'en' : 'es';
+const accentVars = `--accent-light:${settings.accent.light};--accent-light-ink:${settings.accent.lightInk};--accent-dark:${settings.accent.dark};--accent-dark-ink:${settings.accent.darkInk}`;
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: settings.name,
+  jobTitle: 'Product Designer',
+  email: `mailto:${settings.email}`,
+  url: new URL(routes.home[lang], site).href,
+  address: { '@type': 'PostalAddress', addressLocality: 'Oaxaca', addressCountry: 'MX' },
+  sameAs: [settings.linkedin],
+  knowsLanguage: ['es', 'en'],
+};
+---
+<!doctype html>
+<html lang={htmlLang[lang]} style={accentVars}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{pageTitle}</title>
+  <meta name="description" content={desc}>
+  <link rel="canonical" href={canonical}>
+  <link rel="alternate" hreflang={htmlLang[lang]} href={canonical}>
+  <link rel="alternate" hreflang={htmlLang[other]} href={altHref}>
+  <link rel="alternate" hreflang="x-default" href={lang === 'es' ? canonical : altHref}>
+  <meta name="theme-color" content="#06070b">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/clash-grotesk-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={pageTitle}>
+  <meta property="og:description" content={desc}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={new URL(image, site).href}>
+  <meta property="og:locale" content={lang === 'es' ? 'es_MX' : 'en_US'}>
+  <meta name="twitter:card" content="summary_large_image">
+  <script is:inline>
+    document.documentElement.classList.add('js');
+    try { const m = localStorage.getItem('mode'); if (m) document.documentElement.dataset.theme = m; } catch (e) {}
+  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(person)} />
+</head>
+<body>
+  <a class="skip" href="#main">{s.ui.skip}</a>
+  <Header lang={lang} alternate={alternate} />
+  <div class="cursor" aria-hidden="true" data-cursor><span data-cursor-label>{s.ui.view}</span></div>
+  <main id="main">
+    <slot />
+  </main>
+  <slot name="after" />
+  <LangHint lang={lang} alternate={alternate} />
+  <script>
+    import '../scripts/sky.js';
+    import '../scripts/app.js';
+  </script>
+</body>
+</html>

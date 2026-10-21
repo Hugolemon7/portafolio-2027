@@ -1,0 +1,62 @@
+---
+import { t, settings, routes, type Lang } from '../i18n';
+interface Props { lang: Lang; cta?: boolean }
+const { lang, cta = true } = Astro.props;
+const s = t(lang);
+const f = s.finale;
+const ft = s.footer;
+const other = lang === 'es' ? 'en' : 'es';
+const cv = lang === 'es' ? settings.files.cvEs : settings.files.cvEn;
+const cvOther = lang === 'es' ? settings.files.cvEn : settings.files.cvEs;
+const portfolio = lang === 'es' ? settings.files.portfolioEs : settings.files.portfolioEn;
+---
+<section class:list={['finale', { 'finale--bare': !cta }]} id="contacto" aria-labelledby={cta ? 'finale-title' : undefined} aria-label={cta ? undefined : ft.contact} data-sky-host>
+  <canvas class="sky" aria-hidden="true" data-sky></canvas>
+  {cta && (
+    <div class="finale__cta">
+      <h2 id="finale-title" class="finale__title">{f.title}</h2>
+      <p class="finale__lead">{f.lead}</p>
+      <div class="finale__actions">
+        <a class="button" href={`mailto:${settings.email}`}>{f.primary}</a>
+        <a class="button button--ghost" href={routes.contact[lang]}>{f.secondary}</a>
+      </div>
+    </div>
+  )}
+  <footer class="foot">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <p class="foot__name">Hugo<br>Buenrostro</p>
+        <p class="foot__role">{ft.role}</p>
+      </div>
+      <nav class="foot__col foot__col--nav" aria-label={ft.navigate}>
+        <p class="foot__head">{ft.navigate}</p>
+        <ul role="list">
+          <li><a class="link" href={routes.projects[lang]}>{s.ui.nav.projects}</a></li>
+          <li><a class="link" href={routes.about[lang]}>{s.ui.nav.about}</a></li>
+          <li><a class="link" href={routes.contact[lang]}>{s.ui.nav.contact}</a></li>
+          <li><a class="link" href={routes.home[other]} hreflang={other} lang={other} data-lang-switch>{s.ui.switchLang}</a></li>
+        </ul>
+      </nav>
+      <div class="foot__col foot__col--contact">
+        <p class="foot__head">{ft.contact}</p>
+        <ul role="list">
+          <li><a class="link-plain" href={`mailto:${settings.email}`}>{settings.email}</a></li>
+          <li><a class="link" href={settings.linkedin} rel="noopener" target="_blank">LinkedIn</a></li>
+          <li><a class="link" href={routes.contact[lang]}>{ft.form}</a></li>
+        </ul>
+      </div>
+      <div class="foot__col foot__col--dl">
+        <p class="foot__head">{ft.downloads}</p>
+        <ul role="list">
+          <li><a class="link" href={cv} download>{ft.cv}</a></li>
+          <li><a class="link" href={cvOther} hreflang={other} lang={other} download>{ft.cvOther}</a></li>
+          <li><a class="link" href={portfolio} download>{ft.portfolio}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <p>{ft.rights}</p>
+      <a class="foot__top" href="#main" aria-label={s.ui.backToTop}><span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+</section>

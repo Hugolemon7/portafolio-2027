@@ -1,0 +1,46 @@
+---
+import { t, settings, type Lang } from '../../i18n';
+interface Props { lang: Lang; headingLevel?: 'h1' | 'h2'; showTitle?: boolean }
+const { lang, headingLevel = 'h2', showTitle = true } = Astro.props;
+const s = t(lang);
+const a = s.about;
+const how = s.how;
+const cv = lang === 'es' ? settings.files.cvEs : settings.files.cvEn;
+const H = headingLevel;
+const Sub = headingLevel === 'h1' ? 'h2' : 'h3';
+---
+<section class="about" id="sobre-mi" aria-labelledby="about-title">
+  <figure class="about__photo">
+    <img src="/images/hugo-portrait.jpg" width="1125" height="2000" alt={a.photoAlt} loading="lazy" decoding="async" />
+  </figure>
+  <div class="about__body">
+    {showTitle ? <H id="about-title" class="section-title" data-reveal>{a.title}</H> : <span id="about-title" class="sr-only">{a.title}</span>}
+    {showTitle && <p class="about__lead" data-reveal>{a.lead}</p>}
+    <div class="about__text" data-reveal>{a.paragraphs.map((p) => <p>{p}</p>)}</div>
+    <dl class="about__facts" data-reveal>
+      {a.facts.map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}
+    </dl>
+    <p class="about__cv" data-reveal>
+      <a class="button button--download" href={cv} download><span class="dl-icon" aria-hidden="true"></span><span>{s.ui.downloadCv}</span><span class="button__note">{s.ui.downloadNote}</span></a>
+    </p>
+
+    <div class="how" aria-labelledby="how-title">
+      <Sub id="how-title" class="section-title" data-reveal>{how.title}</Sub>
+      {how.steps.map((st) => (
+        <div class="how__step" data-reveal>
+          <p><strong>{st.lead}</strong> {st.text}</p>
+          {st.image ? (
+            <figure class="how__ev"><img src={st.image} width={st.w} height={st.h} alt={st.alt} loading="lazy" decoding="async" /></figure>
+          ) : settings.video.src ? (
+            <figure class="how__ev"><video src={settings.video.src} poster={settings.video.poster || undefined} muted loop playsinline autoplay preload="metadata" aria-label={st.placeholder}></video></figure>
+          ) : (
+            <figure class="how__ev placeholder placeholder--video">
+              <span class="placeholder__icon" aria-hidden="true"></span>
+              <figcaption>{st.placeholder}</figcaption>
+            </figure>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

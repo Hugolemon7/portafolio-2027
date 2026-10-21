@@ -1,0 +1,8 @@
+---
+interface Props { src: string; alt: string; caption?: string; wide?: boolean }
+const { src, alt, caption, wide = false } = Astro.props;
+---
+<figure class:list={['md-figure', { 'md-figure--wide': wide }]} data-reveal>
+  <div class="md-figure__media"><img src={src} alt={alt} loading="lazy" decoding="async" /></div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

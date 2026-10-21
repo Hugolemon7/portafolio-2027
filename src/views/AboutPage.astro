@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import Finale from '../components/Finale.astro';
+import About from '../components/home/About.astro';
+import Facilitation from '../components/home/Facilitation.astro';
+import Experience from '../components/home/Experience.astro';
+import { t, routes, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const other: Lang = lang === 'es' ? 'en' : 'es';
+const a = t(lang).about;
+---
+<Base lang={lang} alternate={routes.about[other]} title={a.pageTitle} description={a.lead}>
+  <div class="page about-page">
+    <header class="page-head" data-reveal>
+      <h1 class="page-title">{a.pageTitle}</h1>
+      <p class="page-lead">{a.lead}</p>
+    </header>
+    <About lang={lang} headingLevel="h2" showTitle={false} />
+    <div class="cv-grid">
+      <section class="cv-block" aria-labelledby="edu">
+        <h2 id="edu">{a.educationTitle}</h2>
+        <ul class="cv-list" role="list">{a.education.map((e) => <li data-reveal><span>{e.title}</span><small>{e.where}</small></li>)}</ul>
+      </section>
+      <section class="cv-block" aria-labelledby="certs">
+        <h2 id="certs">{a.certsTitle}</h2>
+        <ul class="cv-list" role="list">{a.certs.map((c) => <li data-reveal><span>{c.title}</span><small>{c.where} · {c.year}</small></li>)}</ul>
+      </section>
+      <section class="cv-block cv-block--wide" aria-labelledby="skills">
+        <h2 id="skills">{a.skillsTitle}</h2>
+        <dl class="skills">{a.skills.map((k) => <div data-reveal><dt>{k.group}</dt><dd>{k.items}</dd></div>)}</dl>
+      </section>
+    </div>
+  </div>
+  <Facilitation lang={lang} />
+  <Experience lang={lang} />
+  <Finale slot="after" lang={lang} />
+</Base>

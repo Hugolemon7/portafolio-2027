@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import { t, projectUrl, routes, type Lang } from '../../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang).projects;
+const items = (await getCollection('projects', (p) => p.id.startsWith(`${lang}/`) && p.data.featured && p.data.visibility === 'public' && p.data.paneLeft))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+<section class="work" id="trabajo" aria-labelledby="work-title">
+  <h2 id="work-title" class="work__title">{s.title}</h2>
+  {items.map((p) => {
+    const d = p.data;
+    const slug = p.id.split('/')[1];
+    return (
+      <article class="seam" data-seam>
+        <div class="seam__stage">
+          <div class="seam__pane seam__pane--l"><img src={d.paneLeft} alt={d.paneLeftAlt} loading="lazy" decoding="async" /></div>
+          <div class:list={['seam__pane seam__pane--r', { 'seam__pane--detail': d.paneRightDetail }]}><img src={d.paneRight} alt={d.paneRightAlt} loading="lazy" decoding="async" /></div>
+          <div class="seam__copy">
+            <h3 class="seam__name">{d.title}</h3>
+            <div class="seam__foot">
+              <p class="seam__meta">{d.discipline} · {d.client} · {d.year}</p>
+              <a class="seam__link" href={projectUrl(lang, slug)}>{d.kind === 'case' ? s.viewCase : s.viewProject} <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </article>
+    );
+  })}
+  <p class="work__all wrap"><a class="link-plain" href={routes.projects[lang]}>{s.all}</a></p>
+</section>

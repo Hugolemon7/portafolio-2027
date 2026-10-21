@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import { t, settings, type Lang } from '../../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const jobs = (await getCollection('experience', (j) => j.id.startsWith(`${lang}/`))).sort((a, b) => a.data.order - b.data.order);
+const cv = lang === 'es' ? settings.files.cvEs : settings.files.cvEn;
+const cvOther = lang === 'es' ? settings.files.cvEn : settings.files.cvEs;
+const other = lang === 'es' ? 'en' : 'es';
+---
+<section class="exp wrap" aria-labelledby="exp-title">
+  <h2 id="exp-title" class="exp__title"><span>{s.experience.title1}</span><span class="exp__step">{s.experience.title2}</span></h2>
+  <div class="jobs">
+    {jobs.map((j) => (
+      <details class="job">
+        <summary>
+          <span class="job__years nums">{j.data.years}</span>
+          <span class="job__role">{j.data.role}</span>
+          <span class="job__co">{j.data.company}</span>
+          <span class="job__hi">{j.data.highlight}</span>
+          <span class="job__more" data-more={s.ui.more} data-less={s.ui.less}>{s.ui.more}</span>
+        </summary>
+        <div class="job__text">{j.data.paragraphs.map((p) => <p>{p}</p>)}</div>
+      </details>
+    ))}
+  </div>
+  <p class="exp__cv" id="cv">
+    <a class="button button--download" href={cv} download><span class="dl-icon" aria-hidden="true"></span><span>{s.ui.downloadCv}</span><span class="button__note">{s.ui.downloadNote}</span></a>
+    <a class="link-plain" href={cvOther} hreflang={other} lang={other} download>{s.ui.otherCv}</a>
+  </p>
+</section>

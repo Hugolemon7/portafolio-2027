@@ -1,0 +1,35 @@
+{
+  "name": "Hugo Buenrostro",
+  "email": "buenrsotro.h@gmail.com",
+  "linkedin": "https://www.linkedin.com/",
+  "accent": {
+    "light": "#5a3ec8",
+    "lightInk": "#ffffff",
+    "dark": "#b9a4ff",
+    "darkInk": "#0d0e10"
+  },
+  "files": {
+    "cvEs": "/files/cv-hugo-buenrostro-es.pdf",
+    "cvEn": "/files/cv-hugo-buenrostro-en.pdf",
+    "portfolioEs": "/files/cv-hugo-buenrostro-es.pdf",
+    "portfolioEn": "/files/cv-hugo-buenrostro-en.pdf"
+  },
+  "video": {
+    "src": "",
+    "poster": ""
+  },
+  "venues": [
+    { "name": "Talent Land", "logo": "" },
+    { "name": "UNAM", "logo": "" },
+    { "name": "UANL", "logo": "" },
+    { "name": "Secretaría de Innovación Jalisco", "logo": "" },
+    { "name": "CONTPAQi", "logo": "" }
+  ],
+  "brands": [
+    { "name": "Verde Botella", "logo": "/images/brands/verde-botella.svg", "year": "2021", "es": "Manualidades ecológicas", "en": "Eco-friendly crafts" },
+    { "name": "Irving Leal", "logo": "/images/brands/irving-leal.svg", "year": "2022", "es": "Marca personal de ganadería", "en": "Livestock personal brand" },
+    { "name": "Ángeles Caloca", "logo": "/images/brands/angeles-caloca.svg", "year": "2022", "es": "Abogada familiar", "en": "Family lawyer" },
+    { "name": "Ladrar.Ladrar", "logo": "/images/brands/ladrar-ladrar.svg", "year": "2020", "es": "Accesorios para perros", "en": "Dog accessories" },
+    { "name": "Capire", "logo": "/images/brands/capire.svg", "year": "2020", "es": "Enseñanza didáctica", "en": "Learning community" }
+  ]
+}

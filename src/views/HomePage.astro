@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Finale from '../components/Finale.astro';
+import Hero from '../components/home/Hero.astro';
+import Impact from '../components/home/Impact.astro';
+import Work from '../components/home/Work.astro';
+import About from '../components/home/About.astro';
+import Facilitation from '../components/home/Facilitation.astro';
+import Experience from '../components/home/Experience.astro';
+import { routes, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const other: Lang = lang === 'es' ? 'en' : 'es';
+---
+<Base lang={lang} alternate={routes.home[other]}>
+  <Hero lang={lang} />
+  <Impact lang={lang} />
+  <Work lang={lang} />
+  <About lang={lang} />
+  <Facilitation lang={lang} />
+  <Experience lang={lang} />
+  <Finale slot="after" lang={lang} />
+</Base>

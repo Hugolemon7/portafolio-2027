@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Finale from '../components/Finale.astro';
+import { t, settings, routes, projectUrl, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const other: Lang = lang === 'es' ? 'en' : 'es';
+const s = t(lang).projects;
+const all = (await getCollection('projects', (p) => p.id.startsWith(`${lang}/`) && p.data.visibility === 'public')).sort((a, b) => a.data.order - b.data.order);
+const groups = (['case', 'project', 'archive'] as const).map((k) => ({ k, items: all.filter((p) => p.data.kind === k) })).filter((g) => g.items.length);
+---
+<Base lang={lang} alternate={routes.projects[other]} title={s.pageTitle} description={s.pageLead}>
+  <div class="page">
+    <header class="page-head" data-reveal>
+      <h1 class="page-title">{s.pageTitle}</h1>
+      <p class="page-lead">{s.pageLead}</p>
+    </header>
+    {groups.map((g) => (
+      <section aria-labelledby={`g-${g.k}`}>
+        <h2 id={`g-${g.k}`} class="group-title">{s.groups[g.k]}</h2>
+        <ul class:list={['plist', { 'plist--feature': g.k === 'case' }]} role="list">
+          {g.items.map((p) => {
+            const slug = p.id.split('/')[1];
+            return (
+              <li data-reveal>
+                <a class="pcard" href={projectUrl(lang, slug)}>
+                  <div class:list={['pcard__media', { placeholder: !p.data.cover }]}>
+                    {p.data.cover ? <img src={p.data.cover} alt={p.data.coverAlt} loading="lazy" decoding="async" /> : <span>{p.data.title}</span>}
+                  </div>
+                  <span class="pcard__title">{p.data.title}</span>
+                  <span class="pcard__meta">{p.data.discipline} · {p.data.client} · {p.data.year}</span>
+                  <span class="pcard__summary">{p.data.summary}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    ))}
+    <section aria-labelledby="g-brands">
+      <h2 id="g-brands" class="group-title">{s.brandsTitle}</h2>
+      <ul class="brands" role="list">
+        {settings.brands.map((b) => (
+          <li class="brand" data-reveal>
+            <img src={b.logo} alt={`Logotipo de ${b.name}`} width="72" height="72" loading="lazy" />
+            <span class="brand__name">{b.name}</span>
+            <span class="brand__meta">{b[lang]} · {b.year}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+  <Finale slot="after" lang={lang} />
+</Base>

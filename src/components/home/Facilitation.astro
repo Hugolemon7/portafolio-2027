@@ -1,0 +1,38 @@
+---
+import { t, settings, type Lang } from '../../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const f = s.facilitation;
+---
+<section class="poster" aria-labelledby="poster-title">
+  <div class="section-head wrap">
+    <h2 id="poster-title" class="section-title">{f.title}</h2>
+    <p class="section-lead">{f.lead}</p>
+  </div>
+  <ul class="poster__list" role="list">
+    {f.methods.map((m, i) => (
+      <li>
+        <button class="row" type="button" data-detail={`method-${i}`} data-cursor-text={s.ui.view}>
+          <span class="row__item">{m.name}</span>
+          <span class="row__end"><span class="row__fact">{m.fact}</span><span class="card__icon" aria-hidden="true"></span></span>
+        </button>
+      </li>
+    ))}
+  </ul>
+  {f.methods.map((m, i) => (
+    <template id={`method-${i}`}>
+      <p class="sheet__kicker">{m.kicker}</p>
+      <h2 id="sheet-title" class="sheet__title">{m.title}</h2>
+      {m.body.map((p) => <p>{p}</p>)}
+    </template>
+  ))}
+  <div class="poster__logos wrap">
+    <p class="poster__logos-title">{f.venuesTitle}</p>
+    <ul class="logos" role="list">
+      {settings.venues.map((v) => v.logo
+        ? <li class="placeholder placeholder--logo"><img src={v.logo} alt={v.name} loading="lazy" /></li>
+        : <li class="placeholder placeholder--logo">{v.name}</li>)}
+    </ul>
+  </div>
+</section>

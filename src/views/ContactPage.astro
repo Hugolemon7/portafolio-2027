@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import Finale from '../components/Finale.astro';
+import { t, settings, routes, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const other: Lang = lang === 'es' ? 'en' : 'es';
+const c = t(lang).contact;
+const messages = JSON.stringify({ required: c.required, invalidEmail: c.invalidEmail, sending: c.sending, send: c.send, success: c.success, error: c.error, email: settings.email });
+---
+<Base lang={lang} alternate={routes.contact[other]} title={c.pageTitle} description={c.lead}>
+  <div class="page">
+    <header class="page-head" data-reveal>
+      <h1 class="page-title">{c.pageTitle}</h1>
+      <p class="page-lead">{c.lead}</p>
+    </header>
+    <div class="contact-grid">
+      <form class="form" action="/api/contact" method="post" novalidate data-contact-form data-messages={messages}>
+        <input type="hidden" name="lang" value={lang} />
+        <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+        <div class="field" data-reveal>
+          <label for="f-name">{c.name}</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" placeholder={c.namePh} required aria-describedby="f-name-error" />
+          <p class="field__error" id="f-name-error" aria-live="polite"></p>
+        </div>
+        <div class="field" data-reveal>
+          <label for="f-email">{c.email}</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder={c.emailPh} required aria-describedby="f-email-error" />
+          <p class="field__error" id="f-email-error" aria-live="polite"></p>
+        </div>
+        <div class="field" data-reveal>
+          <label for="f-company">{c.company}</label>
+          <input id="f-company" name="company" type="text" autocomplete="organization" placeholder={c.companyPh} />
+        </div>
+        <div class="field" data-reveal>
+          <label for="f-message">{c.message}</label>
+          <textarea id="f-message" name="message" placeholder={c.messagePh} required aria-describedby="f-message-error"></textarea>
+          <p class="field__error" id="f-message-error" aria-live="polite"></p>
+        </div>
+        <button class="button" type="submit" data-reveal>{c.send}</button>
+        <p class="form__status" data-form-status aria-live="polite"></p>
+      </form>
+      <aside class="contact-aside" data-reveal>
+        <figure class="contact-aside__photo"><img src="/images/hugo-portrait.jpg" width="1125" height="2000" alt={t(lang).about.photoAlt} loading="lazy" decoding="async" /></figure>
+        <p>{c.orWrite}</p>
+        <a class="link-plain" href={`mailto:${settings.email}`}>{settings.email}</a>
+        <a class="link" href={settings.linkedin} rel="noopener" target="_blank">LinkedIn</a>
+      </aside>
+    </div>
+  </div>
+  <Finale slot="after" lang={lang} cta={false} />
+</Base>

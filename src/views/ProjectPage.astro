@@ -1,0 +1,42 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Finale from '../components/Finale.astro';
+import { t, routes, projectUrl, type Lang } from '../i18n';
+interface Props { lang: Lang; entry: CollectionEntry<'projects'>; next?: CollectionEntry<'projects'>; hasAlt: boolean }
+const { lang, entry, next, hasAlt } = Astro.props;
+const other: Lang = lang === 'es' ? 'en' : 'es';
+const s = t(lang).projects;
+const d = entry.data;
+const slug = entry.id.split('/')[1];
+const { Content } = await render(entry);
+const facts = [
+  [s.facts.role, d.role], [s.facts.team, d.team], [s.facts.duration, d.duration],
+  [s.facts.platforms, d.platforms], [s.facts.tools, d.tools], [s.facts.client, d.client],
+].filter(([, v]) => v);
+---
+<Base lang={lang} alternate={hasAlt ? projectUrl(other, slug) : routes.projects[other]} title={d.title} description={d.summary} image={d.cover || undefined}>
+  <article>
+    <header class="case-hero">
+      <nav class="case-hero__crumbs" aria-label={lang === 'es' ? 'Ruta' : 'Breadcrumb'}><a class="link-plain" href={routes.projects[lang]}>{s.back}</a> <span aria-hidden="true">·</span> {d.discipline} · {d.year}</nav>
+      <div class="case-hero__grid">
+        <h1 class="case-hero__title">{d.title}</h1>
+        <p class="case-hero__summary" data-reveal>{d.summary}</p>
+      </div>
+    </header>
+    {d.cover && <figure class="case-cover"><img src={d.cover} alt={d.coverAlt} fetchpriority="high" decoding="async" /></figure>}
+    <dl class="case-facts" data-reveal>
+      {facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+    </dl>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+  {next && (
+    <a class="case-next" data-reveal href={projectUrl(lang, next.id.split('/')[1])}>
+      <span class="case-next__title">{next.data.title}</span>
+      <span class="case-next__label">{s.next} →</span>
+    </a>
+  )}
+  <Finale slot="after" lang={lang} />
+</Base>

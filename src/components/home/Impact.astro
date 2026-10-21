@@ -1,0 +1,32 @@
+---
+import { t, type Lang } from '../../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const im = s.impact;
+---
+<section class="impact wrap" aria-labelledby="impact-title">
+  <div class="section-head">
+    <h2 id="impact-title" class="section-title" data-reveal>{im.title}</h2>
+    <p class="section-lead" data-reveal>{im.lead}</p>
+  </div>
+  <ul class="cards" role="list">
+    {im.items.map((it, i) => (
+      <li data-reveal style={`--d:${i}`}>
+        <button class="card" type="button" data-detail={`impact-${i}`} data-cursor-text={s.ui.view}>
+          <span class="card__num nums">{it.value}</span>
+          <span class="card__label">{it.label}</span>
+          <span class="card__icon" aria-hidden="true"></span>
+          <span class="card__meta">{it.meta}</span>
+        </button>
+      </li>
+    ))}
+  </ul>
+  {im.items.map((it, i) => (
+    <template id={`impact-${i}`}>
+      <p class="sheet__kicker">{it.kicker}</p>
+      <h2 id="sheet-title" class="sheet__title">{it.title}</h2>
+      {it.body.map((p) => <p>{p}</p>)}
+    </template>
+  ))}
+</section>

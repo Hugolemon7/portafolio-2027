@@ -1,0 +1,12 @@
+---
+import { t, type Lang } from '../i18n';
+interface Props { lang: Lang; alternate: string }
+const { lang, alternate } = Astro.props;
+const s = t(lang);
+const other = lang === 'es' ? 'en' : 'es';
+---
+<div class="lang-hint" role="region" aria-label={s.ui.switchLangLabel} data-lang-hint lang={other}>
+  <span>{s.ui.langSuggest}</span>
+  <a href={alternate} hreflang={other}>{s.ui.langSuggestCta}</a>
+  <button type="button">{s.ui.langSuggestDismiss}</button>
+</div>

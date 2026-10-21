@@ -1,0 +1,21 @@
+---
+import { t, routes, type Lang } from '../../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const h = t(lang).hero;
+---
+<section class="hero" aria-labelledby="hero-title" data-sky-host>
+  <canvas class="sky" aria-hidden="true" data-sky></canvas>
+  <div class="hero__body">
+    <h1 id="hero-title" class="hero__title lines">
+      <span class="line"><span data-line style="--i:0">{h.line1}</span></span>
+      <span class="line"><span data-line style="--i:1">{h.line2Before} <span class="nebula-word">{h.highlight}</span></span></span>
+    </h1>
+    <p class="hero__lead" data-rise style="--i:3">{h.lead}</p>
+    <div class="hero__actions" data-rise style="--i:4">
+      <a class="button" href={routes.contact[lang]}>{h.primary}</a>
+      <a class="button button--ghost" href="#trabajo">{h.secondary}</a>
+    </div>
+  </div>
+  <p class="hero__meta" data-rise style="--i:5">{h.meta}</p>
+</section>

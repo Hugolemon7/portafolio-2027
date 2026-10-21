@@ -1,0 +1,11 @@
+{
+  "order": 1,
+  "years": "2025 – hoy",
+  "role": "UX Designer",
+  "company": "Experian · EE. UU.",
+  "highlight": "Reconstruí el sistema de diseño: 70+ componentes en AEM.",
+  "paragraphs": [
+    "En Experian (mercado de EE. UU.) recibí un sistema de diseño con baja madurez técnica y documental. Reconstruí más del 40% de sus componentes, definí estándares de documentación, corregí inconsistencias visuales y consolidé una librería de más de 70 componentes en Adobe Experience Manager (AEM), alineada con el entorno de producción para que el producto sea más escalable, fácil de mantener y consistente.",
+    "Trabajo de cerca con unidades de negocio, desarrollo y Product Owners para alinear las decisiones de diseño con la estrategia del producto, apoyándome en datos de Hotjar y Adobe Analytics para priorizar mejoras. También optimicé el sitio B2B y el blog corporativo —interfaces, flujos de navegación y jerarquías visuales responsivas— y participo de forma continua en grooming, backlog refinement y sprint planning, refinando historias de usuario con el equipo."
+  ]
+}

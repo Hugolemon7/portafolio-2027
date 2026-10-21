@@ -1,0 +1,335 @@
+{
+  "meta": {
+    "title": "Hugo Buenrostro — Product Designer",
+    "description": "Hugo Buenrostro, Product Designer. Sistemas de diseño y flujos para productos fintech y proptech, con datos y pruebas con usuarios. Oaxaca, México · Solo remoto."
+  },
+  "ui": {
+    "skip": "Saltar al contenido",
+    "nav": {
+      "projects": "Proyectos",
+      "about": "Sobre mí",
+      "contact": "Contacto"
+    },
+    "menu": "Menú",
+    "close": "Cerrar",
+    "darkMode": "Modo oscuro",
+    "switchLang": "English",
+    "switchLangShort": "EN",
+    "switchLangLabel": "English version",
+    "view": "Ver",
+    "more": "Ver más",
+    "less": "Ver menos",
+    "downloadCv": "Descargar CV",
+    "downloadNote": "PDF · ES",
+    "otherCv": "Download résumé (EN)",
+    "backToTop": "Volver arriba",
+    "langSuggest": "Prefer to read this site in English?",
+    "langSuggestCta": "View in English",
+    "langSuggestDismiss": "Stay in Spanish"
+  },
+  "hero": {
+    "line1": "Diseño productos",
+    "line2Before": "que",
+    "highlight": "destacan",
+    "lead": "Soy Product Designer. Construyo sistemas de diseño y flujos para productos fintech y proptech, con datos y pruebas con usuarios.",
+    "primary": "Escríbeme",
+    "secondary": "Ver proyectos",
+    "meta": "Oaxaca, México · Solo remoto · Español / English"
+  },
+  "impact": {
+    "title": "Impacto medible",
+    "lead": "Cifras reales de mis últimos roles. Abre cada una para ver el contexto.",
+    "items": [
+      {
+        "value": "70+",
+        "label": "componentes consolidados en el sistema de diseño de Experian",
+        "meta": "Experian · 2025",
+        "kicker": "Experian · EE. UU. · 2025 – hoy",
+        "title": "70+ componentes",
+        "body": [
+          "Consolidé una librería de más de 70 componentes en Adobe Experience Manager (AEM), alineada con el entorno de producción, para que diseño y desarrollo trabajen con las mismas piezas.",
+          "El resultado: un producto más escalable, fácil de mantener y consistente entre el sitio B2B y el blog corporativo."
+        ]
+      },
+      {
+        "value": "40%",
+        "label": "del sistema reconstruido y documentado",
+        "meta": "Experian · 2025",
+        "kicker": "Experian · EE. UU. · 2025 – hoy",
+        "title": "40% reconstruido",
+        "body": [
+          "Recibí un sistema de diseño con baja madurez técnica y documental. Reconstruí más del 40% de sus componentes, definí estándares de documentación y corregí inconsistencias visuales.",
+          "Cada componente quedó documentado para que ingeniería pueda usarlo sin depender de diseño."
+        ]
+      },
+      {
+        "value": "+25%",
+        "label": "de retención con flujos rediseñados",
+        "meta": "Wiggot · 2023–24",
+        "kicker": "Wiggot · Oct 2023 – Feb 2024",
+        "title": "+25% de retención",
+        "body": [
+          "Como líder de diseño en Wiggot, desarrollé flujos de usabilidad junto con stakeholders y product managers, validados con wireframes y prototipos de alta fidelidad en pruebas con usuarios.",
+          "Esos flujos aumentaron la retención de usuarios en un 25%."
+        ]
+      },
+      {
+        "value": "100+",
+        "label": "talleres y conferencias en todo México",
+        "meta": "2019–2023",
+        "kicker": "Facilitación · 2019 – 2023",
+        "title": "100+ talleres y conferencias",
+        "body": [
+          "Durante cinco años impartí más de 100 talleres y conferencias sobre experiencia de usuario, innovación y metodologías centradas en las personas.",
+          "Foros: Talent Land, UNAM, UANL, Secretaría de Innovación Jalisco y CONTPAQi, entre otros."
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Proyectos",
+    "all": "Todos los proyectos, branding y web",
+    "viewCase": "Ver caso de estudio",
+    "viewProject": "Ver proyecto",
+    "pageTitle": "Proyectos",
+    "pageLead": "Casos de estudio, proyectos de producto y trabajo de marca de los últimos años.",
+    "groups": {
+      "case": "Casos de estudio",
+      "project": "Proyectos",
+      "archive": "Web"
+    },
+    "brandsTitle": "Branding",
+    "brandsLead": "Identidades para marcas pequeñas y personales.",
+    "facts": {
+      "role": "Rol",
+      "team": "Equipo",
+      "duration": "Duración",
+      "platforms": "Plataformas",
+      "tools": "Herramientas",
+      "client": "Cliente",
+      "year": "Año"
+    },
+    "next": "Siguiente proyecto",
+    "back": "Todos los proyectos"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "lead": "Diseño para que los equipos decidan mejor.",
+    "paragraphs": [
+      "Soy tapatío, vivo en Oaxaca y estudié Diseño para la Comunicación Gráfica en la Universidad de Guadalajara. Llevo más de diez años entre diseño gráfico, innovación, contenido y producto digital.",
+      "Empecé en el área de marketing de CONTPAQi, después facilité talleres de Design Thinking y LEGO® Serious Play®; hoy diseño y mantengo el sistema de diseño de Experian para su mercado en EE. UU. Me gusta ordenar productos complejos para que sean claros para quien los usa y sostenibles para quien los construye."
+    ],
+    "photoAlt": "Retrato de Hugo Buenrostro con gorra verde y playera blanca",
+    "facts": [
+      {
+        "label": "Base",
+        "value": "Oaxaca, México · Solo remoto"
+      },
+      {
+        "label": "Idiomas",
+        "value": "Español nativo · Inglés B2"
+      },
+      {
+        "label": "Herramientas",
+        "value": "Figma (tokens, variables, Dev Mode), Claude Code, Jira, Hotjar, Adobe Analytics, AEM"
+      }
+    ],
+    "pageTitle": "Sobre mí",
+    "educationTitle": "Formación",
+    "education": [
+      {
+        "title": "Licenciatura en Diseño para la Comunicación Gráfica",
+        "where": "Universidad de Guadalajara"
+      }
+    ],
+    "certsTitle": "Certificaciones",
+    "certs": [
+      {
+        "title": "Customer Focus",
+        "where": "Harvard Business Publishing",
+        "year": "2025"
+      },
+      {
+        "title": "Innovation and Creativity",
+        "where": "Harvard Business Publishing",
+        "year": "2025"
+      },
+      {
+        "title": "Amazon Working Backwards",
+        "where": "CONTPAQi",
+        "year": "2021"
+      },
+      {
+        "title": "Design Thinking",
+        "where": "CONTPAQi",
+        "year": "2020"
+      },
+      {
+        "title": "LEGO® Serious Play®",
+        "where": "CONTPAQi",
+        "year": "2019"
+      }
+    ],
+    "skillsTitle": "Habilidades",
+    "skills": [
+      {
+        "group": "Diseño",
+        "items": "Figma avanzado (tokens, variables, Dev Mode), Design Systems, Atomic Design, Material Design, prototipado de alta fidelidad"
+      },
+      {
+        "group": "Investigación",
+        "items": "Entrevistas, pruebas de usabilidad, A/B testing, journey maps, evaluación heurística, investigación asistida con IA"
+      },
+      {
+        "group": "Datos",
+        "items": "Hotjar, Adobe Analytics"
+      },
+      {
+        "group": "Construir con IA",
+        "items": "Claude Code, vibecoding, prototipos funcionales en código"
+      },
+      {
+        "group": "Accesibilidad",
+        "items": "WCAG 2.2"
+      },
+      {
+        "group": "Producto y equipo",
+        "items": "Jira, Scrum, facilitación de talleres"
+      },
+      {
+        "group": "Otros",
+        "items": "Webflow, Framer, AEM, Miro, marketing digital, UX writing"
+      }
+    ]
+  },
+  "how": {
+    "title": "Cómo trabajo",
+    "steps": [
+      {
+        "lead": "Primero, los datos.",
+        "text": "Antes de mover un píxel reviso Hotjar, Adobe Analytics y lo que dicen los usuarios en pruebas. Las decisiones de diseño se defienden con evidencia, no con gusto.",
+        "image": "/images/how/research.png",
+        "alt": "Síntesis de investigación y wireframes de la plataforma",
+        "w": 527,
+        "h": 459
+      },
+      {
+        "lead": "Después, el sistema.",
+        "text": "Diseño componentes con tokens y variables en Figma, documentados para que ingeniería pueda usarlos sin preguntarme. Así un cambio se hace una vez y llega a todo el producto.",
+        "image": "/images/how/system.png",
+        "alt": "Fundamentos del sistema de diseño de Wiggot basados en Material Design",
+        "w": 2048,
+        "h": 788
+      },
+      {
+        "lead": "Dentro del sprint,",
+        "text": "no al margen. Participo en grooming, refinamiento y planeación con Product Owners y desarrollo en Jira, y valido accesibilidad con WCAG 2.2 antes de entregar.",
+        "image": "/images/how/sprint.png",
+        "alt": "Proceso de documentación del sistema de diseño compartido con el equipo",
+        "w": 1556,
+        "h": 864
+      },
+      {
+        "lead": "Y con IA,",
+        "text": "para llegar antes a la prueba. Prototipo en código con Claude Code e investigo con Claude para validar ideas en días, no semanas.",
+        "image": "",
+        "alt": "",
+        "w": 0,
+        "h": 0,
+        "placeholder": "Video: de Figma a un prototipo funcional con Claude Code · 20 s"
+      }
+    ]
+  },
+  "facilitation": {
+    "title": "Facilitación",
+    "lead": "Más de 100 talleres y conferencias en cinco años, por todo México, sobre innovación centrada en las personas.",
+    "venuesTitle": "Dónde he impartido",
+    "methods": [
+      {
+        "name": "Design Thinking",
+        "fact": "Stanford d.school",
+        "kicker": "Metodología · formación CONTPAQi 2020",
+        "title": "Design Thinking",
+        "body": [
+          "El enfoque de la d.school de Stanford para resolver problemas desde las personas: empatizar, definir, idear, prototipar y probar.",
+          "Lo impartí en talleres para equipos y universidades, y es la base de cómo arranco cada proyecto de producto."
+        ]
+      },
+      {
+        "name": "Serious Play",
+        "fact": "LEGO®",
+        "kicker": "Metodología · formación CONTPAQi 2019",
+        "title": "LEGO® Serious Play®",
+        "body": [
+          "Una dinámica en la que los equipos construyen modelos con piezas LEGO® para pensar con las manos, alinear ideas y hacer visibles los supuestos.",
+          "La usé para facilitar sesiones de estrategia y co-creación con equipos multidisciplinarios."
+        ]
+      },
+      {
+        "name": "Working Backwards",
+        "fact": "Amazon",
+        "kicker": "Metodología · formación CONTPAQi 2021",
+        "title": "Working Backwards",
+        "body": [
+          "El método de Amazon que parte del cliente: se escribe primero el comunicado de prensa y las preguntas frecuentes del producto, y después se construye.",
+          "Lo impartí para enfocar iniciativas en el problema real antes de diseñar soluciones."
+        ]
+      },
+      {
+        "name": "Innovación",
+        "fact": "Board of Innovation",
+        "kicker": "Herramientas de innovación",
+        "title": "Board of Innovation",
+        "body": [
+          "Plantillas y ejercicios de innovación de Board of Innovation para mapear oportunidades, priorizar ideas y diseñar experimentos.",
+          "Las integré en talleres para pasar de la ideación a pruebas concretas."
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "title1": "Más de diez años",
+    "title2": "de diseño y productos"
+  },
+  "finale": {
+    "title": "¿Diseñamos algo que destaque?",
+    "lead": "Estoy abierto a roles remotos como Product Designer. Te respondo en menos de 48 horas.",
+    "primary": "Escríbeme",
+    "secondary": "Usar el formulario"
+  },
+  "footer": {
+    "role": "Product Designer · Oaxaca, México",
+    "navigate": "Navegar",
+    "contact": "Contacto",
+    "downloads": "Descargas",
+    "form": "Formulario",
+    "cv": "CV (ES)",
+    "cvOther": "Résumé (EN)",
+    "portfolio": "Portafolio PDF",
+    "rights": "© 2026 Hugo Buenrostro"
+  },
+  "contact": {
+    "pageTitle": "Contacto",
+    "lead": "Cuéntame del rol o del proyecto. Te respondo en menos de 48 horas.",
+    "name": "Nombre",
+    "namePh": "Tu nombre…",
+    "email": "Correo",
+    "emailPh": "tu@empresa.com",
+    "company": "Empresa (opcional)",
+    "companyPh": "Nombre de la empresa…",
+    "message": "Mensaje",
+    "messagePh": "Hola Hugo, estamos buscando…",
+    "send": "Enviar mensaje",
+    "sending": "Enviando…",
+    "success": "Listo. Te escribo pronto.",
+    "error": "No se pudo enviar. Escríbeme directo a",
+    "required": "Este campo es obligatorio.",
+    "invalidEmail": "Escribe un correo válido, por ejemplo tu@empresa.com.",
+    "orWrite": "O escríbeme directo"
+  },
+  "notFound": {
+    "title": "Esta página se perdió en el espacio",
+    "lead": "El enlace no existe o cambió de lugar.",
+    "cta": "Volver al inicio"
+  }
+}

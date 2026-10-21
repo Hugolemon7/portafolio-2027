@@ -1,0 +1,335 @@
+{
+  "meta": {
+    "title": "Hugo Buenrostro — Product Designer",
+    "description": "Hugo Buenrostro, Product Designer. Design systems and flows for fintech and proptech products, backed by data and user testing. Oaxaca, Mexico · Remote only."
+  },
+  "ui": {
+    "skip": "Skip to content",
+    "nav": {
+      "projects": "Work",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "menu": "Menu",
+    "close": "Close",
+    "darkMode": "Dark mode",
+    "switchLang": "Español",
+    "switchLangShort": "ES",
+    "switchLangLabel": "Versión en español",
+    "view": "View",
+    "more": "Show more",
+    "less": "Show less",
+    "downloadCv": "Download résumé",
+    "downloadNote": "PDF · EN",
+    "otherCv": "Descargar CV (ES)",
+    "backToTop": "Back to top",
+    "langSuggest": "¿Prefieres leer este sitio en español?",
+    "langSuggestCta": "Ver en español",
+    "langSuggestDismiss": "Seguir en inglés"
+  },
+  "hero": {
+    "line1": "I design products",
+    "line2Before": "that",
+    "highlight": "stand out",
+    "lead": "I'm a Product Designer. I build design systems and flows for fintech and proptech products, backed by data and user testing.",
+    "primary": "Get in touch",
+    "secondary": "See work",
+    "meta": "Oaxaca, Mexico · Remote only · English / Spanish"
+  },
+  "impact": {
+    "title": "Measurable impact",
+    "lead": "Real numbers from my recent roles. Open each one for the context.",
+    "items": [
+      {
+        "value": "70+",
+        "label": "components consolidated in Experian's design system",
+        "meta": "Experian · 2025",
+        "kicker": "Experian · US · 2025 – present",
+        "title": "70+ components",
+        "body": [
+          "I consolidated a library of more than 70 components in Adobe Experience Manager (AEM), aligned with production, so design and engineering work from the same pieces.",
+          "The result: a more scalable, maintainable and consistent product across the B2B site and the corporate blog."
+        ]
+      },
+      {
+        "value": "40%",
+        "label": "of the system rebuilt and documented",
+        "meta": "Experian · 2025",
+        "kicker": "Experian · US · 2025 – present",
+        "title": "40% rebuilt",
+        "body": [
+          "I inherited a design system with low technical and documentation maturity. I rebuilt more than 40% of its components, set documentation standards and fixed visual inconsistencies.",
+          "Every component is now documented so engineering can use it without depending on design."
+        ]
+      },
+      {
+        "value": "+25%",
+        "label": "user retention through redesigned flows",
+        "meta": "Wiggot · 2023–24",
+        "kicker": "Wiggot · Oct 2023 – Feb 2024",
+        "title": "+25% retention",
+        "body": [
+          "As Wiggot's design lead, I built usability flows with stakeholders and product managers, validated with wireframes and high-fidelity prototypes in user testing.",
+          "Those flows increased user retention by 25%."
+        ]
+      },
+      {
+        "value": "100+",
+        "label": "workshops and talks across Mexico",
+        "meta": "2019–2023",
+        "kicker": "Facilitation · 2019 – 2023",
+        "title": "100+ workshops and talks",
+        "body": [
+          "Over five years I delivered more than 100 workshops and talks on user experience, innovation and human-centered methods.",
+          "Venues include Talent Land, UNAM, UANL, Jalisco's Ministry of Innovation and CONTPAQi."
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Selected work",
+    "all": "All work, branding and web",
+    "viewCase": "Read the case study",
+    "viewProject": "View project",
+    "pageTitle": "Work",
+    "pageLead": "Case studies, product work and brand projects from recent years.",
+    "groups": {
+      "case": "Case studies",
+      "project": "Projects",
+      "archive": "Web"
+    },
+    "brandsTitle": "Branding",
+    "brandsLead": "Identities for small and personal brands.",
+    "facts": {
+      "role": "Role",
+      "team": "Team",
+      "duration": "Timeline",
+      "platforms": "Platforms",
+      "tools": "Tools",
+      "client": "Client",
+      "year": "Year"
+    },
+    "next": "Next project",
+    "back": "All work"
+  },
+  "about": {
+    "title": "About",
+    "lead": "I design so teams make better decisions.",
+    "paragraphs": [
+      "I'm from Guadalajara, live in Oaxaca, and studied Graphic Communication Design at Universidad de Guadalajara. I've spent over ten years across graphic design, innovation, content and digital product.",
+      "I started in CONTPAQi's marketing team, then facilitated Design Thinking and LEGO® Serious Play® workshops; today I design and maintain Experian's design system for the US market. I like taking complex products and making them clear for the people who use them and sustainable for the people who build them."
+    ],
+    "photoAlt": "Portrait of Hugo Buenrostro wearing a green cap and a white t-shirt",
+    "facts": [
+      {
+        "label": "Based in",
+        "value": "Oaxaca, Mexico · Remote only"
+      },
+      {
+        "label": "Languages",
+        "value": "Spanish (native) · English (B2)"
+      },
+      {
+        "label": "Tools",
+        "value": "Figma (tokens, variables, Dev Mode), Claude Code, Jira, Hotjar, Adobe Analytics, AEM"
+      }
+    ],
+    "pageTitle": "About",
+    "educationTitle": "Education",
+    "education": [
+      {
+        "title": "B.A. in Graphic Communication Design",
+        "where": "Universidad de Guadalajara"
+      }
+    ],
+    "certsTitle": "Certifications",
+    "certs": [
+      {
+        "title": "Customer Focus",
+        "where": "Harvard Business Publishing",
+        "year": "2025"
+      },
+      {
+        "title": "Innovation and Creativity",
+        "where": "Harvard Business Publishing",
+        "year": "2025"
+      },
+      {
+        "title": "Amazon Working Backwards",
+        "where": "CONTPAQi",
+        "year": "2021"
+      },
+      {
+        "title": "Design Thinking",
+        "where": "CONTPAQi",
+        "year": "2020"
+      },
+      {
+        "title": "LEGO® Serious Play®",
+        "where": "CONTPAQi",
+        "year": "2019"
+      }
+    ],
+    "skillsTitle": "Skills",
+    "skills": [
+      {
+        "group": "Design",
+        "items": "Advanced Figma (tokens, variables, Dev Mode), design systems, Atomic Design, Material Design, high-fidelity prototyping"
+      },
+      {
+        "group": "Research",
+        "items": "Interviews, usability testing, A/B testing, journey maps, heuristic evaluation, AI-assisted research"
+      },
+      {
+        "group": "Data",
+        "items": "Hotjar, Adobe Analytics"
+      },
+      {
+        "group": "Building with AI",
+        "items": "Claude Code, vibe coding, working prototypes in code"
+      },
+      {
+        "group": "Accessibility",
+        "items": "WCAG 2.2"
+      },
+      {
+        "group": "Product & team",
+        "items": "Jira, Scrum, workshop facilitation"
+      },
+      {
+        "group": "Other",
+        "items": "Webflow, Framer, AEM, Miro, digital marketing, UX writing"
+      }
+    ]
+  },
+  "how": {
+    "title": "How I work",
+    "steps": [
+      {
+        "lead": "Data first.",
+        "text": "Before moving a pixel I look at Hotjar, Adobe Analytics and what users say in testing. Design decisions are defended with evidence, not taste.",
+        "image": "/images/how/research.png",
+        "alt": "Research synthesis and platform wireframes",
+        "w": 527,
+        "h": 459
+      },
+      {
+        "lead": "Then, the system.",
+        "text": "I design components with tokens and variables in Figma, documented so engineering can ship them without asking me. A change happens once and reaches the whole product.",
+        "image": "/images/how/system.png",
+        "alt": "Wiggot design system foundations based on Material Design",
+        "w": 2048,
+        "h": 788
+      },
+      {
+        "lead": "Inside the sprint,",
+        "text": "not on the sidelines. I join grooming, refinement and planning with Product Owners and engineers in Jira, and check accessibility against WCAG 2.2 before handoff.",
+        "image": "/images/how/sprint.png",
+        "alt": "Design system documentation process shared with the team",
+        "w": 1556,
+        "h": 864
+      },
+      {
+        "lead": "And with AI,",
+        "text": "to get to testing sooner. I prototype in code with Claude Code and research with Claude to validate ideas in days, not weeks.",
+        "image": "",
+        "alt": "",
+        "w": 0,
+        "h": 0,
+        "placeholder": "Video: from Figma to a working prototype with Claude Code · 20 s"
+      }
+    ]
+  },
+  "facilitation": {
+    "title": "Facilitation",
+    "lead": "100+ workshops and talks over five years across Mexico on human-centered innovation.",
+    "venuesTitle": "Where I've taught",
+    "methods": [
+      {
+        "name": "Design Thinking",
+        "fact": "Stanford d.school",
+        "kicker": "Method · trained at CONTPAQi, 2020",
+        "title": "Design Thinking",
+        "body": [
+          "Stanford d.school's approach to solving problems from people's needs: empathize, define, ideate, prototype and test.",
+          "I taught it in workshops for teams and universities, and it's how I start every product project."
+        ]
+      },
+      {
+        "name": "Serious Play",
+        "fact": "LEGO®",
+        "kicker": "Method · trained at CONTPAQi, 2019",
+        "title": "LEGO® Serious Play®",
+        "body": [
+          "A method where teams build models with LEGO® bricks to think with their hands, align ideas and surface assumptions.",
+          "I used it to facilitate strategy and co-creation sessions with cross-functional teams."
+        ]
+      },
+      {
+        "name": "Working Backwards",
+        "fact": "Amazon",
+        "kicker": "Method · trained at CONTPAQi, 2021",
+        "title": "Working Backwards",
+        "body": [
+          "Amazon's customer-first method: write the press release and FAQ for the product first, then build it.",
+          "I taught it to focus initiatives on the real problem before designing solutions."
+        ]
+      },
+      {
+        "name": "Innovation",
+        "fact": "Board of Innovation",
+        "kicker": "Innovation toolkits",
+        "title": "Board of Innovation",
+        "body": [
+          "Board of Innovation templates and exercises to map opportunities, prioritize ideas and design experiments.",
+          "I brought them into workshops to move from ideation to concrete tests."
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "title1": "Over ten years",
+    "title2": "of design and product"
+  },
+  "finale": {
+    "title": "Let's make it stand out",
+    "lead": "I'm open to remote Product Designer roles. I reply within 48 hours.",
+    "primary": "Get in touch",
+    "secondary": "Use the form"
+  },
+  "footer": {
+    "role": "Product Designer · Oaxaca, Mexico",
+    "navigate": "Navigate",
+    "contact": "Contact",
+    "downloads": "Downloads",
+    "form": "Contact form",
+    "cv": "Résumé (EN)",
+    "cvOther": "CV (ES)",
+    "portfolio": "Portfolio PDF",
+    "rights": "© 2026 Hugo Buenrostro"
+  },
+  "contact": {
+    "pageTitle": "Contact",
+    "lead": "Tell me about the role or the project. I reply within 48 hours.",
+    "name": "Name",
+    "namePh": "Your name…",
+    "email": "Email",
+    "emailPh": "you@company.com",
+    "company": "Company (optional)",
+    "companyPh": "Company name…",
+    "message": "Message",
+    "messagePh": "Hi Hugo, we're looking for…",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Done. I'll get back to you soon.",
+    "error": "Couldn't send it. Write to me directly at",
+    "required": "This field is required.",
+    "invalidEmail": "Enter a valid email, for example you@company.com.",
+    "orWrite": "Or write to me directly"
+  },
+  "notFound": {
+    "title": "This page got lost in space",
+    "lead": "The link doesn't exist or has moved.",
+    "cta": "Back to home"
+  }
+}

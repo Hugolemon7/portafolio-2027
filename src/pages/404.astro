@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { t, routes } from '../i18n';
+const s = t('es').notFound;
+const e = t('en').notFound;
+---
+<Base lang="es" alternate={routes.home.en} title="404">
+  <section class="lost hero" data-sky-host aria-labelledby="lost-title">
+    <canvas class="sky" aria-hidden="true" data-sky></canvas>
+    <h1 id="lost-title">{s.title}</h1>
+    <p>{s.lead}</p>
+    <p lang="en">{e.lead}</p>
+    <a class="button" href={routes.home.es}>{s.cta}</a>
+  </section>
+</Base>
