@@ -6,6 +6,8 @@ const s = t(lang);
 const a = s.about;
 const how = s.how;
 const cv = lang === 'es' ? settings.files.cvEs : settings.files.cvEn;
+const video = settings.video as { src?: string; poster?: string };
+const evidence = settings.howEvidence as { image?: string; w?: number; h?: number; altEs?: string; altEn?: string }[];
 const H = headingLevel;
 const Sub = headingLevel === 'h1' ? 'h2' : 'h3';
 ---
@@ -26,13 +28,15 @@ const Sub = headingLevel === 'h1' ? 'h2' : 'h3';
 
     <div class="how" aria-labelledby="how-title">
       <Sub id="how-title" class="section-title" data-reveal>{how.title}</Sub>
-      {how.steps.map((st) => (
+      {how.steps.map((st, i) => {
+        const ev = evidence[i];
+        return (
         <div class="how__step" data-reveal>
           <p><strong>{st.lead}</strong> {st.text}</p>
-          {st.image ? (
-            <figure class="how__ev"><img src={st.image} width={st.w} height={st.h} alt={st.alt} loading="lazy" decoding="async" /></figure>
-          ) : settings.video.src ? (
-            <figure class="how__ev"><video src={settings.video.src} poster={settings.video.poster || undefined} muted loop playsinline autoplay preload="metadata" aria-label={st.placeholder}></video></figure>
+          {ev?.image ? (
+            <figure class="how__ev"><img src={ev.image} width={ev.w || undefined} height={ev.h || undefined} alt={lang === 'es' ? ev.altEs : ev.altEn} loading="lazy" decoding="async" /></figure>
+          ) : video.src ? (
+            <figure class="how__ev"><video src={video.src} poster={video.poster || undefined} muted loop playsinline autoplay preload="metadata" aria-label={st.placeholder}></video></figure>
           ) : (
             <figure class="how__ev placeholder placeholder--video">
               <span class="placeholder__icon" aria-hidden="true"></span>
@@ -40,7 +44,8 @@ const Sub = headingLevel === 'h1' ? 'h2' : 'h3';
             </figure>
           )}
         </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 </section>

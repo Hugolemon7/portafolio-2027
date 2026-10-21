@@ -1,40 +1,40 @@
 ---
-import { render, type CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Finale from '../components/Finale.astro';
 import { t, routes, projectUrl, type Lang } from '../i18n';
-interface Props { lang: Lang; entry: CollectionEntry<'projects'>; next?: CollectionEntry<'projects'>; hasAlt: boolean }
-const { lang, entry, next, hasAlt } = Astro.props;
+import { getBody, type Project } from '../lib/projects';
+interface Props { lang: Lang; project: Project; next?: Project }
+const { lang, project: p, next } = Astro.props;
 const other: Lang = lang === 'es' ? 'en' : 'es';
 const s = t(lang).projects;
-const d = entry.data;
-const slug = entry.id.split('/')[1];
-const { Content } = await render(entry);
+const body = await getBody(p.slug, lang);
+const { Content } = body ? await render(body) : { Content: null };
 const facts = [
-  [s.facts.role, d.role], [s.facts.team, d.team], [s.facts.duration, d.duration],
-  [s.facts.platforms, d.platforms], [s.facts.tools, d.tools], [s.facts.client, d.client],
+  [s.facts.role, p.role], [s.facts.team, p.team], [s.facts.duration, p.duration],
+  [s.facts.platforms, p.platforms], [s.facts.tools, p.tools], [s.facts.client, p.client],
 ].filter(([, v]) => v);
 ---
-<Base lang={lang} alternate={hasAlt ? projectUrl(other, slug) : routes.projects[other]} title={d.title} description={d.summary} image={d.cover || undefined}>
+<Base lang={lang} alternate={projectUrl(other, p.slug)} title={p.title} description={p.summary} image={p.cover || undefined}>
   <article>
     <header class="case-hero">
-      <nav class="case-hero__crumbs" aria-label={lang === 'es' ? 'Ruta' : 'Breadcrumb'}><a class="link-plain" href={routes.projects[lang]}>{s.back}</a> <span aria-hidden="true">·</span> {d.discipline} · {d.year}</nav>
+      <nav class="case-hero__crumbs" aria-label={lang === 'es' ? 'Ruta' : 'Breadcrumb'}><a class="link-plain" href={routes.projects[lang]}>{s.back}</a> <span aria-hidden="true">·</span> {p.discipline} · {p.year}</nav>
       <div class="case-hero__grid">
-        <h1 class="case-hero__title">{d.title}</h1>
-        <p class="case-hero__summary" data-reveal>{d.summary}</p>
+        <h1 class="case-hero__title">{p.title}</h1>
+        <p class="case-hero__summary" data-reveal>{p.summary}</p>
       </div>
     </header>
-    {d.cover && <figure class="case-cover"><img src={d.cover} alt={d.coverAlt} fetchpriority="high" decoding="async" /></figure>}
+    {p.cover && <figure class="case-cover"><img src={p.cover} alt={p.coverAlt} fetchpriority="high" decoding="async" /></figure>}
     <dl class="case-facts" data-reveal>
       {facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
     </dl>
     <div class="prose">
-      <Content />
+      {Content && <Content />}
     </div>
   </article>
-  {next && (
-    <a class="case-next" data-reveal href={projectUrl(lang, next.id.split('/')[1])}>
-      <span class="case-next__title">{next.data.title}</span>
+  {next && next.slug !== p.slug && (
+    <a class="case-next" data-reveal href={projectUrl(lang, next.slug)}>
+      <span class="case-next__title">{next.title}</span>
       <span class="case-next__label">{s.next} →</span>
     </a>
   )}

@@ -4,6 +4,7 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const s = t(lang);
 const f = s.facilitation;
+const venues = settings.venues as { name: string; logo?: string }[];
 ---
 <section class="poster" aria-labelledby="poster-title">
   <div class="section-head wrap">
@@ -30,7 +31,7 @@ const f = s.facilitation;
   <div class="poster__logos wrap">
     <p class="poster__logos-title">{f.venuesTitle}</p>
     <ul class="logos" role="list">
-      {settings.venues.map((v) => v.logo
+      {venues.map((v) => v.logo
         ? <li class="placeholder placeholder--logo"><img src={v.logo} alt={v.name} loading="lazy" /></li>
         : <li class="placeholder placeholder--logo">{v.name}</li>)}
     </ul>

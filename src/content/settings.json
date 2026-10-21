@@ -1,7 +1,7 @@
 {
   "name": "Hugo Buenrostro",
   "email": "buenrsotro.h@gmail.com",
-  "linkedin": "https://www.linkedin.com/",
+  "linkedin": "https://www.linkedin.com/in/hugobuenrostro/",
   "accent": {
     "light": "#5a3ec8",
     "lightInk": "#ffffff",
@@ -9,27 +9,87 @@
     "darkInk": "#0d0e10"
   },
   "files": {
-    "cvEs": "/files/cv-hugo-buenrostro-es.pdf",
-    "cvEn": "/files/cv-hugo-buenrostro-en.pdf",
-    "portfolioEs": "/files/cv-hugo-buenrostro-es.pdf",
-    "portfolioEn": "/files/cv-hugo-buenrostro-en.pdf"
+    "cvEs": "/files/files/cvEs.pdf",
+    "cvEn": "/files/files/cvEn.pdf",
+    "portfolioEs": "/files/files/portfolioEs.pdf",
+    "portfolioEn": "/files/files/portfolioEn.pdf"
   },
-  "video": {
-    "src": "",
-    "poster": ""
-  },
+  "video": {},
+  "howEvidence": [
+    {
+      "image": "/images/how/howEvidence/0/image.png",
+      "w": 527,
+      "h": 459,
+      "altEs": "Síntesis de investigación y wireframes de la plataforma",
+      "altEn": "Research synthesis and platform wireframes"
+    },
+    {
+      "image": "/images/how/howEvidence/1/image.png",
+      "w": 2048,
+      "h": 788,
+      "altEs": "Fundamentos del sistema de diseño de Wiggot basados en Material Design",
+      "altEn": "Wiggot design system foundations based on Material Design"
+    },
+    {
+      "image": "/images/how/howEvidence/2/image.png",
+      "w": 1556,
+      "h": 864,
+      "altEs": "Proceso de documentación del sistema de diseño compartido con el equipo",
+      "altEn": "Design system documentation process shared with the team"
+    }
+  ],
   "venues": [
-    { "name": "Talent Land", "logo": "" },
-    { "name": "UNAM", "logo": "" },
-    { "name": "UANL", "logo": "" },
-    { "name": "Secretaría de Innovación Jalisco", "logo": "" },
-    { "name": "CONTPAQi", "logo": "" }
+    {
+      "name": "Talent Land"
+    },
+    {
+      "name": "UNAM"
+    },
+    {
+      "name": "UANL"
+    },
+    {
+      "name": "Secretaría de Innovación Jalisco"
+    },
+    {
+      "name": "CONTPAQi"
+    }
   ],
   "brands": [
-    { "name": "Verde Botella", "logo": "/images/brands/verde-botella.svg", "year": "2021", "es": "Manualidades ecológicas", "en": "Eco-friendly crafts" },
-    { "name": "Irving Leal", "logo": "/images/brands/irving-leal.svg", "year": "2022", "es": "Marca personal de ganadería", "en": "Livestock personal brand" },
-    { "name": "Ángeles Caloca", "logo": "/images/brands/angeles-caloca.svg", "year": "2022", "es": "Abogada familiar", "en": "Family lawyer" },
-    { "name": "Ladrar.Ladrar", "logo": "/images/brands/ladrar-ladrar.svg", "year": "2020", "es": "Accesorios para perros", "en": "Dog accessories" },
-    { "name": "Capire", "logo": "/images/brands/capire.svg", "year": "2020", "es": "Enseñanza didáctica", "en": "Learning community" }
+    {
+      "name": "Verde Botella",
+      "logo": "/images/brands/brands/0/logo.svg",
+      "year": "2021",
+      "es": "Manualidades ecológicas",
+      "en": "Eco-friendly crafts"
+    },
+    {
+      "name": "Irving Leal",
+      "logo": "/images/brands/brands/1/logo.svg",
+      "year": "2022",
+      "es": "Marca personal de ganadería",
+      "en": "Livestock personal brand"
+    },
+    {
+      "name": "Ángeles Caloca",
+      "logo": "/images/brands/brands/2/logo.svg",
+      "year": "2022",
+      "es": "Abogada familiar",
+      "en": "Family lawyer"
+    },
+    {
+      "name": "Ladrar.Ladrar",
+      "logo": "/images/brands/brands/3/logo.svg",
+      "year": "2020",
+      "es": "Accesorios para perros",
+      "en": "Dog accessories"
+    },
+    {
+      "name": "Capire",
+      "logo": "/images/brands/brands/4/logo.svg",
+      "year": "2020",
+      "es": "Enseñanza didáctica",
+      "en": "Learning community"
+    }
   ]
 }

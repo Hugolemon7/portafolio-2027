@@ -2,6 +2,6 @@
 import ProjectPage from '../../../views/ProjectPage.astro';
 import { projectPaths } from '../../../lib/projects';
 export const getStaticPaths = () => projectPaths('en');
-const { entry, next, hasAlt } = Astro.props;
+const { project, next } = Astro.props;
 ---
-<ProjectPage lang="en" entry={entry} next={next} hasAlt={hasAlt} />
+<ProjectPage lang="en" project={project} next={next} />

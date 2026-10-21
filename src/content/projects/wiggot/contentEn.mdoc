@@ -1,0 +1,94 @@
+## Summary
+
+Wiggot is a real estate platform for agents. It had duplicated interfaces, an undocumented design system and a fragmented mobile experience. With two other designers I created a new design system on top of Material Design using Atomic Design, and redesigned search, the listings exchange, shared lists and the property card. Agents found the platform clearer and less cluttered on desktop and mobile.
+
+{% figure
+   src="/images/projects/wiggot/new-ui.png"
+   alt="New Wiggot screens on desktop and mobile"
+   caption="The new system applied to lists, listings and profile."
+   wide=false /%}
+
+## The problem
+
+The product had several designs for the same feature, information without a clear hierarchy, and key sections that didn't adapt to mobile. The existing design system had no documentation, so every change was more expensive and the experience felt fragmented.
+
+{% figure
+   src="/images/projects/wiggot/system-map.png"
+   alt="Map of the previous, undocumented design system"
+   caption="The previous system: loose, undocumented pieces."
+   wide=true /%}
+
+## My role
+
+UX strategy, wireframes and high-fidelity prototypes in Figma, usability testing with internal users, and system documentation so engineering could scale it. I also took part in research, benchmarking, data synthesis, co-ideation sessions and user flows.
+
+## What we found
+
+- **Not built for mobile:** several key sections weren't optimized for small screens.
+- **Too many interfaces:** there were multiple versions of similar features, which confused users.
+- **Weak information architecture:** information didn't follow a clear, logical flow.
+- **Competitors** had a consistent system that reinforced their brand and efficiency.
+
+{% figure
+   src="/images/projects/wiggot/research.png"
+   alt="Research synthesis and wireframes"
+   caption="Aligning features and responsive versions."
+   wide=false /%}
+
+## Key decisions
+
+1. **Material Design as the base** instead of a system built from scratch, to gain speed and parity between desktop and mobile.
+1. **Atomic Design for documentation:** atoms, molecules, organisms, templates and pages. Engineering finds every piece by its level.
+1. **A mandatory documentation process:** build the component, document it in the template and announce it in the team channel.
+
+{% figure
+   src="/images/projects/wiggot/foundations.png"
+   alt="System foundations based on Material Design"
+   caption="Foundations of the new system on Material Design."
+   wide=true /%}
+
+{% figure
+   src="/images/projects/wiggot/documentation.png"
+   alt="Documentation process shared with the team"
+   caption="Design system documentation process."
+   wide=false /%}
+
+## Before and after
+
+{% compare
+   before="/images/projects/wiggot/search-before.png"
+   after="/images/projects/wiggot/search-after.png"
+   beforeLabel="Previous system"
+   afterLabel="New system"
+   alt="Wiggot search"
+   caption="Search: previous system and new system." /%}
+
+{% compare
+   before="/images/projects/wiggot/results-before.png"
+   after="/images/projects/wiggot/results-wireframe.png"
+   beforeLabel="Previous system"
+   afterLabel="Wireframe"
+   alt="Search results page"
+   caption="Search results: previous system and wireframe." /%}
+
+{% compare
+   before="/images/projects/wiggot/card-before.png"
+   after="/images/projects/wiggot/card-after.png"
+   beforeLabel="Previous system"
+   afterLabel="New system"
+   alt="Property card"
+   caption="Property card: before and after." /%}
+
+## Outcome
+
+Users perceived a clearer, less cluttered platform. One system now serves desktop and mobile, and it became the foundation of the mobile app. At DD360 I also shipped a guided interface tour that increased adoption and retention.
+
+{% callout title="About metrics" %}
+This project didn't measure quantitative before-and-after indicators. I'd rather say so plainly than make numbers up.
+{% /callout %}
+
+## What I learned
+
+- **An undocumented system is debt.** Documenting from day one is what makes scaling possible.
+- **Visual consistency improves perceived simplicity:** in testing, users felt more at ease when elements were consistent.
+- **What I'd do differently:** define success metrics (search time, task completion) before starting, to measure before and after.

@@ -2,32 +2,42 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-// Proyectos y casos de estudio: un archivo por idioma (src/content/projects/{es,en}/slug.mdoc)
+// Proyectos: una carpeta por proyecto (src/content/projects/<slug>/).
+// index.mdoc = datos de ambos idiomas + contenido en español; contentEn.mdoc = contenido en inglés.
+const loc = z.object({
+  title: z.string().optional(),
+  summary: z.string().default(''),
+  discipline: z.string().default(''),
+  role: z.string().default(''),
+  team: z.string().default(''),
+  duration: z.string().default(''),
+  platforms: z.string().default(''),
+  tools: z.string().default(''),
+  coverAlt: z.string().default(''),
+  paneLeftAlt: z.string().default(''),
+  paneRightAlt: z.string().default(''),
+});
 const projects = defineCollection({
-  loader: glob({ pattern: '**/*.mdoc', base: './src/content/projects' }),
+  loader: glob({ pattern: '*/index.mdoc', base: './src/content/projects', generateId: ({ entry }) => entry.split('/')[0] }),
   schema: z.object({
     title: z.string(),
-    client: z.string(),
-    year: z.string(),
-    kind: z.enum(['case', 'project', 'archive']),
+    client: z.string().default(''),
+    year: z.string().default(''),
+    kind: z.enum(['case', 'project', 'archive']).default('project'),
     visibility: z.enum(['public', 'private']).default('public'),
     order: z.number().default(99),
     featured: z.boolean().default(false),
-    summary: z.string(),
-    discipline: z.string(),
-    role: z.string().optional(),
-    team: z.string().optional(),
-    duration: z.string().optional(),
-    platforms: z.string().optional(),
-    tools: z.string().optional(),
-    cover: z.string().default(""),
-    coverAlt: z.string().default(""),
-    paneLeft: z.string().default(""),
-    paneLeftAlt: z.string().default(""),
-    paneRight: z.string().default(""),
-    paneRightAlt: z.string().default(''),
+    cover: z.string().nullish().transform((v) => v ?? ''),
+    paneLeft: z.string().nullish().transform((v) => v ?? ''),
+    paneRight: z.string().nullish().transform((v) => v ?? ''),
     paneRightDetail: z.boolean().default(false),
+    es: loc.prefault({}),
+    en: loc.prefault({}),
   }),
+});
+const projectsEn = defineCollection({
+  loader: glob({ pattern: '*/contentEn.mdoc', base: './src/content/projects', generateId: ({ entry }) => entry.split('/')[0] }),
+  schema: z.object({}).passthrough(),
 });
 
 // Experiencia: un archivo por puesto e idioma
@@ -43,4 +53,4 @@ const experience = defineCollection({
   }),
 });
 
-export const collections = { projects, experience };
+export const collections = { projects, projectsEn, experience };

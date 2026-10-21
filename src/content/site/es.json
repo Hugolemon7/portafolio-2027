@@ -207,35 +207,19 @@
     "steps": [
       {
         "lead": "Primero, los datos.",
-        "text": "Antes de mover un píxel reviso Hotjar, Adobe Analytics y lo que dicen los usuarios en pruebas. Las decisiones de diseño se defienden con evidencia, no con gusto.",
-        "image": "/images/how/research.png",
-        "alt": "Síntesis de investigación y wireframes de la plataforma",
-        "w": 527,
-        "h": 459
+        "text": "Antes de mover un píxel reviso Hotjar, Adobe Analytics y lo que dicen los usuarios en pruebas. Las decisiones de diseño se defienden con evidencia, no con gusto."
       },
       {
         "lead": "Después, el sistema.",
-        "text": "Diseño componentes con tokens y variables en Figma, documentados para que ingeniería pueda usarlos sin preguntarme. Así un cambio se hace una vez y llega a todo el producto.",
-        "image": "/images/how/system.png",
-        "alt": "Fundamentos del sistema de diseño de Wiggot basados en Material Design",
-        "w": 2048,
-        "h": 788
+        "text": "Diseño componentes con tokens y variables en Figma, documentados para que ingeniería pueda usarlos sin preguntarme. Así un cambio se hace una vez y llega a todo el producto."
       },
       {
         "lead": "Dentro del sprint,",
-        "text": "no al margen. Participo en grooming, refinamiento y planeación con Product Owners y desarrollo en Jira, y valido accesibilidad con WCAG 2.2 antes de entregar.",
-        "image": "/images/how/sprint.png",
-        "alt": "Proceso de documentación del sistema de diseño compartido con el equipo",
-        "w": 1556,
-        "h": 864
+        "text": "no al margen. Participo en grooming, refinamiento y planeación con Product Owners y desarrollo en Jira, y valido accesibilidad con WCAG 2.2 antes de entregar."
       },
       {
         "lead": "Y con IA,",
         "text": "para llegar antes a la prueba. Prototipo en código con Claude Code e investigo con Claude para validar ideas en días, no semanas.",
-        "image": "",
-        "alt": "",
-        "w": 0,
-        "h": 0,
         "placeholder": "Video: de Figma a un prototipo funcional con Claude Code · 20 s"
       }
     ]

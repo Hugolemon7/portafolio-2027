@@ -208,34 +208,21 @@
       {
         "lead": "Data first.",
         "text": "Before moving a pixel I look at Hotjar, Adobe Analytics and what users say in testing. Design decisions are defended with evidence, not taste.",
-        "image": "/images/how/research.png",
-        "alt": "Research synthesis and platform wireframes",
-        "w": 527,
-        "h": 459
+        "placeholder": ""
       },
       {
         "lead": "Then, the system.",
         "text": "I design components with tokens and variables in Figma, documented so engineering can ship them without asking me. A change happens once and reaches the whole product.",
-        "image": "/images/how/system.png",
-        "alt": "Wiggot design system foundations based on Material Design",
-        "w": 2048,
-        "h": 788
+        "placeholder": ""
       },
       {
         "lead": "Inside the sprint,",
         "text": "not on the sidelines. I join grooming, refinement and planning with Product Owners and engineers in Jira, and check accessibility against WCAG 2.2 before handoff.",
-        "image": "/images/how/sprint.png",
-        "alt": "Design system documentation process shared with the team",
-        "w": 1556,
-        "h": 864
+        "placeholder": ""
       },
       {
         "lead": "And with AI,",
         "text": "to get to testing sooner. I prototype in code with Claude Code and research with Claude to validate ideas in days, not weeks.",
-        "image": "",
-        "alt": "",
-        "w": 0,
-        "h": 0,
         "placeholder": "Video: from Figma to a working prototype with Claude Code · 20 s"
       }
     ]

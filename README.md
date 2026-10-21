@@ -1,6 +1,8 @@
 # Portafolio · Hugo Buenrostro
 
-Sitio personal de Hugo Buenrostro, Product Designer. Astro 7 · Markdoc · Vercel · (Keystatic en la Etapa 5).
+Sitio personal de Hugo Buenrostro, Product Designer. Astro 7 · Markdoc · Keystatic · Vercel.
+
+Editar contenido: `npm run dev` → http://localhost:4321/keystatic (guía en `content-plan/GUIA-KEYSTATIC.md`).
 
 ## Comandos
 
@@ -17,7 +19,7 @@ npm run check      # revisa tipos
 |---|---|
 | Textos del sitio (ES / EN) | `src/content/site/es.json`, `src/content/site/en.json` |
 | Datos generales, color de acento, PDFs, logos | `src/content/settings.json` |
-| Proyectos y casos de estudio | `src/content/projects/{es,en}/*.mdoc` |
+| Proyectos y casos de estudio | `src/content/projects/<slug>/index.mdoc` (datos ES/EN + contenido ES) y `contentEn.mdoc` |
 | Experiencia | `src/content/experience/{es,en}/*.json` |
 | Imágenes | `public/images/` · PDFs en `public/files/` |
 | Estilos | `src/styles/global.css` (sistema) y `src/styles/pages.css` (páginas) |
@@ -39,6 +41,10 @@ npm run check      # revisa tipos
 | `/proyectos/` · `/proyectos/[slug]/` | `/en/work/` · `/en/work/[slug]/` |
 | `/sobre-mi/` | `/en/about/` |
 | `/contacto/` | `/en/contact/` |
+
+## Keystatic en producción (modo GitHub)
+
+En local guarda en archivos. En Vercel, define `PUBLIC_KEYSTATIC_GITHUB_REPO=Hugolemon7/<repo>` y las variables que genera la GitHub App de Keystatic (`KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET`, `PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`). Se configura en la Etapa 7.
 
 ## Formulario de contacto (Resend)
 
