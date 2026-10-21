@@ -1,6 +1,6 @@
 # Portafolio · Hugo Buenrostro
 
-Sitio personal de Hugo Buenrostro, Product Designer. Astro 7 · Markdoc · Keystatic · Vercel.
+Sitio personal de Hugo Buenrostro, Product Designer · https://hugo-buenrostro.vercel.app · Astro 7 · Markdoc · Keystatic · Vercel.
 
 Editar contenido: `npm run dev` → http://localhost:4321/keystatic (guía en `content-plan/GUIA-KEYSTATIC.md`).
 
@@ -12,6 +12,7 @@ npm run dev        # servidor local en http://localhost:4321
 npm run build      # genera el sitio en dist/
 npm run check      # revisa tipos
 npm test           # pruebas Playwright sobre el build (corre antes npm run build)
+BASE_URL=https://hugo-buenrostro.vercel.app npm test   # las mismas pruebas sobre el sitio publicado
 npm run images     # regenera variantes WebP (también corre solo antes de dev/build)
 ```
 
