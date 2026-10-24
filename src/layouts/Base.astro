@@ -4,6 +4,7 @@ import '../styles/pages.css';
 import Header from '../components/Header.astro';
 import LangHint from '../components/LangHint.astro';
 import { t, settings, htmlLang, routes, type Lang } from '../i18n';
+import { fontSetup } from '../lib/fonts';
 
 interface Props {
   lang: Lang;
@@ -22,6 +23,7 @@ const canonical = new URL(Astro.url.pathname, site).href;
 const altHref = new URL(alternate, site).href;
 const other: Lang = lang === 'es' ? 'en' : 'es';
 const accentVars = `--accent-light:${settings.accent.light};--accent-light-ink:${settings.accent.lightInk};--accent-dark:${settings.accent.dark};--accent-dark-ink:${settings.accent.darkInk}`;
+const fonts = fontSetup(settings.fonts);
 const person = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -47,8 +49,10 @@ const person = {
   <link rel="alternate" hreflang="x-default" href={lang === 'es' ? canonical : altHref}>
   <meta name="theme-color" content="#06070b" data-theme-color>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="/fonts/clash-grotesk-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+  {fonts.builtIn.display && <link rel="preload" href="/fonts/clash-grotesk-500.woff2" as="font" type="font/woff2" crossorigin>}
+  {fonts.builtIn.text && <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>}
+  {fonts.preload.map((f) => <link rel="preload" href={f.href} as="font" type={f.type} crossorigin>)}
+  {fonts.css && <style is:inline set:html={fonts.css} />}
   <meta property="og:type" content="website">
   <meta property="og:title" content={pageTitle}>
   <meta property="og:description" content={desc}>
@@ -73,6 +77,9 @@ const person = {
   <LangHint lang={lang} alternate={alternate} />
   <script>
     import '../scripts/sky.js';
+    import '../scripts/plus-wave.js';
+    import '../scripts/lava.js';
+    import '../scripts/specular.js';
     import '../scripts/app.js';
   </script>
 </body>

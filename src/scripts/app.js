@@ -95,7 +95,9 @@ const darkHosts = $$('[data-sky-host]');
 const paintBar = () => {
   if (!bar) return;
   const y = bar.offsetHeight / 2;
-  const overDark = darkHosts.some((el) => { const r = el.getBoundingClientRect(); return r.top <= y && r.bottom >= y; });
+  // el hero "campo de +" sigue el tema: en modo claro la barra va sólida sobre él
+  const lightNow = !(root.dataset.theme === 'dark' || (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches));
+  const overDark = darkHosts.some((el) => { if (lightNow && el.matches('.hero--wave')) return false; const r = el.getBoundingClientRect(); return r.top <= y && r.bottom >= y; });
   bar.classList.toggle('is-solid', !overDark);
   const meta = $('[data-theme-color]');
   if (meta) meta.setAttribute('content', getComputedStyle(bar).backgroundColor === 'rgba(0, 0, 0, 0)' || overDark ? '#06070b' : getComputedStyle(root).getPropertyValue('--bg').trim());
@@ -112,6 +114,7 @@ $$('[data-mode-toggle]').forEach((b) => b.addEventListener('click', () => {
   root.dataset.theme = next;
   try { localStorage.setItem('mode', next); } catch (e) {}
   paintMode();
+  paintBar();
 }));
 paintMode();
 

@@ -1,11 +1,14 @@
 ---
-import { t, routes, type Lang } from '../../i18n';
+import { t, settings, routes, type Lang } from '../../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const h = t(lang).hero;
+// fondo elegido en Keystatic → Ajustes generales → Efectos: campo de "+" o cielo de estrellas
+const wave = (settings.look?.hero ?? 'wave') === 'wave';
+const spec = settings.look?.heroButtons ?? true;
 ---
-<section class="hero" aria-labelledby="hero-title" data-sky-host>
-  <canvas class="sky" aria-hidden="true" data-sky></canvas>
+<section class:list={['hero', { 'hero--wave': wave }]} aria-labelledby="hero-title" data-sky-host data-wave-host>
+  {wave ? <canvas class="sky" aria-hidden="true" data-plus-wave="hero"></canvas> : <canvas class="sky" aria-hidden="true" data-sky></canvas>}
   <div class="hero__body">
     <h1 id="hero-title" class="hero__title lines">
       <span class="line"><span data-line style="--i:0">{h.line1}</span></span>
@@ -13,8 +16,8 @@ const h = t(lang).hero;
     </h1>
     <p class="hero__lead" data-rise style="--i:3">{h.lead}</p>
     <div class="hero__actions" data-rise style="--i:4">
-      <a class="button" href={routes.contact[lang]}>{h.primary}</a>
-      <a class="button button--ghost" href="#trabajo">{h.secondary}</a>
+      <a class="button" href={routes.contact[lang]} data-specular={spec || undefined}>{h.primary}</a>
+      <a class="button button--ghost" href="#trabajo" data-specular={spec || undefined}>{h.secondary}</a>
     </div>
   </div>
   <p class="hero__meta" data-rise style="--i:5">{h.meta}</p>

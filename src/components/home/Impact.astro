@@ -1,9 +1,10 @@
 ---
-import { t, type Lang } from '../../i18n';
+import { t, settings, type Lang } from '../../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const s = t(lang);
 const im = s.impact;
+const wave = settings.look?.impactWave ?? true;
 ---
 <section class="impact wrap" aria-labelledby="impact-title">
   <div class="section-head">
@@ -13,7 +14,8 @@ const im = s.impact;
   <ul class="cards" role="list">
     {im.items.map((it, i) => (
       <li data-reveal style={`--d:${i}`}>
-        <button class="card" type="button" data-detail={`impact-${i}`} data-cursor-text={s.ui.view}>
+        <button class="card" type="button" data-detail={`impact-${i}`} data-cursor-text={s.ui.view} data-wave-host={wave || undefined}>
+          {wave && <canvas class="card__wave" aria-hidden="true" data-plus-wave="card"></canvas>}
           <span class="card__num nums">{it.value}</span>
           <span class="card__label">{it.label}</span>
           <span class="card__icon" aria-hidden="true"></span>

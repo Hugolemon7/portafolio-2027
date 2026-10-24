@@ -1,5 +1,6 @@
 // Panel de edición del portafolio: /keystatic
-// En local guarda en los archivos del proyecto; en producción, en GitHub (Etapa 7).
+// En local (npm run dev) guarda en los archivos del proyecto; en producción, en GitHub (Etapa 7).
+// Para probar el modo GitHub en local: PUBLIC_KEYSTATIC_LOCAL_GITHUB=1 npm run dev
 import { config, collection, singleton, fields } from '@keystatic/core';
 import { block, wrapper } from '@keystatic/core/content-components';
 import { accentField } from './keystatic/accent-field';
@@ -42,6 +43,29 @@ const caseComponents = {
     schema: { title: txt('Título de la nota') },
   }),
 };
+
+// ---------- tipografías: nombre de la familia + archivos propios (opcionales) ----------
+const WEIGHTS = ['100', '200', '300', '400', '500', '600', '700', '800', '900'].map((w) => ({ label: w, value: w }));
+const fontRole = (label: string, def: string) =>
+  fields.object(
+    {
+      family: txt('Nombre de la familia', `Por defecto: ${def} (incluida). Si subes archivos, ponle el nombre de la fuente. Sin archivos, puedes escribir una fuente del sistema (p. ej. Georgia).`),
+      fallback: fields.select({
+        label: 'Respaldo mientras carga',
+        options: [{ label: 'Sans serif', value: 'sans-serif' }, { label: 'Serif', value: 'serif' }, { label: 'Monoespaciada', value: 'monospace' }],
+        defaultValue: 'sans-serif',
+      }),
+      files: fields.array(
+        fields.object({
+          file: fields.file({ label: 'Archivo (.woff2 recomendado; también .woff, .ttf u .otf)', directory: 'public/fonts/custom', publicPath: '/fonts/custom/' }),
+          weight: fields.select({ label: 'Peso', options: WEIGHTS, defaultValue: '400' }),
+          style: fields.select({ label: 'Estilo', options: [{ label: 'Normal', value: 'normal' }, { label: 'Itálica', value: 'italic' }], defaultValue: 'normal' }),
+        }),
+        { label: 'Archivos de la fuente (vacío = usar la incluida)', itemLabel: (p) => `${p.fields.weight.value} · ${p.fields.style.value === 'italic' ? 'itálica' : 'normal'}` },
+      ),
+    },
+    { label },
+  );
 
 // ---------- proyectos: una entrada por proyecto con ambos idiomas ----------
 // Las imágenes se comparten entre idiomas (se guardan una sola vez por proyecto).
@@ -238,7 +262,7 @@ const siteSchema = {
 };
 
 export default config({
-  storage: repo ? { kind: 'github', repo } : { kind: 'local' },
+  storage: repo && (!import.meta.env.DEV || import.meta.env.PUBLIC_KEYSTATIC_LOCAL_GITHUB) ? { kind: 'github', repo } : { kind: 'local' },
   ui: {
     brand: { name: 'Hugo Buenrostro' },
     navigation: {
@@ -257,6 +281,37 @@ export default config({
         email: txt('Correo de contacto'),
         linkedin: fields.url({ label: 'LinkedIn' }),
         accent: accentField({ label: 'Color de acento' }),
+        look: fields.object(
+          {
+            hero: fields.select({
+              label: 'Fondo del hero',
+              options: [
+                { label: 'Campo de + (crecen con el cursor, onda al hacer clic)', value: 'wave' },
+                { label: 'Cielo de estrellas (anterior)', value: 'sky' },
+              ],
+              defaultValue: 'wave',
+            }),
+            heroButtons: fields.checkbox({ label: 'Botones del hero con contorno de luz animado', defaultValue: true }),
+            impactWave: fields.checkbox({ label: 'Tarjetas de "Impacto medible" con campo de +', defaultValue: true }),
+            finale: fields.select({
+              label: 'Fondo de la sección de contacto (pie de todas las páginas)',
+              options: [
+                { label: 'Lava luminosa sobre el color de acento', value: 'lava' },
+                { label: 'Cielo de estrellas (anterior)', value: 'sky' },
+              ],
+              defaultValue: 'lava',
+            }),
+          },
+          { label: 'Efectos e interacciones' },
+        ),
+        fonts: fields.object(
+          {
+            display: fontRole('Títulos', 'Clash Grotesk'),
+            text: fontRole('Texto', 'Satoshi'),
+            displayWeight: fields.select({ label: 'Peso de los títulos', options: WEIGHTS, defaultValue: '500' }),
+          },
+          { label: 'Tipografías' },
+        ),
         files: fields.object(
           {
             cvEs: fields.file({ label: 'CV en español (PDF)', directory: 'public/files', publicPath: '/files/' }),

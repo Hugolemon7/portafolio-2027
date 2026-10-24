@@ -9,9 +9,11 @@ const other = lang === 'es' ? 'en' : 'es';
 const cv = lang === 'es' ? settings.files.cvEs : settings.files.cvEn;
 const cvOther = lang === 'es' ? settings.files.cvEn : settings.files.cvEs;
 const portfolio = lang === 'es' ? settings.files.portfolioEs : settings.files.portfolioEn;
+// fondo elegido en Keystatic → Ajustes generales → Efectos: lava luminosa sobre el acento o cielo de estrellas
+const lava = (settings.look?.finale ?? 'lava') === 'lava';
 ---
-<section class:list={['finale', { 'finale--bare': !cta }]} id="contacto" aria-labelledby={cta ? 'finale-title' : undefined} aria-label={cta ? undefined : ft.contact} data-sky-host>
-  <canvas class="sky" aria-hidden="true" data-sky></canvas>
+<section class:list={['finale', { 'finale--bare': !cta, 'finale--lava': lava }]} id="contacto" aria-labelledby={cta ? 'finale-title' : undefined} aria-label={cta ? undefined : ft.contact} data-sky-host data-lava-host>
+  {lava ? <canvas class="sky" aria-hidden="true" data-lava></canvas> : <canvas class="sky" aria-hidden="true" data-sky></canvas>}
   {cta && (
     <div class="finale__cta">
       <h2 id="finale-title" class="finale__title">{f.title}</h2>

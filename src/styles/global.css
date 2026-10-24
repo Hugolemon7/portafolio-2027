@@ -25,6 +25,10 @@
   --nebula-3: #2a1a6e;
   --btn2: #06070b;      /* botón secundario: el negro del espacio */
   --btn2-ink: #eceef5;
+  --hero-bg: var(--bg);           /* hero "campo de +": sigue el tema */
+  --hero-ink: var(--ink);
+  --hero-glow: 0.1;
+  --hero-word: var(--ink);
 
   --font-display: "Clash Grotesk", system-ui, sans-serif;
   --font-text: "Satoshi", system-ui, sans-serif;
@@ -58,12 +62,12 @@
 }
 :root[data-theme="dark"] {
   --bg: #121418; --surface: #1b1e24; --field: #23272e; --ink: #eceef2; --muted: #aeb3bd;
-  --accent: var(--accent-dark, #b9a4ff); --accent-ink: var(--accent-dark-ink, #0d0e10); --btn2: #eceef5; --btn2-ink: #06070b; color-scheme: dark;
+  --accent: var(--accent-dark, #b9a4ff); --accent-ink: var(--accent-dark-ink, #0d0e10); --btn2: #eceef5; --btn2-ink: #06070b; --hero-bg: #06070b; --hero-ink: #eceef5; --hero-glow: 0.32; --hero-word: #fff; color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #121418; --surface: #1b1e24; --field: #23272e; --ink: #eceef2; --muted: #aeb3bd;
-    --accent: var(--accent-dark, #b9a4ff); --accent-ink: var(--accent-dark-ink, #0d0e10); --btn2: #eceef5; --btn2-ink: #06070b; color-scheme: dark;
+    --accent: var(--accent-dark, #b9a4ff); --accent-ink: var(--accent-dark-ink, #0d0e10); --btn2: #eceef5; --btn2-ink: #06070b; --hero-bg: #06070b; --hero-ink: #eceef5; --hero-glow: 0.32; --hero-word: #fff; color-scheme: dark;
   }
 }
 
@@ -190,6 +194,9 @@ p { text-wrap: pretty; }
 .hero, .finale { position: relative; color: var(--space-ink); overflow: clip; isolation: isolate;
   background: radial-gradient(60% 55% at 80% 25%, rgb(70 40 160 / 0.32), transparent 70%), radial-gradient(50% 50% at 15% 85%, rgb(30 60 110 / 0.22), transparent 70%), var(--space); } /* taste-skill-ignore: espacio con nebulosa pedido */
 .sky { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; }
+.hero--wave { --space: var(--hero-bg); --space-ink: var(--hero-ink); transition: background-color var(--t-ui) ease, color var(--t-ui) ease;
+  background: radial-gradient(60% 55% at 80% 25%, rgb(70 40 160 / var(--hero-glow)), transparent 70%), radial-gradient(50% 50% at 15% 85%, rgb(30 60 110 / calc(var(--hero-glow) * 0.7)), transparent 70%), var(--hero-bg); } /* taste-skill-ignore: nebulosa tenue que sigue el tema */
+.hero--wave .nebula-word { color: var(--hero-word); }
 .hero { min-height: 100svh; display: grid; grid-template-rows: 1fr auto; padding-top: var(--bar-h); }
 .lines .line { display: block; overflow: clip; padding-bottom: 0.1em; margin-bottom: -0.1em; }
 .lines [data-line] { display: block; }
@@ -205,6 +212,25 @@ p { text-wrap: pretty; }
 .hero .button--ghost:hover, .finale .button--ghost:hover { background: rgb(236 238 245 / 0.12); box-shadow: inset 0 0 0 1px rgb(236 238 245 / 0.7); filter: none; } /* taste-skill-ignore: hover del ghost */
 .hero .button:not(.button--ghost):hover, .finale .button:not(.button--ghost):hover { box-shadow: 0 0 0 4px rgb(167 112 255 / 0.35); } /* taste-skill-ignore: anillo solo en hover */
 .hero__meta { grid-row: 2; align-self: end; padding: 0 var(--margin) 2rem; font-size: var(--step-small); color: color-mix(in srgb, var(--space-ink) 82%, transparent); }
+
+/* botones con contorno de luz (Keystatic → Efectos). El ángulo y la intensidad los mueve specular.js */
+@property --spec-a { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
+.button[data-specular] { position: relative; isolation: isolate; --spec-c: #fff; --spec-i: 0.6; }
+.button[data-specular]:not(.button--ghost) { --spec-c: var(--nebula-2); }
+.button[data-specular]::before { content: ""; position: absolute; border-radius: inherit; pointer-events: none;
+  background: conic-gradient(from var(--spec-a), var(--spec-c) 0deg, transparent 50deg, transparent 130deg, color-mix(in srgb, var(--spec-c) 55%, transparent) 180deg, transparent 230deg, transparent 310deg, var(--spec-c) 360deg); }
+.button[data-specular]::before { inset: 0; padding: 2px; opacity: var(--spec-i);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+.hero .button--ghost[data-specular] { background: color-mix(in srgb, var(--space) 88%, transparent); }
+.hero .button--ghost[data-specular]:hover { background: color-mix(in srgb, var(--space) 80%, var(--nebula-1)); }
+.hero--wave .button--ghost { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--space-ink) 40%, transparent); }
+.hero--wave .button--ghost:hover { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--space-ink) 70%, transparent); }
+.hero--wave .button--ghost[data-specular] { --spec-c: var(--hero-spec, #fff); }
+:root:not([data-theme="dark"]) .hero--wave { --hero-spec: var(--accent); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero--wave { --hero-spec: #fff; } }
+
+/* tarjetas de impacto con campo de "+" */
+.card__wave { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
 
 /* ---------- 2 · impacto ---------- */
 .impact { padding-block: var(--section); }
@@ -306,6 +332,13 @@ ul.poster__list { display: grid; gap: 0.25rem; padding-inline: calc(var(--margin
 .finale__cta { max-width: 52rem; margin: 0 auto calc(var(--section) * 0.9); text-align: center; }
 .finale__title { font-size: clamp(2.5rem, 1.4rem + 4.4vw, 5.5rem); line-height: 1; }
 .finale__lead { margin: 1.5rem auto 0; max-width: 40ch; font-size: var(--step-lead); line-height: 1.35; color: color-mix(in srgb, var(--space-ink) 90%, transparent); }
+/* variante lava: el acento de fondo y su tinta para el texto (pareja validada AA en Keystatic) */
+.finale--lava { --space-ink: var(--accent-ink); background: var(--accent); }
+.finale--lava::before { background: radial-gradient(60% 55% at 50% 30%, color-mix(in srgb, #fff 14%, transparent), transparent 75%); } /* taste-skill-ignore: brillo base si no hay WebGL */
+.finale--lava .button { background: var(--accent-ink); color: var(--accent); }
+.finale--lava .button--ghost { background: transparent; color: var(--accent-ink); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent-ink) 55%, transparent); }
+.finale--lava .button--ghost:hover { background: color-mix(in srgb, var(--accent-ink) 12%, transparent); box-shadow: inset 0 0 0 1px var(--accent-ink); }
+.finale--lava .button:not(.button--ghost):hover { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-ink) 30%, transparent); }
 .foot { position: relative; isolation: isolate; color: var(--ink); padding: clamp(1.75rem, 3vw, 2.75rem); --foot-s: 1; --foot-r: var(--r-panel); }
 .foot::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--bg); border-radius: var(--foot-r); transform: scale(var(--foot-s)); transform-origin: 50% 0; will-change: transform; }
 .foot__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 2.5rem; }

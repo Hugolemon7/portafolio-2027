@@ -8,6 +8,25 @@
     "dark": "#b9a4ff",
     "darkInk": "#0d0e10"
   },
+  "look": {
+    "hero": "wave",
+    "heroButtons": true,
+    "impactWave": true,
+    "finale": "lava"
+  },
+  "fonts": {
+    "display": {
+      "family": "Clash Grotesk",
+      "fallback": "sans-serif",
+      "files": []
+    },
+    "text": {
+      "family": "Satoshi",
+      "fallback": "sans-serif",
+      "files": []
+    },
+    "displayWeight": "500"
+  },
   "files": {
     "cvEs": "/files/files/cvEs.pdf",
     "cvEn": "/files/files/cvEn.pdf",
