@@ -99,14 +99,26 @@
   },
   "fonts": {
     "pair": {
-      "display": "Clash Grotesk",
-      "text": "Satoshi",
+      "display": "Unbounded",
+      "text": "Manrope",
       "displayWeight": "500",
       "displayFallback": "sans-serif",
       "textFallback": "sans-serif"
     },
-    "displayFiles": [],
-    "textFiles": []
+    "displayFiles": [
+      {
+        "file": "/fonts/custom/fonts/displayFiles/0/file.ttf",
+        "weight": "700",
+        "style": "normal"
+      }
+    ],
+    "textFiles": [
+      {
+        "file": "/fonts/custom/fonts/textFiles/0/file.ttf",
+        "weight": "400",
+        "style": "normal"
+      }
+    ]
   },
   "files": {
     "cvEs": "/files/files/cvEs.pdf",
