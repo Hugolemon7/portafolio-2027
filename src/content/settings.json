@@ -34,7 +34,7 @@
     }
   },
   "look": {
-    "hero": "sliced",
+    "hero": "prism",
     "heroBackdrop": {
       "prism": {
         "scale": 8.2
