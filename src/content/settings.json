@@ -6,13 +6,59 @@
     "light": "#5a3ec8",
     "lightInk": "#ffffff",
     "dark": "#b9a4ff",
-    "darkInk": "#0d0e10"
+    "darkInk": "#0d0e10",
+    "site": {
+      "light": {
+        "bg": "#eceef1",
+        "surface": "#e1e4e9",
+        "ink": "#1f2328",
+        "muted": "#444a53"
+      },
+      "dark": {
+        "bg": "#121418",
+        "surface": "#1b1e24",
+        "ink": "#eceef2",
+        "muted": "#aeb3bd"
+      }
+    }
   },
   "look": {
     "hero": "wave",
+    "heroColor": {
+      "mode": "single",
+      "light": "#0f9d76",
+      "dark": "#0f9d76",
+      "spacing": 40,
+      "weight": 0.5,
+      "size": 0.5,
+      "grow": 1.95,
+      "opacity": 0.7,
+      "veil": true,
+      "veilOpacity": 0.7,
+      "radius": 0.3
+    },
+    "pulseSpeed": "fast",
+    "pulseEvery": 7,
     "heroButtons": true,
-    "impactWave": true,
-    "finale": "lava"
+    "impactWave": false,
+    "finale": "lava",
+    "finaleColor": {
+      "mode": "accent",
+      "light": {
+        "bg": "#5a3ec8",
+        "ink": "#ffffff",
+        "rimA": "#ff8fd6",
+        "rimB": "#8fc7ff"
+      },
+      "dark": {
+        "bg": "#b9a4ff",
+        "ink": "#0d0e10",
+        "rimA": "#ff8fd6",
+        "rimB": "#8fc7ff"
+      }
+    },
+    "finaleSpeed": "slow",
+    "finaleCount": "9"
   },
   "fonts": {
     "display": {

@@ -33,6 +33,21 @@
 .case-hero__summary { grid-column: 8 / 13; font-size: var(--step-lead); line-height: 1.35; }
 .case-cover { margin: clamp(2.5rem, 5vw, 4rem) var(--margin) 0; aspect-ratio: 16 / 8; overflow: clip; border-radius: var(--r-panel); background: var(--surface); }
 .case-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Scroll Expand (encabezado de cada proyecto con portada). scroll-expand.js mueve --p de 0 a 1 */
+.case-expand { position: relative; height: 100svh; --p: 1; }
+.js .case-expand { height: 230svh; --p: 0; }
+.case-expand__stage { position: sticky; top: 0; height: 100svh; overflow: clip; container-type: size; background: var(--bg); }
+.case-expand__title { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; margin: 0; padding: var(--bar-h) var(--margin) 0; text-align: center; font-size: clamp(3rem, 1rem + 8vw, 9rem); line-height: 0.92; color: var(--ink); text-wrap: balance; }
+.case-expand__frame { --fw: min(30rem, 74cqw); --fh: min(62cqh, 36rem); position: absolute; inset: 0; z-index: 2; color: #fff;
+  clip-path: inset(calc((100cqh - var(--fh)) / 2 * (1 - var(--p)) + var(--bar-h) * 0.5 * (1 - var(--p))) calc((100cqw - var(--fw)) / 2 * (1 - var(--p))) calc((100cqh - var(--fh)) / 2 * (1 - var(--p)) - var(--bar-h) * 0.5 * (1 - var(--p))) round calc(28px * (1 - var(--p)))); }
+.case-expand__frame picture, .case-expand__img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.case-expand__img { object-fit: cover; transform: scale(calc(1.18 - 0.18 * var(--p))); }
+.case-expand__veil { position: absolute; inset: 0; background: rgb(6 7 11 / calc(0.32 + 0.23 * var(--p))); } /* oscurece la foto para que el título blanco cumpla contraste */
+.case-expand__title--light { z-index: 3; color: #fff; font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track); }
+.case-expand__summary { position: absolute; z-index: 3; left: 50%; bottom: clamp(2rem, 8cqh, 5rem); width: min(40rem, calc(100% - 2 * var(--margin))); margin: 0; transform: translate(-50%, calc((1 - var(--reveal)) * 1.5rem)); text-align: center; font-size: var(--step-lead); line-height: 1.35; opacity: var(--reveal); --reveal: clamp(0, (var(--p) - 0.6) / 0.35, 1); }
+.case-expand__crumbs { position: absolute; z-index: 4; top: calc(var(--bar-h) + 1.25rem); left: var(--margin); font-size: var(--step-small); --cw: clamp(0, (var(--p) - 0.78) * 100, 1); color: color-mix(in srgb, #fff calc(var(--cw) * 100%), var(--ink)); }
+.case-expand__crumbs a { color: inherit; }
 .case-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.75rem; margin: var(--gutter) var(--margin) 0; }
 .case-facts > div { padding: 1.1rem 1.25rem; border-radius: var(--r-control); background: var(--surface); }
 .case-facts dt { color: var(--muted); font-size: var(--step-small); margin-bottom: 0.25rem; }

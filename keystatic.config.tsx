@@ -4,6 +4,8 @@
 import { config, collection, singleton, fields } from '@keystatic/core';
 import { block, wrapper } from '@keystatic/core/content-components';
 import { accentField } from './keystatic/accent-field';
+import { plusColorField } from './keystatic/plus-color-field';
+import { finaleColorField } from './keystatic/finale-color-field';
 
 const repo = import.meta.env.PUBLIC_KEYSTATIC_GITHUB_REPO as `${string}/${string}` | undefined;
 
@@ -176,7 +178,7 @@ const siteSchema = {
   ),
   hero: fields.object(
     {
-      line1: txt('Titular · línea 1'), line2Before: txt('Titular · línea 2 (antes de la palabra destacada)'), highlight: txt('Palabra destacada (con aberración cromática)'),
+      line1: txt('Titular · línea 1'), line2Before: txt('Titular · línea 2 (antes de la palabra destacada)'), highlight: txt('Titular · línea 2 (última palabra)'),
       lead: area('Texto de apoyo'), primary: txt('Botón principal'), secondary: txt('Botón secundario'), meta: txt('Línea de ubicación'),
     },
     { label: 'Hero' },
@@ -280,7 +282,7 @@ export default config({
         name: txt('Nombre'),
         email: txt('Correo de contacto'),
         linkedin: fields.url({ label: 'LinkedIn' }),
-        accent: accentField({ label: 'Color de acento' }),
+        accent: accentField({ label: 'Colores del sitio y acento' }),
         look: fields.object(
           {
             hero: fields.select({
@@ -291,6 +293,17 @@ export default config({
               ],
               defaultValue: 'wave',
             }),
+            heroColor: plusColorField({ label: 'Cruces del hero: color, grosor y espaciado' }),
+            pulseSpeed: fields.select({
+              label: 'Velocidad de la onda del hero',
+              options: [
+                { label: 'Lenta', value: 'slow' },
+                { label: 'Media', value: 'normal' },
+                { label: 'Rápida', value: 'fast' },
+              ],
+              defaultValue: 'normal',
+            }),
+            pulseEvery: fields.integer({ label: 'Pulso automático cada (segundos)', description: 'Si nadie mueve el cursor, una onda sale sola cada tantos segundos. 0 = sin pulso automático.', defaultValue: 7, validation: { min: 0, max: 60 } }),
             heroButtons: fields.checkbox({ label: 'Botones del hero con contorno de luz animado', defaultValue: true }),
             impactWave: fields.checkbox({ label: 'Tarjetas de "Impacto medible" con campo de +', defaultValue: true }),
             finale: fields.select({
@@ -300,6 +313,25 @@ export default config({
                 { label: 'Cielo de estrellas (anterior)', value: 'sky' },
               ],
               defaultValue: 'lava',
+            }),
+            finaleColor: finaleColorField({ label: 'Colores de la sección de contacto' }),
+            finaleSpeed: fields.select({
+              label: 'Velocidad de la lava',
+              options: [
+                { label: 'Lenta', value: 'slow' },
+                { label: 'Media', value: 'normal' },
+                { label: 'Rápida', value: 'fast' },
+              ],
+              defaultValue: 'normal',
+            }),
+            finaleCount: fields.select({
+              label: 'Cantidad de formas en la lava',
+              options: [
+                { label: 'Pocas (5)', value: '5' },
+                { label: 'Normal (7)', value: '7' },
+                { label: 'Muchas (9)', value: '9' },
+              ],
+              defaultValue: '7',
             }),
           },
           { label: 'Efectos e interacciones' },

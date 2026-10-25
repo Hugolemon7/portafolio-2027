@@ -23,6 +23,27 @@ const canonical = new URL(Astro.url.pathname, site).href;
 const altHref = new URL(alternate, site).href;
 const other: Lang = lang === 'es' ? 'en' : 'es';
 const accentVars = `--accent-light:${settings.accent.light};--accent-light-ink:${settings.accent.lightInk};--accent-dark:${settings.accent.dark};--accent-dark-ink:${settings.accent.darkInk}`;
+// colores base de cada modo: solo se emiten los que cambian respecto a los originales de global.css
+const SITE_ORIG = {
+  light: { bg: '#eceef1', surface: '#e1e4e9', ink: '#1f2328', muted: '#444a53' },
+  dark: { bg: '#121418', surface: '#1b1e24', ink: '#eceef2', muted: '#aeb3bd' },
+} as const;
+const mixHex = (a: string, b: string, k: number) => '#' + [1, 3, 5].map((i) => Math.round(parseInt(a.slice(i, i + 2), 16) * (1 - k) + parseInt(b.slice(i, i + 2), 16) * k).toString(16).padStart(2, '0')).join('');
+const siteVars = (['light', 'dark'] as const).flatMap((m) => {
+  const t = settings.accent.site?.[m];
+  if (!t) return [];
+  const o = SITE_ORIG[m];
+  const out = (['bg', 'surface', 'ink', 'muted'] as const).filter((k) => t[k].toLowerCase() !== o[k]).map((k) => `--site-${m}-${k}:${t[k]}`);
+  // campos de formulario: un paso más oscuro / claro que las tarjetas
+  if (t.surface.toLowerCase() !== o.surface || t.ink.toLowerCase() !== o.ink) out.push(`--site-${m}-field:${mixHex(t.surface, t.ink, 0.1)}`);
+  return out;
+}).join(';');
+// sección de contacto: halo siempre; fondo y texto solo si no usa el acento (Keystatic → Efectos)
+const fc = settings.look?.finaleColor;
+const finaleVars = fc ? [
+  `--finale-light-rim-a:${fc.light.rimA};--finale-light-rim-b:${fc.light.rimB};--finale-dark-rim-a:${fc.dark.rimA};--finale-dark-rim-b:${fc.dark.rimB}`,
+  fc.mode === 'custom' ? `--finale-light-bg:${fc.light.bg};--finale-light-ink:${fc.light.ink};--finale-dark-bg:${fc.dark.bg};--finale-dark-ink:${fc.dark.ink}` : '',
+].filter(Boolean).join(';') : '';
 const fonts = fontSetup(settings.fonts);
 const person = {
   '@context': 'https://schema.org',
@@ -37,7 +58,7 @@ const person = {
 };
 ---
 <!doctype html>
-<html lang={htmlLang[lang]} style={accentVars}>
+<html lang={htmlLang[lang]} style={[accentVars, siteVars, finaleVars].filter(Boolean).join(';')}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -80,6 +101,7 @@ const person = {
     import '../scripts/plus-wave.js';
     import '../scripts/lava.js';
     import '../scripts/specular.js';
+    import '../scripts/scroll-expand.js';
     import '../scripts/app.js';
   </script>
 </body>

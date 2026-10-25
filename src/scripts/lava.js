@@ -3,9 +3,8 @@
 // El cursor añade un cuerpo que se une a los demás; un clic suelta uno que crece y se disuelve.
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const MAX = 12;           // cuerpos en el shader (7 fijos + cursor + 4 de clic)
-  const BODIES = 7;
-  const SPEED = 0.22;       // velocidad general de la lava
+  const MAX = 14;           // cuerpos en el shader (hasta 9 fijos + cursor + 4 de clic)
+  const SPEEDS = { slow: 0.13, normal: 0.22, fast: 0.36 };   // Keystatic → Efectos → Velocidad de la lava
   const FOLLOW = 0.06;      // retraso del cuerpo que sigue al cursor
   const DROP_LIFE = 3.4;    // segundos que vive un cuerpo soltado con clic
 
@@ -46,10 +45,16 @@ void main() {
   gl_FragColor = vec4(col, 1.0);
 }`;
 
+  const hex = (s, fallback) => {
+    const m = /^#?([0-9a-f]{6})$/i.exec((s || '').trim());
+    return m ? m[1].match(/../g).map((h) => parseInt(h, 16) / 255) : fallback;
+  };
   const rgb = (s) => (/rgba?\(([^)]+)\)/.exec(s) || [0, '90,62,200'])[1].split(',').slice(0, 3).map((v) => parseFloat(v) / 255);
 
   function lava(canvas) {
     const host = canvas.closest('[data-lava-host]') || canvas.parentElement;
+    const SPEED = SPEEDS[canvas.dataset.speed] || SPEEDS.normal;
+    const BODIES = Math.min(9, Math.max(3, Number(canvas.dataset.count) || 7));
     const gl = canvas.getContext('webgl', { antialias: false, alpha: false, premultipliedAlpha: false });
     if (!gl) { canvas.remove(); return; }                   // sin WebGL queda el color de acento con su degradado
     const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
@@ -82,8 +87,9 @@ void main() {
     function colors() {
       const bg = rgb(getComputedStyle(host).backgroundColor);
       gl.uniform3fv(U.uBg, bg);
-      gl.uniform3fv(U.uRimA, [1, 0.56, 0.84]);                // rosa
-      gl.uniform3fv(U.uRimB, [0.56, 0.78, 1]);                // azul
+      const css = getComputedStyle(host);
+      gl.uniform3fv(U.uRimA, hex(css.getPropertyValue('--finale-rim-a'), [1, 0.56, 0.84]));   // contorno (rosa)
+      gl.uniform3fv(U.uRimB, hex(css.getPropertyValue('--finale-rim-b'), [0.56, 0.78, 1]));   // brillo exterior (azul)
     }
     function resize() {
       const r = host.getBoundingClientRect();

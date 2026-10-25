@@ -6,13 +6,16 @@ const h = t(lang).hero;
 // fondo elegido en Keystatic → Ajustes generales → Efectos: campo de "+" o cielo de estrellas
 const wave = (settings.look?.hero ?? 'wave') === 'wave';
 const spec = settings.look?.heroButtons ?? true;
+const color = settings.look?.heroColor;
+const single = color?.mode === 'single';
 ---
 <section class:list={['hero', { 'hero--wave': wave }]} aria-labelledby="hero-title" data-sky-host data-wave-host>
-  {wave ? <canvas class="sky" aria-hidden="true" data-plus-wave="hero"></canvas> : <canvas class="sky" aria-hidden="true" data-sky></canvas>}
+  {wave ? <canvas class="sky" aria-hidden="true" data-plus-wave="hero" data-speed={settings.look?.pulseSpeed ?? 'normal'} data-pulse={settings.look?.pulseEvery ?? 7} data-cell={color?.spacing ?? 40} data-weight={color?.weight ?? 1} data-size={color?.size ?? 1} data-grow={color?.grow ?? 1} data-opacity={color?.opacity ?? 1} data-radius={color?.radius ?? 0.3} data-color-light={single ? color.light : undefined} data-color-dark={single ? color.dark : undefined}></canvas> : <canvas class="sky" aria-hidden="true" data-sky></canvas>}
+  {wave && color?.veil && <span class="hero__veil" aria-hidden="true" style={`--veil:${color.veilOpacity ?? 0.8}`}></span>}
   <div class="hero__body">
     <h1 id="hero-title" class="hero__title lines">
       <span class="line"><span data-line style="--i:0">{h.line1}</span></span>
-      <span class="line"><span data-line style="--i:1">{h.line2Before} <span class="nebula-word">{h.highlight}</span></span></span>
+      <span class="line"><span data-line style="--i:1">{h.line2Before} {h.highlight}</span></span>
     </h1>
     <p class="hero__lead" data-rise style="--i:3">{h.lead}</p>
     <div class="hero__actions" data-rise style="--i:4">

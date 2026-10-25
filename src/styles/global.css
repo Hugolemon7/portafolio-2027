@@ -9,11 +9,12 @@
 
 /* ---------- tokens ---------- */
 :root {
-  --bg: #eceef1;
-  --surface: #e1e4e9;
-  --field: #d3d8e0;
-  --ink: #1f2328;
-  --muted: #444a53;
+  /* base de cada modo: la define Keystatic → Colores del sitio (valida AA); estos son los originales */
+  --bg: var(--site-light-bg, #eceef1);
+  --surface: var(--site-light-surface, #e1e4e9);
+  --field: var(--site-light-field, #d3d8e0);
+  --ink: var(--site-light-ink, #1f2328);
+  --muted: var(--site-light-muted, #444a53);
   --space: #06070b;
   --space-ink: #eceef5;
 
@@ -25,10 +26,12 @@
   --nebula-3: #2a1a6e;
   --btn2: #06070b;      /* botón secundario: el negro del espacio */
   --btn2-ink: #eceef5;
+  --finale-bg: var(--finale-light-bg, var(--accent));          /* contacto (lava): Keystatic → Efectos */
+  --finale-ink: var(--finale-light-ink, var(--accent-ink));
+  --finale-rim-a: var(--finale-light-rim-a, #ff8fd6);
+  --finale-rim-b: var(--finale-light-rim-b, #8fc7ff);
   --hero-bg: var(--bg);           /* hero "campo de +": sigue el tema */
   --hero-ink: var(--ink);
-  --hero-glow: 0.1;
-  --hero-word: var(--ink);
 
   --font-display: "Clash Grotesk", system-ui, sans-serif;
   --font-text: "Satoshi", system-ui, sans-serif;
@@ -61,13 +64,13 @@
   color-scheme: light;
 }
 :root[data-theme="dark"] {
-  --bg: #121418; --surface: #1b1e24; --field: #23272e; --ink: #eceef2; --muted: #aeb3bd;
-  --accent: var(--accent-dark, #b9a4ff); --accent-ink: var(--accent-dark-ink, #0d0e10); --btn2: #eceef5; --btn2-ink: #06070b; --hero-bg: #06070b; --hero-ink: #eceef5; --hero-glow: 0.32; --hero-word: #fff; color-scheme: dark;
+  --bg: var(--site-dark-bg, #121418); --surface: var(--site-dark-surface, #1b1e24); --field: var(--site-dark-field, #23272e); --ink: var(--site-dark-ink, #eceef2); --muted: var(--site-dark-muted, #aeb3bd);
+  --accent: var(--accent-dark, #b9a4ff); --accent-ink: var(--accent-dark-ink, #0d0e10); --btn2: #eceef5; --btn2-ink: #06070b; --hero-bg: #06070b; --hero-ink: #eceef5; --finale-bg: var(--finale-dark-bg, var(--accent)); --finale-ink: var(--finale-dark-ink, var(--accent-ink)); --finale-rim-a: var(--finale-dark-rim-a, #ff8fd6); --finale-rim-b: var(--finale-dark-rim-b, #8fc7ff); color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #121418; --surface: #1b1e24; --field: #23272e; --ink: #eceef2; --muted: #aeb3bd;
-    --accent: var(--accent-dark, #b9a4ff); --accent-ink: var(--accent-dark-ink, #0d0e10); --btn2: #eceef5; --btn2-ink: #06070b; --hero-bg: #06070b; --hero-ink: #eceef5; --hero-glow: 0.32; --hero-word: #fff; color-scheme: dark;
+    --bg: var(--site-dark-bg, #121418); --surface: var(--site-dark-surface, #1b1e24); --field: var(--site-dark-field, #23272e); --ink: var(--site-dark-ink, #eceef2); --muted: var(--site-dark-muted, #aeb3bd);
+    --accent: var(--accent-dark, #b9a4ff); --accent-ink: var(--accent-dark-ink, #0d0e10); --btn2: #eceef5; --btn2-ink: #06070b; --hero-bg: #06070b; --hero-ink: #eceef5; --finale-bg: var(--finale-dark-bg, var(--accent)); --finale-ink: var(--finale-dark-ink, var(--accent-ink)); --finale-rim-a: var(--finale-dark-rim-a, #ff8fd6); --finale-rim-b: var(--finale-dark-rim-b, #8fc7ff); color-scheme: dark;
   }
 }
 
@@ -114,17 +117,7 @@ p { text-wrap: pretty; }
   .button--download:hover .dl-icon::before, .button--download:hover .dl-icon::after { translate: 0 2px; transition: translate var(--t-hover) var(--ease-out); }
 }
 
-/* palabra con gradiente de aberración cromática que gira alrededor (pedido de Hugo) */
-@property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
-.nebula-word { position: relative; display: inline-block; color: #fff;
-  text-shadow: -0.035em 0 0 rgb(255 40 160 / 0.6), 0.035em 0 0 rgb(40 220 255 / 0.6); } /* taste-skill-ignore: aberración cromática pedida */
-.nebula-word::after { content: ""; position: absolute; inset: -0.08em -0.35em -0.18em; z-index: -1; border-radius: 50%; --ang: 0deg;
-  background: conic-gradient(from var(--ang), rgb(255 61 187 / 0.5), rgb(255 210 61 / 0.35), rgb(61 242 255 / 0.5), rgb(91 107 255 / 0.5), rgb(176 91 255 / 0.5), rgb(255 61 187 / 0.5)); filter: blur(16px); opacity: 0.85; } /* taste-skill-ignore: aura pedida */
 .hero__title, .finale__title { isolation: isolate; }
-@media (prefers-reduced-motion: no-preference) {
-  .nebula-word::after { animation: spin-ang 7s linear infinite; }
-}
-@keyframes spin-ang { to { --ang: 360deg; } }
 
 /* ---------- barra ---------- */
 .bar { position: fixed; inset: 0 0 auto 0; z-index: 30; height: var(--bar-h); display: flex; align-items: center; gap: clamp(1rem, 3vw, 3rem); padding-inline: max(var(--margin), env(safe-area-inset-left)) max(var(--margin), env(safe-area-inset-right)); color: var(--space-ink); font-size: var(--step-body); background: rgb(6 7 11 / 0.42); -webkit-backdrop-filter: blur(14px) saturate(1.3); backdrop-filter: blur(14px) saturate(1.3); transition: background-color var(--t-ui) ease, color var(--t-ui) ease; } /* taste-skill-ignore: una sola barra con blur, contraste 16.8:1 */
@@ -138,7 +131,6 @@ p { text-wrap: pretty; }
 .bar__menu { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; padding: 0 1.1rem; border-radius: var(--r-control); background: var(--space-ink); color: var(--space); font-weight: 500; transition: transform var(--t-press) var(--ease-out), background-color var(--t-ui) ease, color var(--t-ui) ease; }
 .bar.is-solid .bar__menu { background: var(--ink); color: var(--bg); }
 .bar__menu:active { transform: scale(0.96); }
-.bar__dot { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--nebula-2); }
 
 /* ---------- paneles: menú y detalle ---------- */
 .menu, .sheet { position: fixed; inset: 0; z-index: 40; }
@@ -194,16 +186,15 @@ p { text-wrap: pretty; }
 .hero, .finale { position: relative; color: var(--space-ink); overflow: clip; isolation: isolate;
   background: radial-gradient(60% 55% at 80% 25%, rgb(70 40 160 / 0.32), transparent 70%), radial-gradient(50% 50% at 15% 85%, rgb(30 60 110 / 0.22), transparent 70%), var(--space); } /* taste-skill-ignore: espacio con nebulosa pedido */
 .sky { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; }
-.hero--wave { --space: var(--hero-bg); --space-ink: var(--hero-ink); transition: background-color var(--t-ui) ease, color var(--t-ui) ease;
-  background: radial-gradient(60% 55% at 80% 25%, rgb(70 40 160 / var(--hero-glow)), transparent 70%), radial-gradient(50% 50% at 15% 85%, rgb(30 60 110 / calc(var(--hero-glow) * 0.7)), transparent 70%), var(--hero-bg); } /* taste-skill-ignore: nebulosa tenue que sigue el tema */
-.hero--wave .nebula-word { color: var(--hero-word); }
+/* velo opcional (Keystatic → Cruces del hero): el color de fondo de --veil a 0% de izquierda a derecha, para dar contraste al texto */
+.hero__veil { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(to right, color-mix(in srgb, var(--hero-bg) calc(var(--veil, 0.8) * 100%), transparent), transparent); }
+.hero--wave { --space: var(--hero-bg); --space-ink: var(--hero-ink); background: var(--hero-bg); transition: background-color var(--t-ui) ease, color var(--t-ui) ease; }
 .hero { min-height: 100svh; display: grid; grid-template-rows: 1fr auto; padding-top: var(--bar-h); }
 .lines .line { display: block; overflow: clip; padding-bottom: 0.1em; margin-bottom: -0.1em; }
 .lines [data-line] { display: block; }
 .hero__body { grid-row: 1; align-self: center; width: min(76rem, 100%); margin-left: var(--margin); padding-block: 3rem; }
 .hero__title { font-size: clamp(3rem, 1rem + 7.4vw, 9.5rem); line-height: 0.95; }
 .hero__title .line { overflow: visible; }
-.hero__title .nebula-word::after { inset: 0.05em -0.3em -0.05em; }
 .hero__lead { margin-top: 2rem; max-width: 40ch; font-size: var(--step-lead); line-height: 1.4; color: color-mix(in srgb, var(--space-ink) 90%, transparent); }
 .finale__actions { justify-content: center; }
 .hero__actions, .finale__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; margin-top: 2rem; }
@@ -333,12 +324,13 @@ ul.poster__list { display: grid; gap: 0.25rem; padding-inline: calc(var(--margin
 .finale__title { font-size: clamp(2.5rem, 1.4rem + 4.4vw, 5.5rem); line-height: 1; }
 .finale__lead { margin: 1.5rem auto 0; max-width: 40ch; font-size: var(--step-lead); line-height: 1.35; color: color-mix(in srgb, var(--space-ink) 90%, transparent); }
 /* variante lava: el acento de fondo y su tinta para el texto (pareja validada AA en Keystatic) */
-.finale--lava { --space-ink: var(--accent-ink); background: var(--accent); }
+.finale--lava { --space-ink: var(--finale-ink); background: var(--finale-bg); }
+.finale--lava .finale__lead { color: var(--finale-ink); }
 .finale--lava::before { background: radial-gradient(60% 55% at 50% 30%, color-mix(in srgb, #fff 14%, transparent), transparent 75%); } /* taste-skill-ignore: brillo base si no hay WebGL */
-.finale--lava .button { background: var(--accent-ink); color: var(--accent); }
-.finale--lava .button--ghost { background: transparent; color: var(--accent-ink); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent-ink) 55%, transparent); }
-.finale--lava .button--ghost:hover { background: color-mix(in srgb, var(--accent-ink) 12%, transparent); box-shadow: inset 0 0 0 1px var(--accent-ink); }
-.finale--lava .button:not(.button--ghost):hover { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-ink) 30%, transparent); }
+.finale--lava .button { background: var(--finale-ink); color: var(--finale-bg); }
+.finale--lava .button--ghost { background: transparent; color: var(--finale-ink); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--finale-ink) 55%, transparent); }
+.finale--lava .button--ghost:hover { background: color-mix(in srgb, var(--finale-ink) 12%, transparent); box-shadow: inset 0 0 0 1px var(--finale-ink); }
+.finale--lava .button:not(.button--ghost):hover { box-shadow: 0 0 0 4px color-mix(in srgb, var(--finale-ink) 30%, transparent); }
 .foot { position: relative; isolation: isolate; color: var(--ink); padding: clamp(1.75rem, 3vw, 2.75rem); --foot-s: 1; --foot-r: var(--r-panel); }
 .foot::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--bg); border-radius: var(--foot-r); transform: scale(var(--foot-s)); transform-origin: 50% 0; will-change: transform; }
 .foot__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 2.5rem; }

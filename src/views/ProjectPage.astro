@@ -18,14 +18,30 @@ const facts = [
 ---
 <Base lang={lang} alternate={projectUrl(other, p.slug)} title={p.title} description={p.summary} image={p.cover || undefined}>
   <article>
-    <header class="case-hero">
-      <nav class="case-hero__crumbs" aria-label={lang === 'es' ? 'Ruta' : 'Breadcrumb'}><a class="link-plain" href={routes.projects[lang]}>{s.back}</a> <span aria-hidden="true">·</span> {p.discipline} · {p.year}</nav>
-      <div class="case-hero__grid">
-        <h1 class="case-hero__title">{p.title}</h1>
-        <p class="case-hero__summary" data-reveal>{p.summary}</p>
-      </div>
-    </header>
-    {p.cover && <figure class="case-cover"><Img src={p.cover} alt={p.coverAlt} sizes="100vw" loading="eager" fetchpriority="high" /></figure>}
+    {/* Scroll Expand: la portada crece de un marco redondeado a pantalla completa mientras el título queda encima.
+        El título existe dos veces: en tinta (fuera del marco) y en blanco (dentro, recortado por el marco). */}
+    {p.cover ? (
+      <header class="case-expand" data-expand>
+        <div class="case-expand__stage">
+          <nav class="case-expand__crumbs" aria-label={lang === 'es' ? 'Ruta' : 'Breadcrumb'}><a class="link-plain" href={routes.projects[lang]}>{s.back}</a> <span aria-hidden="true">·</span> {p.discipline} · {p.year}</nav>
+          <h1 class="case-expand__title">{p.title}</h1>
+          <div class="case-expand__frame">
+            <Img src={p.cover} alt={p.coverAlt} sizes="100vw" loading="eager" fetchpriority="high" class="case-expand__img" />
+            <span class="case-expand__veil" aria-hidden="true"></span>
+            <p class="case-expand__title case-expand__title--light" aria-hidden="true">{p.title}</p>
+            <p class="case-expand__summary">{p.summary}</p>
+          </div>
+        </div>
+      </header>
+    ) : (
+      <header class="case-hero">
+        <nav class="case-hero__crumbs" aria-label={lang === 'es' ? 'Ruta' : 'Breadcrumb'}><a class="link-plain" href={routes.projects[lang]}>{s.back}</a> <span aria-hidden="true">·</span> {p.discipline} · {p.year}</nav>
+        <div class="case-hero__grid">
+          <h1 class="case-hero__title">{p.title}</h1>
+          <p class="case-hero__summary" data-reveal>{p.summary}</p>
+        </div>
+      </header>
+    )}
     <dl class="case-facts" data-reveal>
       {facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
     </dl>

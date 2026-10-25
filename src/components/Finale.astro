@@ -13,7 +13,7 @@ const portfolio = lang === 'es' ? settings.files.portfolioEs : settings.files.po
 const lava = (settings.look?.finale ?? 'lava') === 'lava';
 ---
 <section class:list={['finale', { 'finale--bare': !cta, 'finale--lava': lava }]} id="contacto" aria-labelledby={cta ? 'finale-title' : undefined} aria-label={cta ? undefined : ft.contact} data-sky-host data-lava-host>
-  {lava ? <canvas class="sky" aria-hidden="true" data-lava></canvas> : <canvas class="sky" aria-hidden="true" data-sky></canvas>}
+  {lava ? <canvas class="sky" aria-hidden="true" data-lava data-speed={settings.look?.finaleSpeed ?? 'normal'} data-count={settings.look?.finaleCount ?? '7'}></canvas> : <canvas class="sky" aria-hidden="true" data-sky></canvas>}
   {cta && (
     <div class="finale__cta">
       <h2 id="finale-title" class="finale__title">{f.title}</h2>
