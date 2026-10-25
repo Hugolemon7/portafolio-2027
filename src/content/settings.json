@@ -3,22 +3,22 @@
   "email": "buenrsotro.h@gmail.com",
   "linkedin": "https://www.linkedin.com/in/hugobuenrostro/",
   "accent": {
-    "light": "#006113",
+    "light": "#5a3ec8",
     "lightInk": "#ffffff",
-    "dark": "#1fff44",
+    "dark": "#b9a4ff",
     "darkInk": "#0d0e10",
     "site": {
       "light": {
-        "bg": "#f6fdf9",
-        "surface": "#e9f7ea",
-        "ink": "#121418",
+        "bg": "#eceef1",
+        "surface": "#e1e4e9",
+        "ink": "#1f2328",
         "muted": "#444a53"
       },
       "dark": {
-        "bg": "#006113",
-        "surface": "#005210",
-        "ink": "#ffffff",
-        "muted": "#afeeb3"
+        "bg": "#121418",
+        "surface": "#1b1e24",
+        "ink": "#eceef2",
+        "muted": "#aeb3bd"
       }
     },
     "heroButtons": {
