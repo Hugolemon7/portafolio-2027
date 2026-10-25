@@ -3,21 +3,21 @@
   "email": "buenrsotro.h@gmail.com",
   "linkedin": "https://www.linkedin.com/in/hugobuenrostro/",
   "accent": {
-    "light": "#1d29d3",
+    "light": "#5a3ec8",
     "lightInk": "#ffffff",
-    "dark": "#52fffc",
+    "dark": "#b9a4ff",
     "darkInk": "#0d0e10",
     "site": {
       "light": {
         "bg": "#eceef1",
         "surface": "#e1e4e9",
-        "ink": "#1d29d3",
+        "ink": "#1f2328",
         "muted": "#444a53"
       },
       "dark": {
         "bg": "#121418",
         "surface": "#1b1e24",
-        "ink": "#52fffc",
+        "ink": "#eceef2",
         "muted": "#aeb3bd"
       }
     }
@@ -25,17 +25,17 @@
   "look": {
     "hero": "wave",
     "heroColor": {
-      "mode": "single",
-      "light": "#1d29d3",
-      "dark": "#52fffc",
-      "spacing": 40,
+      "mode": "multi",
+      "light": "#5a3ec8",
+      "dark": "#b9a4ff",
+      "spacing": 48,
       "weight": 0.5,
-      "size": 0.5,
-      "grow": 1.95,
+      "size": 0.7,
+      "grow": 0.75,
       "opacity": 1,
       "radius": 0.25,
       "veil": true,
-      "veilOpacity": 0.7
+      "veilOpacity": 0.8
     },
     "pulseSpeed": "fast",
     "pulseEvery": 7,
