@@ -38,6 +38,9 @@ const siteVars = (['light', 'dark'] as const).flatMap((m) => {
   if (t.surface.toLowerCase() !== o.surface || t.ink.toLowerCase() !== o.ink) out.push(`--site-${m}-field:${mixHex(t.surface, t.ink, 0.1)}`);
   return out;
 }).join(';');
+// botones del hero con color propio (Keystatic → Colores del sitio)
+const hb = settings.accent.heroButtons;
+const heroBtnVars = hb?.custom ? `--hero-btn-light-bg:${hb.light.bg};--hero-btn-light-ink:${hb.light.ink};--hero-btn-dark-bg:${hb.dark.bg};--hero-btn-dark-ink:${hb.dark.ink}` : '';
 // sección de contacto: halo siempre; fondo y texto solo si no usa el acento (Keystatic → Efectos)
 const fc = settings.look?.finaleColor;
 const finaleVars = fc ? [
@@ -58,7 +61,7 @@ const person = {
 };
 ---
 <!doctype html>
-<html lang={htmlLang[lang]} style={[accentVars, siteVars, finaleVars].filter(Boolean).join(';')}>
+<html lang={htmlLang[lang]} style={[accentVars, siteVars, heroBtnVars, finaleVars].filter(Boolean).join(';')} data-hover-fill={settings.look?.hoverFill ?? 'theme'}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -99,6 +102,7 @@ const person = {
   <script>
     import '../scripts/sky.js';
     import '../scripts/plus-wave.js';
+    import '../scripts/hero-bg.js';
     import '../scripts/lava.js';
     import '../scripts/specular.js';
     import '../scripts/scroll-expand.js';

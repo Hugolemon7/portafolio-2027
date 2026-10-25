@@ -1,0 +1,56 @@
+{
+  "es": {
+    "finale": {
+      "title": "¿Diseñamos algo que destaque?",
+      "lead": "Estoy abierto a roles remotos como Product Designer. Te respondo en menos de 48 horas.",
+      "primary": "Escríbeme",
+      "secondary": "Usar el formulario"
+    },
+    "contact": {
+      "pageTitle": "Contacto",
+      "lead": "Cuéntame del rol o del proyecto. Te respondo en menos de 48 horas.",
+      "name": "Nombre",
+      "namePh": "Tu nombre…",
+      "email": "Correo",
+      "emailPh": "tu@empresa.com",
+      "company": "Empresa (opcional)",
+      "companyPh": "Nombre de la empresa…",
+      "message": "Mensaje",
+      "messagePh": "Hola Hugo, estamos buscando…",
+      "send": "Enviar mensaje",
+      "sending": "Enviando…",
+      "success": "Listo. Te escribo pronto.",
+      "error": "No se pudo enviar. Escríbeme directo a",
+      "required": "Este campo es obligatorio.",
+      "invalidEmail": "Escribe un correo válido, por ejemplo tu@empresa.com.",
+      "orWrite": "O escríbeme directo"
+    }
+  },
+  "en": {
+    "finale": {
+      "title": "Let's make it stand out",
+      "lead": "I'm open to remote Product Designer roles. I reply within 48 hours.",
+      "primary": "Get in touch",
+      "secondary": "Use the form"
+    },
+    "contact": {
+      "pageTitle": "Contact",
+      "lead": "Tell me about the role or the project. I reply within 48 hours.",
+      "name": "Name",
+      "namePh": "Your name…",
+      "email": "Email",
+      "emailPh": "you@company.com",
+      "company": "Company (optional)",
+      "companyPh": "Company name…",
+      "message": "Message",
+      "messagePh": "Hi Hugo, we're looking for…",
+      "send": "Send message",
+      "sending": "Sending…",
+      "success": "Done. I'll get back to you soon.",
+      "error": "Couldn't send it. Write to me directly at",
+      "required": "This field is required.",
+      "invalidEmail": "Enter a valid email, for example you@company.com.",
+      "orWrite": "Or write to me directly"
+    }
+  }
+}

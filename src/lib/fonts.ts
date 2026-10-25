@@ -2,7 +2,15 @@
 // Sin archivos subidos y con el nombre por defecto, el sitio usa las fuentes incluidas (ver global.css).
 type FontFile = { file?: string | null; weight?: string; style?: string };
 type FontRole = { family?: string; fallback?: string; files?: FontFile[] };
-export type FontSettings = { display?: FontRole; text?: FontRole; displayWeight?: string };
+type FontPair = { display?: string; text?: string; displayWeight?: string; displayFallback?: string; textFallback?: string };
+// Forma actual: pareja (familias, peso, respaldos) + archivos por rol. La anterior (display/text/displayWeight) se sigue leyendo.
+export type FontSettings = { pair?: FontPair; displayFiles?: FontFile[]; textFiles?: FontFile[]; display?: FontRole; text?: FontRole; displayWeight?: string };
+
+const normalize = (f: FontSettings) => ({
+  display: { family: f.pair?.display ?? f.display?.family, fallback: f.pair?.displayFallback ?? f.display?.fallback, files: f.displayFiles ?? f.display?.files },
+  text: { family: f.pair?.text ?? f.text?.family, fallback: f.pair?.textFallback ?? f.text?.fallback, files: f.textFiles ?? f.text?.files },
+  displayWeight: f.pair?.displayWeight ?? f.displayWeight,
+});
 
 const DEFAULTS = { display: 'Clash Grotesk', text: 'Satoshi' } as const;
 const FORMAT: Record<string, string> = { woff2: 'woff2', woff: 'woff', ttf: 'truetype', otf: 'opentype' };
@@ -10,7 +18,8 @@ const MIME: Record<string, string> = { woff2: 'font/woff2', woff: 'font/woff', t
 const ext = (path: string) => path.split('?')[0].split('.').pop()!.toLowerCase();
 const quote = (s: string) => JSON.stringify(s);
 
-export function fontSetup(fonts: FontSettings = {}) {
+export function fontSetup(settings: FontSettings = {}) {
+  const fonts = normalize(settings);
   const faces: string[] = [];
   const vars: string[] = [];
   const preload: { href: string; type: string }[] = [];

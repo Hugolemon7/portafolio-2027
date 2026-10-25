@@ -1,0 +1,182 @@
+{
+  "es": {
+    "title": "Sobre mí",
+    "lead": "Diseño para que los equipos decidan mejor.",
+    "paragraphs": [
+      "Soy tapatío, vivo en Oaxaca y estudié Diseño para la Comunicación Gráfica en la Universidad de Guadalajara. Llevo más de diez años entre diseño gráfico, innovación, contenido y producto digital.",
+      "Empecé en el área de marketing de CONTPAQi, después facilité talleres de Design Thinking y LEGO® Serious Play®; hoy diseño y mantengo el sistema de diseño de Experian para su mercado en EE. UU. Me gusta ordenar productos complejos para que sean claros para quien los usa y sostenibles para quien los construye."
+    ],
+    "photoAlt": "Retrato de Hugo Buenrostro con gorra verde y playera blanca",
+    "facts": [
+      {
+        "label": "Base",
+        "value": "Oaxaca, México · Solo remoto"
+      },
+      {
+        "label": "Idiomas",
+        "value": "Español nativo · Inglés B2"
+      },
+      {
+        "label": "Herramientas",
+        "value": "Figma (tokens, variables, Dev Mode), Claude Code, Jira, Hotjar, Adobe Analytics, AEM"
+      }
+    ],
+    "pageTitle": "Sobre mí",
+    "educationTitle": "Formación",
+    "education": [
+      {
+        "title": "Licenciatura en Diseño para la Comunicación Gráfica",
+        "where": "Universidad de Guadalajara"
+      }
+    ],
+    "certsTitle": "Certificaciones",
+    "certs": [
+      {
+        "title": "Customer Focus",
+        "where": "Harvard Business Publishing",
+        "year": "2025"
+      },
+      {
+        "title": "Innovation and Creativity",
+        "where": "Harvard Business Publishing",
+        "year": "2025"
+      },
+      {
+        "title": "Amazon Working Backwards",
+        "where": "CONTPAQi",
+        "year": "2021"
+      },
+      {
+        "title": "Design Thinking",
+        "where": "CONTPAQi",
+        "year": "2020"
+      },
+      {
+        "title": "LEGO® Serious Play®",
+        "where": "CONTPAQi",
+        "year": "2019"
+      }
+    ],
+    "skillsTitle": "Habilidades",
+    "skills": [
+      {
+        "group": "Diseño",
+        "items": "Figma avanzado (tokens, variables, Dev Mode), Design Systems, Atomic Design, Material Design, prototipado de alta fidelidad"
+      },
+      {
+        "group": "Investigación",
+        "items": "Entrevistas, pruebas de usabilidad, A/B testing, journey maps, evaluación heurística, investigación asistida con IA"
+      },
+      {
+        "group": "Datos",
+        "items": "Hotjar, Adobe Analytics"
+      },
+      {
+        "group": "Construir con IA",
+        "items": "Claude Code, vibecoding, prototipos funcionales en código"
+      },
+      {
+        "group": "Accesibilidad",
+        "items": "WCAG 2.2"
+      },
+      {
+        "group": "Producto y equipo",
+        "items": "Jira, Scrum, facilitación de talleres"
+      },
+      {
+        "group": "Otros",
+        "items": "Webflow, Framer, AEM, Miro, marketing digital, UX writing"
+      }
+    ]
+  },
+  "en": {
+    "title": "About",
+    "lead": "I design so teams make better decisions.",
+    "paragraphs": [
+      "I'm from Guadalajara, live in Oaxaca, and studied Graphic Communication Design at Universidad de Guadalajara. I've spent over ten years across graphic design, innovation, content and digital product.",
+      "I started in CONTPAQi's marketing team, then facilitated Design Thinking and LEGO® Serious Play® workshops; today I design and maintain Experian's design system for the US market. I like taking complex products and making them clear for the people who use them and sustainable for the people who build them."
+    ],
+    "photoAlt": "Portrait of Hugo Buenrostro wearing a green cap and a white t-shirt",
+    "facts": [
+      {
+        "label": "Based in",
+        "value": "Oaxaca, Mexico · Remote only"
+      },
+      {
+        "label": "Languages",
+        "value": "Spanish (native) · English (B2)"
+      },
+      {
+        "label": "Tools",
+        "value": "Figma (tokens, variables, Dev Mode), Claude Code, Jira, Hotjar, Adobe Analytics, AEM"
+      }
+    ],
+    "pageTitle": "About",
+    "educationTitle": "Education",
+    "education": [
+      {
+        "title": "B.A. in Graphic Communication Design",
+        "where": "Universidad de Guadalajara"
+      }
+    ],
+    "certsTitle": "Certifications",
+    "certs": [
+      {
+        "title": "Customer Focus",
+        "where": "Harvard Business Publishing",
+        "year": "2025"
+      },
+      {
+        "title": "Innovation and Creativity",
+        "where": "Harvard Business Publishing",
+        "year": "2025"
+      },
+      {
+        "title": "Amazon Working Backwards",
+        "where": "CONTPAQi",
+        "year": "2021"
+      },
+      {
+        "title": "Design Thinking",
+        "where": "CONTPAQi",
+        "year": "2020"
+      },
+      {
+        "title": "LEGO® Serious Play®",
+        "where": "CONTPAQi",
+        "year": "2019"
+      }
+    ],
+    "skillsTitle": "Skills",
+    "skills": [
+      {
+        "group": "Design",
+        "items": "Advanced Figma (tokens, variables, Dev Mode), design systems, Atomic Design, Material Design, high-fidelity prototyping"
+      },
+      {
+        "group": "Research",
+        "items": "Interviews, usability testing, A/B testing, journey maps, heuristic evaluation, AI-assisted research"
+      },
+      {
+        "group": "Data",
+        "items": "Hotjar, Adobe Analytics"
+      },
+      {
+        "group": "Building with AI",
+        "items": "Claude Code, vibe coding, working prototypes in code"
+      },
+      {
+        "group": "Accessibility",
+        "items": "WCAG 2.2"
+      },
+      {
+        "group": "Product & team",
+        "items": "Jira, Scrum, workshop facilitation"
+      },
+      {
+        "group": "Other",
+        "items": "Webflow, Framer, AEM, Miro, digital marketing, UX writing"
+      }
+    ]
+  }
+}

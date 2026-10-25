@@ -1,0 +1,72 @@
+{
+  "es": {
+    "meta": {
+      "title": "Hugo Buenrostro — Product Designer",
+      "description": "Hugo Buenrostro, Product Designer. Sistemas de diseño y flujos para productos digitales, con datos y pruebas con usuarios. Oaxaca, México · Solo remoto."
+    },
+    "ui": {
+      "skip": "Saltar al contenido",
+      "nav": {
+        "projects": "Proyectos",
+        "about": "Sobre mí",
+        "contact": "Contacto"
+      },
+      "menu": "Menú",
+      "close": "Cerrar",
+      "darkMode": "Modo oscuro",
+      "switchLang": "English",
+      "switchLangShort": "EN",
+      "switchLangLabel": "English version",
+      "view": "Ver",
+      "more": "Ver más",
+      "less": "Ver menos",
+      "downloadCv": "Descargar CV",
+      "downloadNote": "PDF · ES",
+      "otherCv": "Download résumé (EN)",
+      "backToTop": "Volver arriba",
+      "langSuggest": "Prefer to read this site in English?",
+      "langSuggestCta": "View in English",
+      "langSuggestDismiss": "Stay in Spanish"
+    },
+    "notFound": {
+      "title": "Esta página se perdió en el espacio",
+      "lead": "El enlace no existe o cambió de lugar.",
+      "cta": "Volver al inicio"
+    }
+  },
+  "en": {
+    "meta": {
+      "title": "Hugo Buenrostro — Product Designer",
+      "description": "Hugo Buenrostro, Product Designer. Design systems and flows for digital products, backed by data and user testing. Oaxaca, Mexico · Remote only."
+    },
+    "ui": {
+      "skip": "Skip to content",
+      "nav": {
+        "projects": "Work",
+        "about": "About",
+        "contact": "Contact"
+      },
+      "menu": "Menu",
+      "close": "Close",
+      "darkMode": "Dark mode",
+      "switchLang": "Español",
+      "switchLangShort": "ES",
+      "switchLangLabel": "Versión en español",
+      "view": "View",
+      "more": "Show more",
+      "less": "Show less",
+      "downloadCv": "Download résumé",
+      "downloadNote": "PDF · EN",
+      "otherCv": "Descargar CV (ES)",
+      "backToTop": "Back to top",
+      "langSuggest": "¿Prefieres leer este sitio en español?",
+      "langSuggestCta": "Ver en español",
+      "langSuggestDismiss": "Seguir en inglés"
+    },
+    "notFound": {
+      "title": "This page got lost in space",
+      "lead": "The link doesn't exist or has moved.",
+      "cta": "Back to home"
+    }
+  }
+}

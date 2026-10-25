@@ -97,7 +97,7 @@ const paintBar = () => {
   const y = bar.offsetHeight / 2;
   // el hero "campo de +" sigue el tema: en modo claro la barra va sólida sobre él
   const lightNow = !(root.dataset.theme === 'dark' || (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches));
-  const overDark = darkHosts.some((el) => { if (lightNow && el.matches('.hero--wave')) return false; const r = el.getBoundingClientRect(); return r.top <= y && r.bottom >= y; });
+  const overDark = darkHosts.some((el) => { if (lightNow && el.matches('.hero--themed')) return false; const r = el.getBoundingClientRect(); return r.top <= y && r.bottom >= y; });
   bar.classList.toggle('is-solid', !overDark);
   const meta = $('[data-theme-color]');
   if (meta) meta.setAttribute('content', getComputedStyle(bar).backgroundColor === 'rgba(0, 0, 0, 0)' || overDark ? '#06070b' : getComputedStyle(root).getPropertyValue('--bg').trim());

@@ -14,10 +14,13 @@ const items = (await getProjects(lang)).filter((p) => p.featured && p.paneLeft);
       <div class="seam__stage">
         <div class="seam__pane seam__pane--l"><Img src={p.paneLeft} alt={p.paneLeftAlt} sizes="50vw" /></div>
         <div class:list={['seam__pane seam__pane--r', { 'seam__pane--detail': p.paneRightDetail }]}><Img src={p.paneRight || p.paneLeft} alt={p.paneRightAlt} sizes="50vw" /></div>
+        <span class="seam__veil" aria-hidden="true"></span>
         <div class="seam__copy">
           <h3 class="seam__name">{p.title}</h3>
           <div class="seam__foot">
-            <p class="seam__meta">{p.discipline} · {p.client} · {p.year}</p>
+            <ul class="seam__tags" role="list" aria-label={lang === 'es' ? 'Datos del proyecto' : 'Project details'}>
+              {[p.discipline, p.client, p.year].filter(Boolean).map((tag) => <li class="tag">{tag}</li>)}
+            </ul>
             <a class="seam__link" href={projectUrl(lang, p.slug)}>{p.kind === 'case' ? s.viewCase : s.viewProject} <span aria-hidden="true">→</span></a>
           </div>
         </div>

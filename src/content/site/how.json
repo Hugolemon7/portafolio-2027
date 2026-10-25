@@ -1,0 +1,49 @@
+{
+  "es": {
+    "title": "Cómo trabajo",
+    "steps": [
+      {
+        "lead": "Primero, los datos.",
+        "text": "Antes de mover un píxel reviso Hotjar, Adobe Analytics y lo que dicen los usuarios en pruebas. Las decisiones de diseño se defienden con evidencia, no con gusto."
+      },
+      {
+        "lead": "Después, el sistema.",
+        "text": "Diseño componentes con tokens y variables en Figma, documentados para que ingeniería pueda usarlos sin preguntarme. Así un cambio se hace una vez y llega a todo el producto."
+      },
+      {
+        "lead": "Dentro del sprint,",
+        "text": "no al margen. Participo en grooming, refinamiento y planeación con Product Owners y desarrollo en Jira, y valido accesibilidad con WCAG 2.2 antes de entregar."
+      },
+      {
+        "lead": "Y con IA,",
+        "text": "para llegar antes a la prueba. Prototipo en código con Claude Code e investigo con Claude para validar ideas en días, no semanas.",
+        "placeholder": "Video: de Figma a un prototipo funcional con Claude Code · 20 s"
+      }
+    ]
+  },
+  "en": {
+    "title": "How I work",
+    "steps": [
+      {
+        "lead": "Data first.",
+        "text": "Before moving a pixel I look at Hotjar, Adobe Analytics and what users say in testing. Design decisions are defended with evidence, not taste.",
+        "placeholder": ""
+      },
+      {
+        "lead": "Then, the system.",
+        "text": "I design components with tokens and variables in Figma, documented so engineering can ship them without asking me. A change happens once and reaches the whole product.",
+        "placeholder": ""
+      },
+      {
+        "lead": "Inside the sprint,",
+        "text": "not on the sidelines. I join grooming, refinement and planning with Product Owners and engineers in Jira, and check accessibility against WCAG 2.2 before handoff.",
+        "placeholder": ""
+      },
+      {
+        "lead": "And with AI,",
+        "text": "to get to testing sooner. I prototype in code with Claude Code and research with Claude to validate ideas in days, not weeks.",
+        "placeholder": "Video: from Figma to a working prototype with Claude Code · 20 s"
+      }
+    ]
+  }
+}

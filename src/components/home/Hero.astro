@@ -3,15 +3,21 @@ import { t, settings, routes, type Lang } from '../../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const h = t(lang).hero;
-// fondo elegido en Keystatic → Ajustes generales → Efectos: campo de "+" o cielo de estrellas
-const wave = (settings.look?.hero ?? 'wave') === 'wave';
+// fondo elegido en Keystatic → Ajustes generales → Efectos: campo de "+", prisma, aurora, ondas cortadas o cielo de estrellas
+const variant = settings.look?.hero ?? 'wave';
+const wave = variant === 'wave';
+const webgl = variant === 'prism' || variant === 'aurora' || variant === 'sliced';
+const themed = variant !== 'sky';            // todos menos el cielo siguen el tema claro / oscuro
+const bgs = settings.look?.heroBackdrop;
 const spec = settings.look?.heroButtons ?? true;
 const color = settings.look?.heroColor;
 const single = color?.mode === 'single';
 ---
-<section class:list={['hero', { 'hero--wave': wave }]} aria-labelledby="hero-title" data-sky-host data-wave-host>
-  {wave ? <canvas class="sky" aria-hidden="true" data-plus-wave="hero" data-speed={settings.look?.pulseSpeed ?? 'normal'} data-pulse={settings.look?.pulseEvery ?? 7} data-cell={color?.spacing ?? 40} data-weight={color?.weight ?? 1} data-size={color?.size ?? 1} data-grow={color?.grow ?? 1} data-opacity={color?.opacity ?? 1} data-radius={color?.radius ?? 0.3} data-color-light={single ? color.light : undefined} data-color-dark={single ? color.dark : undefined}></canvas> : <canvas class="sky" aria-hidden="true" data-sky></canvas>}
-  {wave && color?.veil && <span class="hero__veil" aria-hidden="true" style={`--veil:${color.veilOpacity ?? 0.8}`}></span>}
+<section class:list={['hero', { 'hero--themed': themed }]} aria-labelledby="hero-title" data-sky-host data-wave-host>
+  {wave ? <canvas class="sky" aria-hidden="true" data-plus-wave="hero" data-speed={settings.look?.pulseSpeed ?? 'normal'} data-pulse={settings.look?.pulseEvery ?? 7} data-cell={color?.spacing ?? 40} data-weight={color?.weight ?? 1} data-size={color?.size ?? 1} data-grow={color?.grow ?? 1} data-opacity={color?.opacity ?? 1} data-radius={color?.radius ?? 0.3} data-color-light={single ? color.light : undefined} data-color-dark={single ? color.dark : undefined}></canvas>
+    : webgl ? <canvas class="sky" aria-hidden="true" data-hero-bg={variant} data-colors={variant === 'aurora' ? bgs?.aurora?.colors?.join(',') : variant === 'sliced' ? bgs?.sliced?.colors?.join(',') : undefined} data-dir={variant === 'aurora' ? bgs?.aurora?.dir : undefined} data-opts={variant === 'prism' ? JSON.stringify({ scale: bgs?.prism?.scale ?? 1 }) : variant === 'sliced' ? JSON.stringify({ barWidth: bgs?.sliced?.barWidth, spacing: bgs?.sliced?.spacing, speed: bgs?.sliced?.speed, frequency: bgs?.sliced?.frequency, blur: bgs?.sliced?.blur }) : undefined}></canvas>
+    : <canvas class="sky" aria-hidden="true" data-sky></canvas>}
+  {themed && color?.veil && <span class="hero__veil" aria-hidden="true" style={`--veil:${color.veilOpacity ?? 0.8}`}></span>}
   <div class="hero__body">
     <h1 id="hero-title" class="hero__title lines">
       <span class="line"><span data-line style="--i:0">{h.line1}</span></span>

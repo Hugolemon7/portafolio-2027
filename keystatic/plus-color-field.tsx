@@ -25,7 +25,7 @@ const PRESETS = ['#5a3ec8', '#7c4dff', '#b9a4ff', '#d640a0', '#1e96d2', '#0f9d76
 // fondo, tinta y paleta multicolor de cada modo (las mismas que usa el hero)
 const STAGE = {
   light: { name: 'Modo claro', icon: '☀', bg: '#eceef1', ink: '#1f2328', multi: ['#5a3ec8', '#7c4dff', '#8f5bf0', '#d64096', '#1e96d2', '#1f2328'] },
-  dark: { name: 'Modo oscuro', icon: '☾', bg: '#06070b', ink: '#eceef5', multi: ['#b9a4ff', '#7c4dff', '#a770ff', '#c9b8ff', '#ff7ac6', '#6fd3ff', '#eceef5'] },
+  dark: { name: 'Modo oscuro', icon: '☾', bg: '#121418', ink: '#eceef5', multi: ['#b9a4ff', '#7c4dff', '#a770ff', '#c9b8ff', '#ff7ac6', '#6fd3ff', '#eceef5'] },
 } as const;
 
 const PREVIEW_CSS = `

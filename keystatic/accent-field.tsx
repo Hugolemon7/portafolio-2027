@@ -5,13 +5,16 @@ import type { BasicFormField } from '@keystatic/core';
 import { ColorStyles, Head, Swatch } from './color-ui';
 
 export type Theme = { bg: string; surface: string; ink: string; muted: string };
-export type Accent = { light: string; lightInk: string; dark: string; darkInk: string; site: { light: Theme; dark: Theme } };
+export type HeroButtons = { custom: boolean; light: { bg: string; ink: string }; dark: { bg: string; ink: string } };
+export type Accent = { light: string; lightInk: string; dark: string; darkInk: string; site: { light: Theme; dark: Theme }; heroButtons: HeroButtons };
 
 // colores base originales (ver src/styles/global.css)
 export const SITE_DEFAULT: Accent['site'] = {
   light: { bg: '#eceef1', surface: '#e1e4e9', ink: '#1f2328', muted: '#444a53' },
   dark: { bg: '#121418', surface: '#1b1e24', ink: '#eceef2', muted: '#aeb3bd' },
 };
+// botones del hero por defecto: el texto del tema como fondo y el fondo del tema como texto
+export const HERO_BUTTONS_DEFAULT: HeroButtons = { custom: false, light: { bg: '#1f2328', ink: '#eceef1' }, dark: { bg: '#eceef2', ink: '#121418' } };
 const AA = 4.5;
 const AAA = 7;
 
@@ -39,6 +42,7 @@ export function themeChecks(v: Accent, mode: 'light' | 'dark') {
     { label: 'Texto del botón sobre el acento', fg: accentInk, bg: accent },
     { label: 'Enlaces (acento) sobre el fondo', fg: accent, bg: t.bg },
     { label: 'Acento sobre tarjetas', fg: accent, bg: t.surface },
+    ...(v.heroButtons?.custom ? [{ label: 'Botón del hero: texto sobre su color', fg: v.heroButtons[mode].ink, bg: v.heroButtons[mode].bg }] : []),
   ];
 }
 export const accentChecks = (v: Accent) => [...themeChecks(v, 'light'), ...themeChecks(v, 'dark')];
@@ -51,6 +55,7 @@ export function validateAccent(v: Accent) {
     for (const k of ['bg', 'surface', 'ink', 'muted'] as const) {
       if (!HEX.test(v.site?.[m]?.[k] ?? '')) throw new Error(`Colores del ${NAMES[m]}: deben ser hex de 6 dígitos, por ejemplo #eceef1.`);
     }
+    if (v.heroButtons?.custom && (!HEX.test(v.heroButtons[m].bg) || !HEX.test(v.heroButtons[m].ink))) throw new Error(`Botones del hero (${NAMES[m]}): los colores deben ser hex de 6 dígitos.`);
     for (const c of themeChecks(v, m)) {
       const r = contrast(c.fg, c.bg);
       if (r < AA) throw new Error(`${c.label} (${NAMES[m]}): ${r.toFixed(2)}:1 no cumple AA (mínimo 4.5:1).`);
@@ -59,7 +64,16 @@ export function validateAccent(v: Accent) {
   return v;
 }
 
-const DEFAULT: Accent = { light: '#5a3ec8', lightInk: '#ffffff', dark: '#b9a4ff', darkInk: '#0d0e10', site: SITE_DEFAULT };
+const DEFAULT: Accent = { light: '#5a3ec8', lightInk: '#ffffff', dark: '#b9a4ff', darkInk: '#0d0e10', site: SITE_DEFAULT, heroButtons: HERO_BUTTONS_DEFAULT };
+const withDefaults = (v: Partial<Accent>): Accent => ({
+  light: v.light ?? DEFAULT.light, lightInk: v.lightInk ?? DEFAULT.lightInk, dark: v.dark ?? DEFAULT.dark, darkInk: v.darkInk ?? DEFAULT.darkInk,
+  site: { light: { ...SITE_DEFAULT.light, ...v.site?.light }, dark: { ...SITE_DEFAULT.dark, ...v.site?.dark } },
+  heroButtons: {
+    custom: v.heroButtons?.custom === true,
+    light: { ...HERO_BUTTONS_DEFAULT.light, ...v.heroButtons?.light },
+    dark: { ...HERO_BUTTONS_DEFAULT.dark, ...v.heroButtons?.dark },
+  },
+});
 
 const MODES = {
   light: { name: 'Modo claro', icon: '☀', accent: 'light', accentInk: 'lightInk' },
@@ -93,12 +107,14 @@ function Check({ label, fg, bg }: { label: string; fg: string; bg: string }) {
 
 const safe = (c: string, fallback: string) => (HEX.test(c) ? c : fallback);
 
-function ModeCard({ mode, value, set, setSite }: { mode: keyof typeof MODES; value: Accent; set: (k: keyof Accent) => (v: string) => void; setSite: (m: 'light' | 'dark', k: keyof Theme) => (v: string) => void }) {
+function ModeCard({ mode, value, set, setSite, setBtn }: { mode: keyof typeof MODES; value: Accent; set: (k: keyof Accent) => (v: string) => void; setSite: (m: 'light' | 'dark', k: keyof Theme) => (v: string) => void; setBtn: (m: 'light' | 'dark', k: 'bg' | 'ink') => (v: string) => void }) {
   const m = MODES[mode];
   const d = SITE_DEFAULT[mode];
   const t = value.site[mode];
   const bg = safe(t.bg, d.bg), surface = safe(t.surface, d.surface), ink = safe(t.ink, d.ink), muted = safe(t.muted, d.muted);
   const accent = safe(value[m.accent], ink), accentInk = safe(value[m.accentInk], bg);
+  const hb = value.heroButtons;
+  const btnBg = hb.custom ? safe(hb[mode].bg, ink) : ink, btnInk = hb.custom ? safe(hb[mode].ink, bg) : bg;
   return (
     <div className="kc-mode">
       <div className="kc-stage" style={{ background: bg, color: ink }}>
@@ -112,8 +128,13 @@ function ModeCard({ mode, value, set, setSite }: { mode: keyof typeof MODES; val
           <span style={{ fontSize: 12, color: muted }}>Wiggot · 2023–24</span>
         </div>
         <div className="kc-stage__row">
-          <span className="kc-btn" style={{ background: accent, color: accentInk }}>Escríbeme</span>
+          <span className="kc-btn" style={{ background: accent, color: accentInk }}>Enviar</span>
           <span className="kc-chip" style={{ background: surface, color: accent }}>Caso de estudio</span>
+        </div>
+        <span className="kc-stage__tag" style={{ color: muted, opacity: 1, marginTop: 4 }}>Botones del hero</span>
+        <div className="kc-stage__row">
+          <span className="kc-btn" style={{ background: btnBg, color: btnInk }}>Escríbeme</span>
+          <span className="kc-btn" style={{ color: ink, boxShadow: `inset 0 0 0 1px color-mix(in srgb, ${btnBg} 55%, transparent)` }}>Ver proyectos</span>
         </div>
       </div>
       <div className="kc-controls">
@@ -129,6 +150,15 @@ function ModeCard({ mode, value, set, setSite }: { mode: keyof typeof MODES; val
           <Swatch label="Acento" value={value[m.accent]} onChange={set(m.accent)} />
           <Swatch label="Texto sobre acento" value={value[m.accentInk]} onChange={set(m.accentInk)} />
         </div>
+        {hb.custom && (
+          <>
+            <span className="kc-swatch" style={{ marginBottom: -6 }}>Botones del hero</span>
+            <div className="kc-pair">
+              <Swatch label="Fondo del botón" value={hb[mode].bg} onChange={setBtn(mode, 'bg')} />
+              <Swatch label="Texto del botón" value={hb[mode].ink} onChange={setBtn(mode, 'ink')} />
+            </div>
+          </>
+        )}
         <ul className="kc-checks">
           {themeChecks(value, mode).map((c) => <Check key={c.label} label={c.label} fg={c.fg} bg={c.bg} />)}
         </ul>
@@ -143,23 +173,17 @@ export function accentField({ label }: { label: string }): BasicFormField<Accent
     label,
     defaultValue: () => DEFAULT,
     parse: (raw) => {
-      const v = (raw ?? {}) as Partial<Accent>;
-      return {
-        light: v.light ?? DEFAULT.light, lightInk: v.lightInk ?? DEFAULT.lightInk, dark: v.dark ?? DEFAULT.dark, darkInk: v.darkInk ?? DEFAULT.darkInk,
-        site: { light: { ...SITE_DEFAULT.light, ...v.site?.light }, dark: { ...SITE_DEFAULT.dark, ...v.site?.dark } },
-      };
+      return withDefaults((raw ?? {}) as Partial<Accent>);
     },
     serialize: (value) => ({ value }),
     validate: (value) => validateAccent(value),
     reader: {
-      parse: (raw) => {
-        const v = raw as Accent;
-        return validateAccent({ ...v, site: { light: { ...SITE_DEFAULT.light, ...v.site?.light }, dark: { ...SITE_DEFAULT.dark, ...v.site?.dark } } });
-      },
+      parse: (raw) => validateAccent(withDefaults((raw ?? {}) as Partial<Accent>)),
     },
     Input({ value, onChange, forceValidation }) {
       const set = (k: keyof Accent) => (v: string) => onChange({ ...value, [k]: v });
       const setSite = (m: 'light' | 'dark', k: keyof Theme) => (v: string) => onChange({ ...value, site: { ...value.site, [m]: { ...value.site[m], [k]: v } } });
+      const setBtn = (m: 'light' | 'dark', k: 'bg' | 'ink') => (v: string) => onChange({ ...value, heroButtons: { ...value.heroButtons, [m]: { ...value.heroButtons[m], [k]: v } } });
       const allHex = (['light', 'lightInk', 'dark', 'darkInk'] as const).every((k) => HEX.test(value[k]))
         && (['light', 'dark'] as const).every((m) => (['bg', 'surface', 'ink', 'muted'] as const).every((k) => HEX.test(value.site[m][k])));
       let error = '';
@@ -172,9 +196,13 @@ export function accentField({ label }: { label: string }): BasicFormField<Accent
         <div className="kc">
           <ColorStyles />
           <Head title={label} sub="Fondo, tarjetas, textos y acento de cada modo. La vista previa usa tus colores y cada combinación de texto debe cumplir WCAG AA (4.5:1) para poder guardar." status={status} />
+          <label className="kc-veil__check" style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>
+            <input type="checkbox" checked={value.heroButtons.custom} onChange={(e) => onChange({ ...value, heroButtons: { ...value.heroButtons, custom: e.target.checked } })} style={{ width: 18, height: 18, accentColor: '#5a3ec8' }} />
+            Color propio para los botones del hero (los demás botones usan el acento)
+          </label>
           <div className="kc-modes">
-            <ModeCard mode="light" value={value} set={set} setSite={setSite} />
-            <ModeCard mode="dark" value={value} set={set} setSite={setSite} />
+            <ModeCard mode="light" value={value} set={set} setSite={setSite} setBtn={setBtn} />
+            <ModeCard mode="dark" value={value} set={set} setSite={setSite} setBtn={setBtn} />
           </div>
           {error && (forceValidation || allHex) && <p role="alert" className="kc-error">No se puede guardar: {error}</p>}
           <button type="button" onClick={() => onChange(DEFAULT)} style={{ justifySelf: 'start', border: 0, background: 'none', padding: 0, color: 'inherit', opacity: 0.72, font: '500 13px ui-sans-serif, system-ui, sans-serif', textDecoration: 'underline', textUnderlineOffset: 3, cursor: 'pointer' }}>

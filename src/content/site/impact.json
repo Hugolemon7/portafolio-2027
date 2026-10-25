@@ -1,0 +1,102 @@
+{
+  "es": {
+    "title": "Impacto medible",
+    "lead": "Cifras reales de mis últimos roles. Abre cada una para ver el contexto.",
+    "items": [
+      {
+        "value": "70+",
+        "label": "componentes consolidados en el sistema de diseño de Experian",
+        "meta": "Experian · 2025",
+        "kicker": "Experian · EE. UU. · 2025 – hoy",
+        "title": "70+ componentes",
+        "body": [
+          "Consolidé una librería de más de 70 componentes en Adobe Experience Manager (AEM), alineada con el entorno de producción, para que diseño y desarrollo trabajen con las mismas piezas.",
+          "El resultado: un producto más escalable, fácil de mantener y consistente entre el sitio B2B y el blog corporativo."
+        ]
+      },
+      {
+        "value": "40%",
+        "label": "del sistema reconstruido y documentado",
+        "meta": "Experian · 2025",
+        "kicker": "Experian · EE. UU. · 2025 – hoy",
+        "title": "40% reconstruido",
+        "body": [
+          "Recibí un sistema de diseño con baja madurez técnica y documental. Reconstruí más del 40% de sus componentes, definí estándares de documentación y corregí inconsistencias visuales.",
+          "Cada componente quedó documentado para que ingeniería pueda usarlo sin depender de diseño."
+        ]
+      },
+      {
+        "value": "+25%",
+        "label": "de retención con flujos rediseñados",
+        "meta": "Wiggot · 2023–24",
+        "kicker": "Wiggot · Oct 2023 – Feb 2024",
+        "title": "+25% de retención",
+        "body": [
+          "Como líder de diseño en Wiggot, desarrollé flujos de usabilidad junto con stakeholders y product managers, validados con wireframes y prototipos de alta fidelidad en pruebas con usuarios.",
+          "Esos flujos aumentaron la retención de usuarios en un 25%."
+        ]
+      },
+      {
+        "value": "100+",
+        "label": "talleres y conferencias en todo México",
+        "meta": "2019–2023",
+        "kicker": "Facilitación · 2019 – 2023",
+        "title": "100+ talleres y conferencias",
+        "body": [
+          "Durante cinco años impartí más de 100 talleres y conferencias sobre experiencia de usuario, innovación y metodologías centradas en las personas.",
+          "Foros: Talent Land, UNAM, UANL, Secretaría de Innovación Jalisco y CONTPAQi, entre otros."
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Measurable impact",
+    "lead": "Real numbers from my recent roles. Open each one for the context.",
+    "items": [
+      {
+        "value": "70+",
+        "label": "components consolidated in Experian's design system",
+        "meta": "Experian · 2025",
+        "kicker": "Experian · US · 2025 – present",
+        "title": "70+ components",
+        "body": [
+          "I consolidated a library of more than 70 components in Adobe Experience Manager (AEM), aligned with production, so design and engineering work from the same pieces.",
+          "The result: a more scalable, maintainable and consistent product across the B2B site and the corporate blog."
+        ]
+      },
+      {
+        "value": "40%",
+        "label": "of the system rebuilt and documented",
+        "meta": "Experian · 2025",
+        "kicker": "Experian · US · 2025 – present",
+        "title": "40% rebuilt",
+        "body": [
+          "I inherited a design system with low technical and documentation maturity. I rebuilt more than 40% of its components, set documentation standards and fixed visual inconsistencies.",
+          "Every component is now documented so engineering can use it without depending on design."
+        ]
+      },
+      {
+        "value": "+25%",
+        "label": "user retention through redesigned flows",
+        "meta": "Wiggot · 2023–24",
+        "kicker": "Wiggot · Oct 2023 – Feb 2024",
+        "title": "+25% retention",
+        "body": [
+          "As Wiggot's design lead, I built usability flows with stakeholders and product managers, validated with wireframes and high-fidelity prototypes in user testing.",
+          "Those flows increased user retention by 25%."
+        ]
+      },
+      {
+        "value": "100+",
+        "label": "workshops and talks across Mexico",
+        "meta": "2019–2023",
+        "kicker": "Facilitation · 2019 – 2023",
+        "title": "100+ workshops and talks",
+        "body": [
+          "Over five years I delivered more than 100 workshops and talks on user experience, innovation and human-centered methods.",
+          "Venues include Talent Land, UNAM, UANL, Jalisco's Ministry of Innovation and CONTPAQi."
+        ]
+      }
+    ]
+  }
+}

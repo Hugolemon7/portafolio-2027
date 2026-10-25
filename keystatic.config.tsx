@@ -6,6 +6,8 @@ import { block, wrapper } from '@keystatic/core/content-components';
 import { accentField } from './keystatic/accent-field';
 import { plusColorField } from './keystatic/plus-color-field';
 import { finaleColorField } from './keystatic/finale-color-field';
+import { fontPairField, fontFileField } from './keystatic/font-fields';
+import { heroBackdropField } from './keystatic/hero-bg-field';
 
 const repo = import.meta.env.PUBLIC_KEYSTATIC_GITHUB_REPO as `${string}/${string}` | undefined;
 
@@ -46,27 +48,16 @@ const caseComponents = {
   }),
 };
 
-// ---------- tipografías: nombre de la familia + archivos propios (opcionales) ----------
+// ---------- tipografías: pareja (con vista previa combinada) + archivos propios (opcionales) ----------
 const WEIGHTS = ['100', '200', '300', '400', '500', '600', '700', '800', '900'].map((w) => ({ label: w, value: w }));
-const fontRole = (label: string, def: string) =>
-  fields.object(
-    {
-      family: txt('Nombre de la familia', `Por defecto: ${def} (incluida). Si subes archivos, ponle el nombre de la fuente. Sin archivos, puedes escribir una fuente del sistema (p. ej. Georgia).`),
-      fallback: fields.select({
-        label: 'Respaldo mientras carga',
-        options: [{ label: 'Sans serif', value: 'sans-serif' }, { label: 'Serif', value: 'serif' }, { label: 'Monoespaciada', value: 'monospace' }],
-        defaultValue: 'sans-serif',
-      }),
-      files: fields.array(
-        fields.object({
-          file: fields.file({ label: 'Archivo (.woff2 recomendado; también .woff, .ttf u .otf)', directory: 'public/fonts/custom', publicPath: '/fonts/custom/' }),
-          weight: fields.select({ label: 'Peso', options: WEIGHTS, defaultValue: '400' }),
-          style: fields.select({ label: 'Estilo', options: [{ label: 'Normal', value: 'normal' }, { label: 'Itálica', value: 'italic' }], defaultValue: 'normal' }),
-        }),
-        { label: 'Archivos de la fuente (vacío = usar la incluida)', itemLabel: (p) => `${p.fields.weight.value} · ${p.fields.style.value === 'italic' ? 'itálica' : 'normal'}` },
-      ),
-    },
-    { label },
+const fontFiles = (label: string) =>
+  fields.array(
+    fields.object({
+      file: fontFileField({ label: 'Archivo (.woff2 recomendado; también .woff, .ttf u .otf)', directory: 'public/fonts/custom', publicPath: '/fonts/custom/' }),
+      weight: fields.select({ label: 'Peso', options: WEIGHTS, defaultValue: '400' }),
+      style: fields.select({ label: 'Estilo', options: [{ label: 'Normal', value: 'normal' }, { label: 'Itálica', value: 'italic' }], defaultValue: 'normal' }),
+    }),
+    { label, itemLabel: (p) => `${p.fields.weight.value} · ${p.fields.style.value === 'italic' ? 'itálica' : 'normal'}` },
   );
 
 // ---------- proyectos: una entrada por proyecto con ambos idiomas ----------
@@ -178,7 +169,7 @@ const siteSchema = {
   ),
   hero: fields.object(
     {
-      line1: txt('Titular · línea 1'), line2Before: txt('Titular · línea 2 (antes de la palabra destacada)'), highlight: txt('Titular · línea 2 (última palabra)'),
+      line1: txt('Titular · línea 1'), line2Before: txt('Titular · línea 2 (antes de la última palabra)'), highlight: txt('Titular · línea 2 (última palabra)'),
       lead: area('Texto de apoyo'), primary: txt('Botón principal'), secondary: txt('Botón secundario'), meta: txt('Línea de ubicación'),
     },
     { label: 'Hero' },
@@ -263,13 +254,30 @@ const siteSchema = {
   notFound: fields.object({ title: txt('Título'), lead: txt('Texto'), cta: txt('Botón') }, { label: 'Página 404' }),
 };
 
+// Cada sección de textos es su propio panel con español e inglés uno debajo del otro (src/content/site/<sección>.json).
+type SiteKey = keyof typeof siteSchema;
+const textSection = (label: string, file: string, keys: SiteKey[]) => {
+  const lang = (name: string) =>
+    keys.length === 1
+      ? fields.object(siteSchema[keys[0]].fields, { label: name })
+      : fields.object(Object.fromEntries(keys.map((k) => [k, siteSchema[k]])), { label: name });
+  return singleton({
+    label,
+    path: `src/content/site/${file}`,
+    format: { data: 'json' },
+    schema: { es: lang('Español'), en: lang('English') },
+  });
+};
+
 export default config({
   storage: repo && (!import.meta.env.DEV || import.meta.env.PUBLIC_KEYSTATIC_LOCAL_GITHUB) ? { kind: 'github', repo } : { kind: 'local' },
   ui: {
     brand: { name: 'Hugo Buenrostro' },
     navigation: {
       Contenido: ['projects', 'experienceEs', 'experienceEn'],
-      'Textos del sitio': ['siteEs', 'siteEn'],
+      'Textos · Inicio': ['textHero', 'textImpact', 'textProjects', 'textAbout', 'textHow', 'textFacilitation', 'textExperience'],
+      'Textos · Contacto y pie': ['textContact', 'textFooter'],
+      'Textos · General': ['textGeneral'],
       Ajustes: ['settings'],
     },
   },
@@ -289,10 +297,14 @@ export default config({
               label: 'Fondo del hero',
               options: [
                 { label: 'Campo de + (crecen con el cursor, onda al hacer clic)', value: 'wave' },
+                { label: 'Prisma (luz espectral que sigue al cursor)', value: 'prism' },
+                { label: 'Aurora (colores y posición editables)', value: 'aurora' },
+                { label: 'Ondas cortadas (colores editables)', value: 'sliced' },
                 { label: 'Cielo de estrellas (anterior)', value: 'sky' },
               ],
               defaultValue: 'wave',
             }),
+            heroBackdrop: heroBackdropField({ label: 'Fondos animados: Prisma, Aurora y Ondas cortadas' }),
             heroColor: plusColorField({ label: 'Cruces del hero: color, grosor y espaciado' }),
             pulseSpeed: fields.select({
               label: 'Velocidad de la onda del hero',
@@ -306,6 +318,14 @@ export default config({
             pulseEvery: fields.integer({ label: 'Pulso automático cada (segundos)', description: 'Si nadie mueve el cursor, una onda sale sola cada tantos segundos. 0 = sin pulso automático.', defaultValue: 7, validation: { min: 0, max: 60 } }),
             heroButtons: fields.checkbox({ label: 'Botones del hero con contorno de luz animado', defaultValue: true }),
             impactWave: fields.checkbox({ label: 'Tarjetas de "Impacto medible" con campo de +', defaultValue: true }),
+            hoverFill: fields.select({
+              label: 'Relleno al pasar el cursor (métricas y facilitación)',
+              options: [
+                { label: 'Overlay del tema (claro u oscuro)', value: 'theme' },
+                { label: 'Color de acento', value: 'accent' },
+              ],
+              defaultValue: 'theme',
+            }),
             finale: fields.select({
               label: 'Fondo de la sección de contacto (pie de todas las páginas)',
               options: [
@@ -338,9 +358,9 @@ export default config({
         ),
         fonts: fields.object(
           {
-            display: fontRole('Títulos', 'Clash Grotesk'),
-            text: fontRole('Texto', 'Satoshi'),
-            displayWeight: fields.select({ label: 'Peso de los títulos', options: WEIGHTS, defaultValue: '500' }),
+            pair: fontPairField({ label: 'Combinación de tipografías' }),
+            displayFiles: fontFiles('Archivos de la fuente de títulos (vacío = usar la incluida)'),
+            textFiles: fontFiles('Archivos de la fuente de texto (vacío = usar la incluida)'),
           },
           { label: 'Tipografías' },
         ),
@@ -386,8 +406,16 @@ export default config({
         ),
       },
     }),
-    siteEs: singleton({ label: 'Textos en español', path: 'src/content/site/es', format: { data: 'json' }, schema: siteSchema }),
-    siteEn: singleton({ label: 'Texts in English', path: 'src/content/site/en', format: { data: 'json' }, schema: siteSchema }),
+    textHero: textSection('Hero (portada)', 'hero', ['hero']),
+    textImpact: textSection('Impacto medible', 'impact', ['impact']),
+    textProjects: textSection('Proyectos (inicio y página)', 'projects', ['projects']),
+    textAbout: textSection('Sobre mí', 'about', ['about']),
+    textHow: textSection('Cómo trabajo', 'how', ['how']),
+    textFacilitation: textSection('Facilitación', 'facilitation', ['facilitation']),
+    textExperience: textSection('Experiencia', 'experience', ['experience']),
+    textContact: textSection('Contacto (cierre y página)', 'contact', ['finale', 'contact']),
+    textFooter: textSection('Pie de página', 'footer', ['footer']),
+    textGeneral: textSection('General: SEO, menú y 404', 'general', ['meta', 'ui', 'notFound']),
   },
   collections: {
     projects,

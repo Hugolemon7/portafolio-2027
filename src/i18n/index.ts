@@ -1,12 +1,25 @@
-import es from '../content/site/es.json';
-import en from '../content/site/en.json';
+// Textos del sitio: un archivo por sección (Keystatic → Textos), cada uno con español e inglés
+import general from '../content/site/general.json';
+import hero from '../content/site/hero.json';
+import impact from '../content/site/impact.json';
+import projects from '../content/site/projects.json';
+import about from '../content/site/about.json';
+import how from '../content/site/how.json';
+import facilitation from '../content/site/facilitation.json';
+import experience from '../content/site/experience.json';
+import contact from '../content/site/contact.json';
+import footer from '../content/site/footer.json';
 import settings from '../content/settings.json';
 
 export type Lang = 'es' | 'en';
 export const languages: Record<Lang, string> = { es: 'Español', en: 'English' };
 export const htmlLang: Record<Lang, string> = { es: 'es-MX', en: 'en' };
 
-const dict = { es, en };
+const texts = (l: 'es' | 'en') => ({
+  ...general[l], hero: hero[l], impact: impact[l], projects: projects[l], about: about[l], how: how[l],
+  facilitation: facilitation[l], experience: experience[l], ...contact[l], footer: footer[l],
+});
+const dict = { es: texts('es'), en: texts('en') };
 
 // El color de acento debe cumplir AA en todas sus combinaciones (Keystatic ya lo impide; esto protege el build)
 const lum = (hex: string) => {
@@ -24,6 +37,7 @@ const ratio = (a: string, b: string) => { const [x, y] = [lum(a), lum(b)].sort((
     [L.ink, L.bg, 'texto claro'], [L.muted, L.bg, 'texto secundario claro'], [L.ink, L.surface, 'texto en tarjetas claro'], [L.muted, L.surface, 'texto secundario en tarjetas claro'],
     [a.darkInk, a.dark, 'botón oscuro'], [a.dark, D.bg, 'enlace oscuro'], [a.dark, D.surface, 'acento sobre tarjetas oscuro'],
     [D.ink, D.bg, 'texto oscuro'], [D.muted, D.bg, 'texto secundario oscuro'], [D.ink, D.surface, 'texto en tarjetas oscuro'], [D.muted, D.surface, 'texto secundario en tarjetas oscuro'],
+    ...(a.heroButtons?.custom ? [[a.heroButtons.light.ink, a.heroButtons.light.bg, 'botón del hero claro'], [a.heroButtons.dark.ink, a.heroButtons.dark.bg, 'botón del hero oscuro']] as [string, string, string][] : []),
   ];
   for (const [fg, bg, name] of pairs) {
     if (!/^#[0-9a-f]{6}$/i.test(fg) || !/^#[0-9a-f]{6}$/i.test(bg)) throw new Error(`Color de acento inválido (${name}).`);

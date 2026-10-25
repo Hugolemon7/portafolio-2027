@@ -1,0 +1,54 @@
+{
+  "es": {
+    "title": "Proyectos",
+    "all": "Todos los proyectos, branding y web",
+    "viewCase": "Ver caso de estudio",
+    "viewProject": "Ver proyecto",
+    "pageTitle": "Proyectos",
+    "pageLead": "Casos de estudio, proyectos de producto y trabajo de marca de los últimos años.",
+    "groups": {
+      "case": "Casos de estudio",
+      "project": "Proyectos",
+      "archive": "Web"
+    },
+    "brandsTitle": "Branding",
+    "brandsLead": "Identidades para marcas pequeñas y personales.",
+    "facts": {
+      "role": "Rol",
+      "team": "Equipo",
+      "duration": "Duración",
+      "platforms": "Plataformas",
+      "tools": "Herramientas",
+      "client": "Cliente",
+      "year": "Año"
+    },
+    "next": "Siguiente proyecto",
+    "back": "Todos los proyectos"
+  },
+  "en": {
+    "title": "Selected work",
+    "all": "All work, branding and web",
+    "viewCase": "Read the case study",
+    "viewProject": "View project",
+    "pageTitle": "Work",
+    "pageLead": "Case studies, product work and brand projects from recent years.",
+    "groups": {
+      "case": "Case studies",
+      "project": "Projects",
+      "archive": "Web"
+    },
+    "brandsTitle": "Branding",
+    "brandsLead": "Identities for small and personal brands.",
+    "facts": {
+      "role": "Role",
+      "team": "Team",
+      "duration": "Timeline",
+      "platforms": "Platforms",
+      "tools": "Tools",
+      "client": "Client",
+      "year": "Year"
+    },
+    "next": "Next project",
+    "back": "All work"
+  }
+}

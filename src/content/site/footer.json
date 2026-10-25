@@ -1,0 +1,24 @@
+{
+  "es": {
+    "role": "Product Designer · Oaxaca, México",
+    "navigate": "Navegar",
+    "contact": "Contacto",
+    "downloads": "Descargas",
+    "form": "Formulario",
+    "cv": "CV (ES)",
+    "cvOther": "Résumé (EN)",
+    "portfolio": "Portafolio PDF",
+    "rights": "© 2026 Hugo Buenrostro"
+  },
+  "en": {
+    "role": "Product Designer · Oaxaca, Mexico",
+    "navigate": "Navigate",
+    "contact": "Contact",
+    "downloads": "Downloads",
+    "form": "Contact form",
+    "cv": "Résumé (EN)",
+    "cvOther": "CV (ES)",
+    "portfolio": "Portfolio PDF",
+    "rights": "© 2026 Hugo Buenrostro"
+  }
+}

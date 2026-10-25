@@ -1,0 +1,96 @@
+{
+  "es": {
+    "title": "Facilitación",
+    "lead": "Más de 100 talleres y conferencias en cinco años, por todo México, sobre innovación centrada en las personas.",
+    "venuesTitle": "Dónde he impartido",
+    "methods": [
+      {
+        "name": "Design Thinking",
+        "fact": "Stanford d.school",
+        "kicker": "Metodología · formación CONTPAQi 2020",
+        "title": "Design Thinking",
+        "body": [
+          "El enfoque de la d.school de Stanford para resolver problemas desde las personas: empatizar, definir, idear, prototipar y probar.",
+          "Lo impartí en talleres para equipos y universidades, y es la base de cómo arranco cada proyecto de producto."
+        ]
+      },
+      {
+        "name": "Serious Play",
+        "fact": "LEGO®",
+        "kicker": "Metodología · formación CONTPAQi 2019",
+        "title": "LEGO® Serious Play®",
+        "body": [
+          "Una dinámica en la que los equipos construyen modelos con piezas LEGO® para pensar con las manos, alinear ideas y hacer visibles los supuestos.",
+          "La usé para facilitar sesiones de estrategia y co-creación con equipos multidisciplinarios."
+        ]
+      },
+      {
+        "name": "Working Backwards",
+        "fact": "Amazon",
+        "kicker": "Metodología · formación CONTPAQi 2021",
+        "title": "Working Backwards",
+        "body": [
+          "El método de Amazon que parte del cliente: se escribe primero el comunicado de prensa y las preguntas frecuentes del producto, y después se construye.",
+          "Lo impartí para enfocar iniciativas en el problema real antes de diseñar soluciones."
+        ]
+      },
+      {
+        "name": "Innovación",
+        "fact": "Board of Innovation",
+        "kicker": "Herramientas de innovación",
+        "title": "Board of Innovation",
+        "body": [
+          "Plantillas y ejercicios de innovación de Board of Innovation para mapear oportunidades, priorizar ideas y diseñar experimentos.",
+          "Las integré en talleres para pasar de la ideación a pruebas concretas."
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Facilitation",
+    "lead": "100+ workshops and talks over five years across Mexico on human-centered innovation.",
+    "venuesTitle": "Where I've taught",
+    "methods": [
+      {
+        "name": "Design Thinking",
+        "fact": "Stanford d.school",
+        "kicker": "Method · trained at CONTPAQi, 2020",
+        "title": "Design Thinking",
+        "body": [
+          "Stanford d.school's approach to solving problems from people's needs: empathize, define, ideate, prototype and test.",
+          "I taught it in workshops for teams and universities, and it's how I start every product project."
+        ]
+      },
+      {
+        "name": "Serious Play",
+        "fact": "LEGO®",
+        "kicker": "Method · trained at CONTPAQi, 2019",
+        "title": "LEGO® Serious Play®",
+        "body": [
+          "A method where teams build models with LEGO® bricks to think with their hands, align ideas and surface assumptions.",
+          "I used it to facilitate strategy and co-creation sessions with cross-functional teams."
+        ]
+      },
+      {
+        "name": "Working Backwards",
+        "fact": "Amazon",
+        "kicker": "Method · trained at CONTPAQi, 2021",
+        "title": "Working Backwards",
+        "body": [
+          "Amazon's customer-first method: write the press release and FAQ for the product first, then build it.",
+          "I taught it to focus initiatives on the real problem before designing solutions."
+        ]
+      },
+      {
+        "name": "Innovation",
+        "fact": "Board of Innovation",
+        "kicker": "Innovation toolkits",
+        "title": "Board of Innovation",
+        "body": [
+          "Board of Innovation templates and exercises to map opportunities, prioritize ideas and design experiments.",
+          "I brought them into workshops to move from ideation to concrete tests."
+        ]
+      }
+    ]
+  }
+}
