@@ -101,21 +101,22 @@
     "pair": {
       "display": "Unbounded",
       "text": "Manrope",
-      "displayWeight": "500",
+      "displayWeight": "600",
       "displayFallback": "serif",
-      "textFallback": "sans-serif"
+      "textFallback": "sans-serif",
+      "heroScale": 0.8
     },
-    "displayFiles": [
+    "library": [
       {
-        "file": "/fonts/custom/fonts/displayFiles/0/file.ttf",
-        "weight": "700",
+        "family": "Unbounded",
+        "file": "/fonts/custom/Unbounded.ttf",
+        "weight": "variable",
         "style": "normal"
-      }
-    ],
-    "textFiles": [
+      },
       {
-        "file": "/fonts/custom/fonts/textFiles/0/file.ttf",
-        "weight": "400",
+        "family": "Manrope",
+        "file": "/fonts/custom/Manrope.ttf",
+        "weight": "variable",
         "style": "normal"
       }
     ]

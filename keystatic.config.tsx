@@ -50,15 +50,18 @@ const caseComponents = {
 
 // ---------- tipografías: pareja (con vista previa combinada) + archivos propios (opcionales) ----------
 const WEIGHTS = ['100', '200', '300', '400', '500', '600', '700', '800', '900'].map((w) => ({ label: w, value: w }));
-const fontFiles = (label: string) =>
-  fields.array(
-    fields.object({
-      file: fontFileField({ label: 'Archivo (.woff2 recomendado; también .woff, .ttf u .otf)', directory: 'public/fonts/custom', publicPath: '/fonts/custom/' }),
-      weight: fields.select({ label: 'Peso', options: WEIGHTS, defaultValue: '400' }),
-      style: fields.select({ label: 'Estilo', options: [{ label: 'Normal', value: 'normal' }, { label: 'Itálica', value: 'italic' }], defaultValue: 'normal' }),
-    }),
-    { label, itemLabel: (p) => `${p.fields.weight.value} · ${p.fields.style.value === 'italic' ? 'itálica' : 'normal'}` },
-  );
+const fontLibrary = fields.array(
+  fields.object({
+    family: fields.text({ label: 'Nombre de la fuente (familia)', description: 'Con este nombre aparece en la lista de “Combinación de tipografías”. Usa el mismo nombre en todos los archivos de una familia (p. ej. Unbounded).', validation: { length: { min: 1 } } }),
+    file: fontFileField({ label: 'Archivo (.woff2 recomendado; también .woff, .ttf u .otf)', directory: 'public/fonts/custom', publicPath: '/fonts/custom/' }),
+    weight: fields.select({ label: 'Peso', description: '“Variable” si el archivo trae todos los pesos (suele decir “Variable” o “VF” en el nombre).', options: [{ label: 'Variable (todos los pesos)', value: 'variable' }, ...WEIGHTS], defaultValue: '400' }),
+    style: fields.select({ label: 'Estilo', options: [{ label: 'Normal', value: 'normal' }, { label: 'Itálica', value: 'italic' }], defaultValue: 'normal' }),
+  }),
+  {
+    label: 'Fuentes subidas',
+    itemLabel: (p) => `${p.fields.family.value || 'Sin nombre'} · ${p.fields.weight.value === 'variable' ? 'variable' : p.fields.weight.value}${p.fields.style.value === 'italic' ? ' · itálica' : ''}`,
+  },
+);
 
 // ---------- proyectos: una entrada por proyecto con ambos idiomas ----------
 // Las imágenes se comparten entre idiomas (se guardan una sola vez por proyecto).
@@ -359,8 +362,7 @@ export default config({
         fonts: fields.object(
           {
             pair: fontPairField({ label: 'Combinación de tipografías' }),
-            displayFiles: fontFiles('Archivos de la fuente de títulos (vacío = usar la incluida)'),
-            textFiles: fontFiles('Archivos de la fuente de texto (vacío = usar la incluida)'),
+            library: fontLibrary,
           },
           { label: 'Tipografías' },
         ),
