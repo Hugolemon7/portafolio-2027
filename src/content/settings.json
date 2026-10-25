@@ -3,31 +3,31 @@
   "email": "buenrsotro.h@gmail.com",
   "linkedin": "https://www.linkedin.com/in/hugobuenrostro/",
   "accent": {
-    "light": "#5a3ec8",
+    "light": "#006113",
     "lightInk": "#ffffff",
-    "dark": "#b9a4ff",
+    "dark": "#1fff44",
     "darkInk": "#0d0e10",
     "site": {
       "light": {
-        "bg": "#eceef1",
-        "surface": "#e1e4e9",
-        "ink": "#1f2328",
+        "bg": "#f6fdf9",
+        "surface": "#e9f7ea",
+        "ink": "#121418",
         "muted": "#444a53"
       },
       "dark": {
-        "bg": "#121418",
-        "surface": "#1b1e24",
-        "ink": "#eceef2",
-        "muted": "#aeb3bd"
+        "bg": "#006113",
+        "surface": "#005210",
+        "ink": "#ffffff",
+        "muted": "#afeeb3"
       }
     }
   },
   "look": {
     "hero": "wave",
     "heroColor": {
-      "mode": "multi",
-      "light": "#5a3ec8",
-      "dark": "#b9a4ff",
+      "mode": "single",
+      "light": "#0f9d76",
+      "dark": "#eceef5",
       "spacing": 48,
       "weight": 0.5,
       "size": 0.7,
