@@ -36,6 +36,9 @@
   "look": {
     "hero": "sliced",
     "heroBackdrop": {
+      "prism": {
+        "scale": 8.2
+      },
       "aurora": {
         "colors": [
           "#00d2ff",
@@ -55,9 +58,6 @@
         "speed": 1,
         "frequency": 1,
         "blur": 0.6
-      },
-      "prism": {
-        "scale": 1
       }
     },
     "heroColor": {
