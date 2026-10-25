@@ -22,14 +22,14 @@
       }
     },
     "heroButtons": {
-      "custom": false,
+      "custom": true,
       "light": {
-        "bg": "#1f2328",
-        "ink": "#eceef1"
+        "bg": "#5a3ec8",
+        "ink": "#ffffff"
       },
       "dark": {
-        "bg": "#eceef2",
-        "ink": "#121418"
+        "bg": "#b9a4ff",
+        "ink": "#0d0e10"
       }
     }
   },
