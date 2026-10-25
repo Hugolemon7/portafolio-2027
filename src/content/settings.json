@@ -102,7 +102,7 @@
       "display": "Unbounded",
       "text": "Manrope",
       "displayWeight": "500",
-      "displayFallback": "sans-serif",
+      "displayFallback": "serif",
       "textFallback": "sans-serif"
     },
     "displayFiles": [
