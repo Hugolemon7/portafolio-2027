@@ -9,27 +9,27 @@
     "darkInk": "#0d0e10",
     "site": {
       "light": {
-        "bg": "#f0e3f8",
-        "surface": "#e9d6f5",
+        "bg": "#eceef1",
+        "surface": "#e1e4e9",
         "ink": "#1f2328",
         "muted": "#444a53"
       },
       "dark": {
-        "bg": "#28104c",
-        "surface": "#1a0a33",
+        "bg": "#121418",
+        "surface": "#1b1e24",
         "ink": "#eceef2",
         "muted": "#aeb3bd"
       }
     },
     "heroButtons": {
-      "custom": true,
+      "custom": false,
       "light": {
-        "bg": "#5a3ec8",
-        "ink": "#ffffff"
+        "bg": "#1f2328",
+        "ink": "#eceef1"
       },
       "dark": {
-        "bg": "#b9a4ff",
-        "ink": "#0d0e10"
+        "bg": "#eceef2",
+        "ink": "#121418"
       }
     }
   },
