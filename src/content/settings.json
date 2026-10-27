@@ -57,7 +57,7 @@
     "foot": 1
   },
   "look": {
-    "hero": "aurora",
+    "hero": "wave",
     "heroBackdrop": {
       "prism": {
         "scale": 8.2
@@ -85,8 +85,8 @@
     },
     "heroColor": {
       "mode": "single",
-      "light": "#0f9d76",
-      "dark": "#eceef5",
+      "light": "#7c4dff",
+      "dark": "#e0d6ff",
       "spacing": 48,
       "weight": 0.5,
       "size": 0.7,
