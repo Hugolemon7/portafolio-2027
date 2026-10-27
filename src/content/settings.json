@@ -9,14 +9,14 @@
     "darkInk": "#0d0e10",
     "site": {
       "light": {
-        "bg": "#eceef1",
-        "surface": "#e1e4e9",
+        "bg": "#f0e3f8",
+        "surface": "#e9d6f5",
         "ink": "#1f2328",
         "muted": "#444a53"
       },
       "dark": {
-        "bg": "#121418",
-        "surface": "#1b1e24",
+        "bg": "#28104c",
+        "surface": "#1a0a33",
         "ink": "#eceef2",
         "muted": "#aeb3bd"
       }
