@@ -1,7 +1,7 @@
 {
   "es": {
     "line1": "Diseño productos",
-    "line2Before": "funcionales que",
+    "line2Before": "que",
     "highlight": "destacan",
     "lead": "Soy Product Designer. Construyo sistemas de diseño y flujos para productos digitales, con datos y pruebas con usuarios.",
     "primary": "¡Hablemos!",
@@ -9,8 +9,8 @@
     "meta": "Oaxaca, México · Remoto · Español / English"
   },
   "en": {
-    "line1": "I design functional",
-    "line2Before": "products that",
+    "line1": "I design products",
+    "line2Before": "that",
     "highlight": "stand out",
     "lead": "I'm a Product Designer. I build design systems and flows for digital products, backed by data and user testing.",
     "primary": "Let's talk!",
