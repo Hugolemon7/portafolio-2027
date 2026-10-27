@@ -57,16 +57,16 @@
     "foot": 1
   },
   "look": {
-    "hero": "sliced",
+    "hero": "aurora",
     "heroBackdrop": {
       "prism": {
         "scale": 8.2
       },
       "aurora": {
         "colors": [
-          "#00d2ff",
-          "#3a7bd5",
-          "#8e2de2"
+          "#a8ff78",
+          "#78ffd6",
+          "#4facfe"
         ],
         "dir": "top"
       },
