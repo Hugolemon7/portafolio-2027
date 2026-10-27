@@ -56,6 +56,10 @@
     "subtitle": 1,
     "foot": 1
   },
+  "social": {
+    "mode": "auto",
+    "theme": "dark"
+  },
   "look": {
     "hero": "aurora",
     "heroBackdrop": {
@@ -94,6 +98,7 @@
       "opacity": 1,
       "radius": 0.25,
       "veil": true,
+      "align": "center",
       "veilOpacity": 0.8
     },
     "pulseSpeed": "fast",

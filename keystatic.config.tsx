@@ -10,6 +10,7 @@ import { fontPairField, fontFileField } from './keystatic/font-fields';
 import { heroBackdropField } from './keystatic/hero-bg-field';
 import { navBarField } from './keystatic/nav-field';
 import { typeScaleField } from './keystatic/type-scale-field';
+import { socialPreviewField } from './keystatic/social-field';
 
 const repo = import.meta.env.PUBLIC_KEYSTATIC_GITHUB_REPO as `${string}/${string}` | undefined;
 
@@ -305,6 +306,27 @@ export default config({
           { label: 'Barra de navegación' },
         ),
         type: typeScaleField({ label: 'Tamaños de texto' }),
+        social: fields.object(
+          {
+            mode: fields.select({
+              label: 'Imagen para redes',
+              description: 'La automática se genera en cada publicación con el hero del momento (texto, colores y tipografías). Las páginas de proyecto usan su portada.',
+              options: [
+                { label: 'Automática: se genera con el sitio actual', value: 'auto' },
+                { label: 'Subir mi propia imagen', value: 'custom' },
+              ],
+              defaultValue: 'auto',
+            }),
+            theme: fields.select({
+              label: 'Tema de la imagen automática',
+              options: [{ label: 'Oscuro', value: 'dark' }, { label: 'Claro', value: 'light' }],
+              defaultValue: 'dark',
+            }),
+            image: fields.image({ label: 'Mi imagen (1200 × 630 px)', description: 'Solo se usa con “Subir mi propia imagen”.', directory: 'public/images/social', publicPath: '/images/social/', validation: { isRequired: false } }),
+            preview: socialPreviewField({ label: 'Así se ve al compartir' }),
+          },
+          { label: 'Imagen para redes' },
+        ),
         look: fields.object(
           {
             hero: fields.select({
@@ -319,7 +341,7 @@ export default config({
               defaultValue: 'wave',
             }),
             heroBackdrop: heroBackdropField({ label: 'Fondos animados: Prisma, Aurora y Ondas cortadas' }),
-            heroColor: plusColorField({ label: 'Cruces del hero: color, grosor y espaciado' }),
+            heroColor: plusColorField({ label: 'Hero: cruces, alineación y contraste' }),
             pulseSpeed: fields.select({
               label: 'Velocidad de la onda del hero',
               options: [

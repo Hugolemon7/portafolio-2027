@@ -4,5 +4,5 @@ export function hexToRgb(h: string): [number, number, number] | null;
 export function createHeroBg(
   canvas: HTMLCanvasElement,
   kind: HeroBgKind,
-  opts?: { colors?: string[]; dir?: 'top' | 'bottom'; scale?: number; barWidth?: number; spacing?: number; speed?: number; frequency?: number; blur?: number; bg?: () => string; light?: () => boolean },
+  opts?: { colors?: string[]; dir?: 'top' | 'bottom'; scale?: number; centered?: boolean; barWidth?: number; spacing?: number; speed?: number; frequency?: number; blur?: number; bg?: () => string; light?: () => boolean },
 ): () => void;

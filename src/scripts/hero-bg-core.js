@@ -24,6 +24,7 @@ vec3 finish(vec3 c) {
 
 const PRISM = COMMON + `
 uniform float uScale;    // tamaño del prisma (1–10×)
+uniform float uShift;    // 1 = a la derecha del texto; 0 = centrado
 mat2 rot(float a) { float c = cos(a), s = sin(a); return mat2(c, -s, s, c); }
 // pirámide de base cuadrada (lado 1) y altura h, apoyada en y = 0
 float sdPyramid(vec3 p, float h) {
@@ -41,7 +42,7 @@ float sdPyramid(vec3 p, float h) {
 }
 void main() {
   vec2 uv = (gl_FragCoord.xy * 2.0 - uRes) / uRes.y;
-  uv.x -= 0.6 * clamp(uRes.x / uRes.y - 1.0, 0.0, 1.0);             // en pantallas anchas, a la derecha del texto
+  uv.x -= 0.6 * uShift * clamp(uRes.x / uRes.y - 1.0, 0.0, 1.0);    // en pantallas anchas, a la derecha del texto (salvo hero centrado)
   vec3 ro = vec3(0.0, 0.9, -4.2);
   vec3 rd = normalize(vec3(uv, 1.7));
   rd.yz *= rot(-0.12);
@@ -177,7 +178,7 @@ export function createHeroBg(canvas, kind, opts = {}) {
   const U = (n) => gl.getUniformLocation(prog, n);
   const u = { res: U('uRes'), time: U('uTime'), mouse: U('uMouse'), bg: U('uBg'), light: U('uLight'), dir: U('uDir'), dpr: U('uDpr'), c: [U('uC0'), U('uC1'), U('uC2')] };
   // ajustes numéricos de Keystatic (con sus valores por defecto)
-  const NUM = { uScale: opts.scale ?? 1, uBarW: opts.barWidth ?? 0.25, uSpacing: opts.spacing ?? 28, uSpeed: opts.speed ?? 1, uFreq: opts.frequency ?? 1, uBlur: opts.blur ?? 0.6 };
+  const NUM = { uShift: opts.centered ? 0 : 1, uScale: opts.scale ?? 1, uBarW: opts.barWidth ?? 0.25, uSpacing: opts.spacing ?? 28, uSpeed: opts.speed ?? 1, uFreq: opts.frequency ?? 1, uBlur: opts.blur ?? 0.6 };
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ac = new AbortController(), on = { signal: ac.signal };

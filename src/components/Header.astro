@@ -12,11 +12,13 @@ const nav = [
 ];
 const here = Astro.url.pathname;
 // barra: estilo, logo y tamaños desde Keystatic → Ajustes generales → Barra de navegación
-const nb = settings.nav;
+const nb = settings.nav as { bar?: { style?: string; showName?: boolean }; logo?: string | null; logoDark?: string | null } | undefined;
 const style = nb?.bar?.style ?? 'bar';
 const logo = nb?.logo || null;
 const logoDark = nb?.logoDark || logo;
 const showName = !logo || (nb?.bar?.showName ?? false);
+// íconos de la misma librería (Lucide, licencia ISC), trazo de 2 px a 24 × 24
+const icon = { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', 'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true' } as const;
 ---
 <header class:list={['bar', { [`bar--${style}`]: style !== 'bar' }]} data-bar>
   <a class="bar__mark" href={routes.home[lang]} translate="no" aria-label={showName ? undefined : settings.name}>
@@ -29,8 +31,13 @@ const showName = !logo || (nb?.bar?.showName ?? false);
   </nav>
   <div class="bar__tools">
     <a class="bar__lang" href={alternate} hreflang={other} lang={other} aria-label={s.ui.switchLangLabel} data-lang-switch>{s.ui.switchLangShort}</a>
-    <button class="bar__menu" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
-      <span>{s.ui.menu}</span>
+    <button class="bar__icon" type="button" role="switch" aria-checked="false" aria-label={s.ui.darkMode} data-mode-toggle>
+      <svg class="bar__moon" {...icon}><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
+      <svg class="bar__sun" {...icon}><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></svg>
+    </button>
+    <button class="bar__menu" type="button" aria-expanded="false" aria-controls="menu" aria-label={s.ui.menu} data-menu-open>
+      <span class="bar__menu-label">{s.ui.menu}</span>
+      <svg class="bar__menu-icon" {...icon}><path d="M4 12h16" /><path d="M4 6h16" /><path d="M4 18h16" /></svg>
     </button>
   </div>
 </header>
@@ -43,10 +50,6 @@ const showName = !logo || (nb?.bar?.showName ?? false);
       {nav.map((n, i) => <a href={n.href} style={`--i:${i}`}>{n.label}</a>)}
     </nav>
     <div class="menu__foot">
-      <button class="switch" type="button" role="switch" aria-checked="false" data-mode-toggle>
-        <span class="switch__track" aria-hidden="true"><span class="switch__thumb"></span></span>
-        <span class="switch__label">{s.ui.darkMode}</span>
-      </button>
       <a class="link-plain" href={`mailto:${settings.email}`}>{settings.email}</a>
       <div class="menu__row">
         <a class="link" href={settings.linkedin} rel="noopener" target="_blank">LinkedIn</a>

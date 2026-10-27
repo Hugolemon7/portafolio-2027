@@ -14,7 +14,9 @@ interface Props {
   alternate: string;
   image?: string;
 }
-const { lang, title, description, alternate, image = '/og.png' } = Astro.props;
+const social = settings.social as { mode?: string; image?: string | null } | undefined;
+// imagen para redes: la que subas en Keystatic → Imagen para redes, o la que se genera en cada publicación (scripts/og-image.mjs)
+const { lang, title, description, alternate, image = social?.mode === 'custom' && social.image ? social.image : `/_og/og-${lang}.png` } = Astro.props;
 const s = t(lang);
 const pageTitle = title ? `${title} — ${settings.name}` : s.meta.title;
 const desc = description ?? s.meta.description;
@@ -115,6 +117,7 @@ const person = {
     import '../scripts/hero-bg.js';
     import '../scripts/lava.js';
     import '../scripts/specular.js';
+    import '../scripts/nav-glass.js';
     import '../scripts/scroll-expand.js';
     import '../scripts/app.js';
   </script>

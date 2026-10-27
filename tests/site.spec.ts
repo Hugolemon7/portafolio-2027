@@ -71,12 +71,11 @@ test('el menú abre, atrapa el foco y cierra con Escape', async ({ page }) => {
   await expect(btn).toBeFocused();
 });
 
-test('el modo oscuro se activa desde el menú y se recuerda', async ({ page }) => {
+test('el modo oscuro se activa desde la barra y se recuerda', async ({ page }) => {
   await quiet(page);
   await page.emulateMedia({ colorScheme: 'light' });
   await page.goto('/');
-  await page.locator('[data-menu-open]').click();
-  const sw = page.locator('[data-mode-toggle]');
+  const sw = page.locator('.bar [data-mode-toggle]');
   await expect(sw).toHaveAttribute('aria-checked', 'false');
   await sw.click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');

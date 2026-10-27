@@ -8,13 +8,13 @@ import { ColorStyles, HEX, Head, Swatch } from './color-ui';
 export type PlusColor = {
   mode: 'multi' | 'single'; light: string; dark: string;
   spacing: number; weight: number; size: number; grow: number; opacity: number; radius: number;
-  veil: boolean; veilOpacity: number;
+  veil: boolean; veilOpacity: number; align: 'left' | 'center';
 };
 
 const DEFAULT: PlusColor = {
   mode: 'multi', light: '#5a3ec8', dark: '#b9a4ff',
   spacing: 40, weight: 1, size: 1, grow: 1, opacity: 1, radius: 0.3,
-  veil: false, veilOpacity: 0.8,
+  veil: false, veilOpacity: 0.8, align: 'left',
 };
 // límites de cada control (también se usan para sanear lo que venga del archivo)
 const LIMITS = {
@@ -67,12 +67,12 @@ function LiveStage({ mode, value }: { mode: 'light' | 'dark'; value: PlusColor }
   return (
     <div ref={host} className="kc-live" data-wave-host style={{ background: s.bg, color: s.ink }}>
       <canvas ref={canvas} aria-hidden="true" />
-      {value.veil && (
+      {value.veil && value.align !== 'center' && (
         <span className="kc-live__veil" aria-hidden="true" style={{ background: `linear-gradient(to right, color-mix(in srgb, ${s.bg} ${Math.round(value.veilOpacity * 100)}%, transparent), transparent)` }} />
       )}
       <span className="kc-stage__tag kc-live__tag"><span aria-hidden="true">{s.icon}</span>{s.name}</span>
       <span className="kc-live__hint" style={{ background: mode === 'light' ? 'rgb(255 255 255 / 0.8)' : 'rgb(255 255 255 / 0.12)' }}>Pasa el cursor · clic = onda</span>
-      <div className="kc-live__copy">
+      <div className="kc-live__copy" style={value.align === 'center' ? { textAlign: 'center', left: '12%', right: '12%' } : undefined}>
         <p className="kc-live__title">Diseño productos que destacan</p>
         <p className="kc-live__lead">Así se leen los textos del hero sobre los puntos en reposo.</p>
       </div>
@@ -114,6 +114,7 @@ export function plusColorField({ label }: { label: string }): BasicFormField<Plu
       dark: v.dark ?? DEFAULT.dark,
       spacing: num('spacing'), weight: num('weight'), size: num('size'), grow: num('grow'), opacity: num('opacity'), radius: num('radius'),
       veil: v.veil === true,
+      align: v.align === 'center' ? 'center' : 'left',
       veilOpacity: num('veilOpacity'),
     };
   };
@@ -151,12 +152,22 @@ export function plusColorField({ label }: { label: string }): BasicFormField<Plu
             <Range label="Opacidad de las figuras" value={value.opacity} min={LIMITS.opacity[0]} max={LIMITS.opacity[1]} step={0.05} format={pctf} onChange={set('opacity')} />
           </div>
           <div className="kc-veil">
-            <label className="kc-veil__check">
-              <input type="checkbox" checked={value.veil} onChange={(e) => set('veil')(e.target.checked)} />
+            <span className="kc-veil__check" style={{ cursor: 'default' }}>Alineación del contenido</span>
+            <div className="kc-seg" role="group" aria-label="Alineación del hero" style={{ justifySelf: 'start' }}>
+              <button type="button" aria-pressed={value.align === 'left'} onClick={() => set('align')('left')}>Izquierda</button>
+              <button type="button" aria-pressed={value.align === 'center'} onClick={() => set('align')('center')}>Centro</button>
+            </div>
+            <p className="kc-veil__note">Mueve el titular, el texto de apoyo y los botones del hero (también la línea de ubicación).</p>
+          </div>
+          <div className="kc-veil" aria-disabled={value.align === 'center' || undefined} style={value.align === 'center' ? { opacity: 0.55 } : undefined}>
+            <label className="kc-veil__check" style={value.align === 'center' ? { cursor: 'not-allowed' } : undefined}>
+              <input type="checkbox" checked={value.veil && value.align !== 'center'} disabled={value.align === 'center'} onChange={(e) => set('veil')(e.target.checked)} />
               Degradado de contraste detrás del texto
             </label>
-            <Range label="Opacidad inicial (izquierda)" value={value.veilOpacity} min={LIMITS.veilOpacity[0]} max={LIMITS.veilOpacity[1]} step={0.05} format={(v) => `${pctf(v)} → 0%`} onChange={set('veilOpacity')} disabled={!value.veil} />
-            <p className="kc-veil__note">Un velo del mismo color de fondo que va de este porcentaje a 0% de izquierda a derecha: atenúa las figuras detrás del titular. Se ve en la vista previa.</p>
+            <Range label="Opacidad inicial (izquierda)" value={value.veilOpacity} min={LIMITS.veilOpacity[0]} max={LIMITS.veilOpacity[1]} step={0.05} format={(v) => `${pctf(v)} → 0%`} onChange={set('veilOpacity')} disabled={!value.veil || value.align === 'center'} />
+            <p className="kc-veil__note">{value.align === 'center'
+              ? 'Desactivado con el contenido centrado: el degradado va de izquierda a derecha y solo tiene sentido con el texto a la izquierda. Vuelve a "Izquierda" para usarlo.'
+              : 'Un velo del mismo color de fondo que va de este porcentaje a 0% de izquierda a derecha: atenúa las figuras detrás del titular. Se ve en la vista previa.'}</p>
           </div>
           <div className="kc-modes">
             {(['light', 'dark'] as const).map((m) => (
