@@ -1,11 +1,11 @@
 {
   "es": {
     "title": "Impacto medible",
-    "lead": "Cifras reales de mis últimos roles. Abre cada una para ver el contexto.",
+    "lead": "Cifras de mis últimos roles. Abre cada una para ver el contexto.",
     "items": [
       {
         "value": "70+",
-        "label": "componentes consolidados en el sistema de diseño de Experian",
+        "label": "componentes consolidados en el sistema de diseño de Experian B2B",
         "meta": "Experian · 2025",
         "kicker": "Experian · EE. UU. · 2025 – hoy",
         "title": "70+ componentes",
@@ -29,7 +29,7 @@
         "value": "+25%",
         "label": "de retención con flujos rediseñados",
         "meta": "Wiggot · 2023–24",
-        "kicker": "Wiggot · Oct 2023 – Feb 2024",
+        "kicker": "Wiggot · 2023–24",
         "title": "+25% de retención",
         "body": [
           "Como líder de diseño en Wiggot, desarrollé flujos de usabilidad junto con stakeholders y product managers, validados con wireframes y prototipos de alta fidelidad en pruebas con usuarios.",
@@ -51,11 +51,11 @@
   },
   "en": {
     "title": "Measurable impact",
-    "lead": "Real numbers from my recent roles. Open each one for the context.",
+    "lead": "Numbers from my recent roles. Open each one for the context.",
     "items": [
       {
         "value": "70+",
-        "label": "components consolidated in Experian's design system",
+        "label": "components consolidated in Experian's B2B design system",
         "meta": "Experian · 2025",
         "kicker": "Experian · US · 2025 – present",
         "title": "70+ components",
@@ -79,7 +79,7 @@
         "value": "+25%",
         "label": "user retention through redesigned flows",
         "meta": "Wiggot · 2023–24",
-        "kicker": "Wiggot · Oct 2023 – Feb 2024",
+        "kicker": "Wiggot · 2023–24",
         "title": "+25% retention",
         "body": [
           "As Wiggot's design lead, I built usability flows with stakeholders and product managers, validated with wireframes and high-fidelity prototypes in user testing.",
