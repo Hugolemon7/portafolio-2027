@@ -22,20 +22,20 @@
       }
     },
     "heroButtons": {
-      "custom": false,
+      "custom": true,
       "light": {
-        "bg": "#1f2328",
+        "bg": "#2452db",
         "ink": "#eceef1"
       },
       "dark": {
-        "bg": "#eceef2",
+        "bg": "#8da7f7",
         "ink": "#121418"
       }
     }
   },
   "nav": {
     "bar": {
-      "style": "glass",
+      "style": "pill",
       "nameScale": 0.85,
       "linkSize": 0,
       "logoHeight": 30,
