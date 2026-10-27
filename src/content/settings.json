@@ -33,6 +33,29 @@
       }
     }
   },
+  "nav": {
+    "bar": {
+      "style": "glass",
+      "nameScale": 0.85,
+      "linkSize": 0,
+      "logoHeight": 25,
+      "showName": false
+    }
+  },
+  "type": {
+    "text": 1,
+    "headings": 1,
+    "section": 1,
+    "impact": 1,
+    "work": 1,
+    "project": 1,
+    "facilitation": 1,
+    "experience": 1,
+    "contact": 1,
+    "page": 1,
+    "subtitle": 1,
+    "foot": 1
+  },
   "look": {
     "hero": "sliced",
     "heroBackdrop": {
@@ -204,30 +227,5 @@
       "es": "Enseñanza didáctica",
       "en": "Learning community"
     }
-  ],
-  "nav": {
-    "bar": {
-      "style": "bar",
-      "nameScale": 1,
-      "linkSize": 0,
-      "logoHeight": 28,
-      "showName": false
-    },
-    "logo": null,
-    "logoDark": null
-  },
-  "type": {
-    "text": 1,
-    "headings": 1,
-    "section": 1,
-    "impact": 1,
-    "work": 1,
-    "project": 1,
-    "facilitation": 1,
-    "experience": 1,
-    "contact": 1,
-    "page": 1,
-    "subtitle": 1,
-    "foot": 1
-  }
+  ]
 }
