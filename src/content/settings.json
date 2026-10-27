@@ -3,9 +3,9 @@
   "email": "buenrsotro.h@gmail.com",
   "linkedin": "https://www.linkedin.com/in/hugobuenrostro/",
   "accent": {
-    "light": "#5a3ec8",
+    "light": "#2452db",
     "lightInk": "#ffffff",
-    "dark": "#b9a4ff",
+    "dark": "#8da7f7",
     "darkInk": "#0d0e10",
     "site": {
       "light": {
@@ -43,13 +43,13 @@
     }
   },
   "type": {
-    "text": 1,
-    "headings": 1,
-    "section": 1,
-    "impact": 1,
+    "text": 0.85,
+    "headings": 0.9,
+    "section": 1.5,
+    "impact": 0.8,
     "work": 1,
     "project": 1,
-    "facilitation": 1,
+    "facilitation": 0.7,
     "experience": 1,
     "contact": 1,
     "page": 1,
@@ -57,14 +57,14 @@
     "foot": 1
   },
   "look": {
-    "hero": "wave",
+    "hero": "aurora",
     "heroBackdrop": {
       "prism": {
         "scale": 8.2
       },
       "aurora": {
         "colors": [
-          "#a8ff78",
+          "#3e63dd",
           "#78ffd6",
           "#4facfe"
         ],
@@ -103,17 +103,17 @@
     "hoverFill": "theme",
     "finale": "lava",
     "finaleColor": {
-      "mode": "accent",
+      "mode": "custom",
       "light": {
-        "bg": "#5a3ec8",
+        "bg": "#143ec8",
         "ink": "#ffffff",
-        "rimA": "#ff8fd6",
+        "rimA": "#78ffd6",
         "rimB": "#8fc7ff"
       },
       "dark": {
-        "bg": "#b9a4ff",
+        "bg": "#8da7f7",
         "ink": "#0d0e10",
-        "rimA": "#ff8fd6",
+        "rimA": "#78ffd6",
         "rimB": "#8fc7ff"
       }
     },
