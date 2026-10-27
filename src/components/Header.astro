@@ -11,9 +11,19 @@ const nav = [
   { href: routes.contact[lang], label: s.ui.nav.contact },
 ];
 const here = Astro.url.pathname;
+// barra: estilo, logo y tamaños desde Keystatic → Ajustes generales → Barra de navegación
+const nb = settings.nav;
+const style = nb?.bar?.style ?? 'bar';
+const logo = nb?.logo || null;
+const logoDark = nb?.logoDark || logo;
+const showName = !logo || (nb?.bar?.showName ?? false);
 ---
-<header class="bar" data-bar>
-  <a class="bar__mark" href={routes.home[lang]} translate="no">{settings.name}</a>
+<header class:list={['bar', { [`bar--${style}`]: style !== 'bar' }]} data-bar>
+  <a class="bar__mark" href={routes.home[lang]} translate="no" aria-label={showName ? undefined : settings.name}>
+    {logo && <img class="bar__logo bar__logo--onlight" src={logo} alt="" />}
+    {logo && <img class="bar__logo bar__logo--ondark" src={logoDark} alt="" />}
+    {showName && <span>{settings.name}</span>}
+  </a>
   <nav class="bar__nav" aria-label={lang === 'es' ? 'Principal' : 'Main'}>
     {nav.map((n) => <a href={n.href} aria-current={here.startsWith(n.href) ? 'page' : undefined}>{n.label}</a>)}
   </nav>

@@ -41,6 +41,16 @@ const siteVars = (['light', 'dark'] as const).flatMap((m) => {
 // botones del hero con color propio (Keystatic → Colores del sitio)
 const hb = settings.accent.heroButtons;
 const heroBtnVars = hb?.custom ? `--hero-btn-light-bg:${hb.light.bg};--hero-btn-light-ink:${hb.light.ink};--hero-btn-dark-bg:${hb.dark.bg};--hero-btn-dark-ink:${hb.dark.ink}` : '';
+// tamaños de texto (Keystatic → Tamaños de texto) y de la barra (Keystatic → Barra de navegación)
+const sizes = (settings.type ?? {}) as Record<string, number>;
+const FS: Record<string, string> = { text: 'text', headings: 'h', section: 'section', impact: 'impact', work: 'work', project: 'project', facilitation: 'facilitation', experience: 'experience', contact: 'contact', page: 'page', subtitle: 'subtitle', foot: 'foot' };
+const navBar = settings.nav?.bar;
+const sizeVars = [
+  ...Object.entries(FS).filter(([k]) => sizes[k] && sizes[k] !== 1).map(([k, v]) => `--fs-${v}:${sizes[k]}`),
+  navBar?.nameScale && navBar.nameScale !== 1 ? `--nav-name-scale:${navBar.nameScale}` : '',
+  navBar?.linkSize ? `--nav-link-size:${navBar.linkSize}px` : '',
+  navBar?.logoHeight ? `--nav-logo-h:${navBar.logoHeight}px` : '',
+].filter(Boolean).join(';');
 // sección de contacto: halo siempre; fondo y texto solo si no usa el acento (Keystatic → Efectos)
 const fc = settings.look?.finaleColor;
 const finaleVars = fc ? [
@@ -61,7 +71,7 @@ const person = {
 };
 ---
 <!doctype html>
-<html lang={htmlLang[lang]} style={[accentVars, siteVars, heroBtnVars, finaleVars].filter(Boolean).join(';')} data-hover-fill={settings.look?.hoverFill ?? 'theme'}>
+<html lang={htmlLang[lang]} style={[accentVars, siteVars, heroBtnVars, finaleVars, sizeVars].filter(Boolean).join(';')} data-hover-fill={settings.look?.hoverFill ?? 'theme'}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">

@@ -2,9 +2,9 @@
 
 .page { padding: calc(var(--bar-h) + clamp(3rem, 7vw, 6rem)) var(--margin) var(--section); }
 .page-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: end; margin-bottom: clamp(3rem, 6vw, 5rem); }
-.page-title { grid-column: 1 / 8; font-size: clamp(2.75rem, 1.2rem + 6vw, 7rem); line-height: 0.95; }
+.page-title { grid-column: 1 / 8; font-size: calc(clamp(2.75rem, 1.2rem + 6vw, 7rem) * var(--fs-h, 1) * var(--fs-page, 1)); line-height: 0.95; }
 .page-lead { grid-column: 8 / 13; font-size: var(--step-lead); line-height: 1.35; max-width: 32ch; }
-.group-title { font-size: var(--step-sub); line-height: 1.1; margin: clamp(3rem, 6vw, 5rem) 0 1.5rem; }
+.group-title { font-size: calc(var(--step-sub) * var(--fs-h, 1) * var(--fs-subtitle, 1)); line-height: 1.1; margin: clamp(3rem, 6vw, 5rem) 0 1.5rem; }
 
 /* ---------- listado de proyectos ---------- */
 .plist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gutter); }
@@ -13,7 +13,7 @@
 .pcard { position: relative; display: grid; gap: 1rem; text-decoration: none; }
 .pcard__media { aspect-ratio: 4 / 3; overflow: clip; border-radius: var(--r-card); background: var(--surface); }
 .pcard__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-out); }
-.pcard__title { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track); font-size: var(--step-sub); line-height: 1.1; }
+.pcard__title { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track); font-size: calc(var(--step-sub) * var(--fs-h, 1) * var(--fs-subtitle, 1)); line-height: 1.1; }
 .pcard__meta { color: var(--muted); font-size: var(--step-small); }
 .pcard__summary { max-width: 48ch; }
 @media (hover: hover) { .pcard:hover .pcard__media img { transform: scale(1.04); } .pcard:hover .pcard__title { color: var(--accent); } }
@@ -38,7 +38,7 @@
 .case-expand { position: relative; height: 100svh; --p: 1; }
 .js .case-expand { height: 230svh; --p: 0; }
 .case-expand__stage { position: sticky; top: 0; height: 100svh; overflow: clip; container-type: size; background: var(--bg); }
-.case-expand__title { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; margin: 0; padding: var(--bar-h) var(--margin) 0; text-align: center; font-size: clamp(3rem, 1rem + 8vw, 9rem); line-height: 0.92; color: var(--ink); text-wrap: balance; }
+.case-expand__title { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; margin: 0; padding: var(--bar-h) var(--margin) 0; text-align: center; font-size: calc(clamp(3rem, 1rem + 8vw, 9rem) * var(--fs-h, 1) * var(--fs-page, 1)); line-height: 0.92; color: var(--ink); text-wrap: balance; }
 .case-expand__frame { --fw: min(30rem, 74cqw); --fh: min(62cqh, 36rem); position: absolute; inset: 0; z-index: 2; color: #fff;
   clip-path: inset(calc((100cqh - var(--fh)) / 2 * (1 - var(--p)) + var(--bar-h) * 0.5 * (1 - var(--p))) calc((100cqw - var(--fw)) / 2 * (1 - var(--p))) calc((100cqh - var(--fh)) / 2 * (1 - var(--p)) - var(--bar-h) * 0.5 * (1 - var(--p))) round calc(28px * (1 - var(--p)))); }
 .case-expand__frame picture, .case-expand__img { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -53,9 +53,14 @@
 .case-facts dt { color: var(--muted); font-size: var(--step-small); margin-bottom: 0.25rem; }
 .prose { width: min(calc(44rem + 2 * var(--margin)), 100%); margin: var(--section) auto 0; padding-inline: var(--margin); }
 .prose > * + * { margin-top: 1.25rem; }
-.prose h2 { font-size: var(--step-sub); line-height: 1.1; margin-top: clamp(5rem, 8vw, 6rem); }
+.prose h2 { font-size: calc(var(--step-sub) * var(--fs-h, 1) * var(--fs-subtitle, 1)); line-height: 1.1; margin-top: clamp(5rem, 8vw, 6rem); }
 .prose h2:first-child { margin-top: 0; }
 .prose h3 { font-size: var(--step-lead); margin-top: 2.25rem; }
+/* aire entre título, párrafos y figuras del caso */
+.prose h2 + *, .prose h3 + * { margin-top: 1.5rem; }
+.prose > figure, .prose > .compare, .prose > .callout, .prose > [data-reveal] { margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+.prose > figure + *, .prose > .compare + *, .prose > .callout + *, .prose > [data-reveal] + * { margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+.case-facts + .prose { margin-top: clamp(4rem, 7vw, 6rem); }
 .prose ul, .prose ol { padding-left: 1.25rem; display: grid; gap: 0.6rem; }
 .prose li::marker { color: var(--accent); }
 .prose strong { font-weight: 700; }

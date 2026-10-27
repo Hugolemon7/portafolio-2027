@@ -34,9 +34,9 @@ const PALETTE: Record<'light' | 'dark', Palette> = {
   light: { bg: '#eceef1', surface: '#e1e4e9', ink: '#1f2328', muted: '#444a53', accent: '#5a3ec8', accentInk: '#ffffff' },
   dark: { bg: '#121418', surface: '#1b1e24', ink: '#eceef2', muted: '#aeb3bd', accent: '#b9a4ff', accentInk: '#0d0e10' },
 };
-type Published = { colors: Record<'light' | 'dark', Palette>; uploaded: string[] };
+export type Published = { colors: Record<'light' | 'dark', Palette>; uploaded: string[]; display: string; text: string; logo: string | null; logoDark: string | null };
 let published: Promise<Published> | null = null;
-function loadPublished() {
+export function loadPublished() {
   if (published) return published;
   published = fetch('/', { cache: 'no-store' })
     .then((r) => r.text())
@@ -56,9 +56,13 @@ function loadPublished() {
         ink: v(`site-${m}-ink`) ?? PALETTE[m].ink, muted: v(`site-${m}-muted`) ?? PALETTE[m].muted,
         accent: v(`accent-${m}`) ?? PALETTE[m].accent, accentInk: v(`accent-${m}-ink`) ?? PALETTE[m].accentInk,
       });
-      return { colors: { light: pick('light'), dark: pick('dark') }, uploaded };
+      const fam = (role: string) => new RegExp(`--font-${role}:"([^"]+)"`).exec(html)?.[1] ?? (role === 'display' ? 'Clash Grotesk' : 'Satoshi');
+      const logoOf = (cls: string) => new RegExp(`<img class="bar__logo ${cls}"[^>]*src="([^"]+)"`).exec(html)?.[1] ?? null;
+      const display = fam('display'), text = fam('text');
+      loadBuiltIn(display); loadBuiltIn(text);
+      return { colors: { light: pick('light'), dark: pick('dark') }, uploaded, display, text, logo: logoOf('bar__logo--onlight'), logoDark: logoOf('bar__logo--ondark') };
     })
-    .catch(() => ({ colors: PALETTE, uploaded: [] }));
+    .catch(() => ({ colors: PALETTE, uploaded: [], display: 'Clash Grotesk', text: 'Satoshi', logo: null, logoDark: null }));
   return published;
 }
 
@@ -99,6 +103,7 @@ const WEIGHTS = ['100', '200', '300', '400', '500', '600', '700', '800', '900'];
 const FALLBACKS = [['sans-serif', 'Sans serif'], ['serif', 'Serif'], ['monospace', 'Monoespaciada']];
 const SCALE = { min: 0.5, max: 1.5 };
 
+export { PALETTE };
 export type FontPair = { display: string; text: string; displayWeight: string; displayFallback: string; textFallback: string; heroScale: number };
 export const PAIR_DEFAULT: FontPair = { display: 'Clash Grotesk', text: 'Satoshi', displayWeight: '500', displayFallback: 'sans-serif', textFallback: 'sans-serif', heroScale: 1 };
 
@@ -163,7 +168,7 @@ export function fontPairField({ label }: { label: string }): BasicFormField<Font
     reader: { parse },
     Input({ value, onChange }) {
       const id = useId();
-      const [pub, setPub] = useState<Published>({ colors: PALETTE, uploaded: [] });
+      const [pub, setPub] = useState<Published>({ colors: PALETTE, uploaded: [], display: 'Clash Grotesk', text: 'Satoshi', logo: null, logoDark: null });
       const [, force] = useState(0);
       const set = <K extends keyof FontPair>(k: K) => (v: FontPair[K]) => onChange({ ...value, [k]: v });
       useEffect(() => { loadPublished().then((p) => { setPub(p); force((n) => n + 1); }); }, []);

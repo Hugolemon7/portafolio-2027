@@ -8,6 +8,8 @@ import { plusColorField } from './keystatic/plus-color-field';
 import { finaleColorField } from './keystatic/finale-color-field';
 import { fontPairField, fontFileField } from './keystatic/font-fields';
 import { heroBackdropField } from './keystatic/hero-bg-field';
+import { navBarField } from './keystatic/nav-field';
+import { typeScaleField } from './keystatic/type-scale-field';
 
 const repo = import.meta.env.PUBLIC_KEYSTATIC_GITHUB_REPO as `${string}/${string}` | undefined;
 
@@ -294,6 +296,15 @@ export default config({
         email: txt('Correo de contacto'),
         linkedin: fields.url({ label: 'LinkedIn' }),
         accent: accentField({ label: 'Colores del sitio y acento' }),
+        nav: fields.object(
+          {
+            bar: navBarField({ label: 'Barra de navegación: estilo y tamaños' }),
+            logo: fields.image({ label: 'Logo (SVG recomendado)', description: 'Reemplaza el nombre en la barra. Úsalo en un color que se lea sobre fondo claro.', directory: 'public/images/brand', publicPath: '/images/brand/', validation: { isRequired: false } }),
+            logoDark: fields.image({ label: 'Logo para fondo oscuro (opcional)', description: 'Se usa sobre el hero oscuro y en modo oscuro. Si lo dejas vacío se usa el mismo logo.', directory: 'public/images/brand', publicPath: '/images/brand/', validation: { isRequired: false } }),
+          },
+          { label: 'Barra de navegación' },
+        ),
+        type: typeScaleField({ label: 'Tamaños de texto' }),
         look: fields.object(
           {
             hero: fields.select({
