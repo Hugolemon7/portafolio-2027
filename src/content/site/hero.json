@@ -1,20 +1,20 @@
 {
   "es": {
     "line1": "Diseño productos",
-    "line2Before": "que",
+    "line2Before": "funcionales que",
     "highlight": "destacan",
     "lead": "Soy Product Designer. Construyo sistemas de diseño y flujos para productos digitales, con datos y pruebas con usuarios.",
-    "primary": "Escríbeme",
+    "primary": "¡Hablemos!",
     "secondary": "Ver proyectos",
-    "meta": "Oaxaca, México · Solo remoto · Español / English"
+    "meta": "Oaxaca, México · Remoto · Español / English"
   },
   "en": {
-    "line1": "I design products",
-    "line2Before": "that",
+    "line1": "I design functional",
+    "line2Before": "products that",
     "highlight": "stand out",
     "lead": "I'm a Product Designer. I build design systems and flows for digital products, backed by data and user testing.",
-    "primary": "Get in touch",
+    "primary": "Let's talk!",
     "secondary": "See work",
-    "meta": "Oaxaca, Mexico · Remote only · English / Spanish"
+    "meta": "Oaxaca, Mexico · Remote · English / Spanish"
   }
 }
